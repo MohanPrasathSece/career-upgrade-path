@@ -273,14 +273,14 @@ function Home() {
 
       {/* STATS */}
       <Section>
-        <div className="rounded-[2rem] border border-border bg-gradient-primary p-10 text-primary-foreground shadow-glow md:p-16">
-          <div className="grid gap-10 text-center md:grid-cols-4">
+        <div className="rounded-[2rem] border border-border bg-gradient-primary p-6 sm:p-10 text-primary-foreground shadow-glow md:p-16">
+          <div className="grid grid-cols-2 gap-6 sm:gap-10 text-center md:grid-cols-4">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="font-display text-5xl font-bold md:text-6xl">
+                <div className="font-display text-3xl font-bold sm:text-4xl md:text-6xl">
                   <Counter to={s.to} suffix={s.suffix} />
                 </div>
-                <p className="mt-2 text-sm font-medium uppercase tracking-wider opacity-90">{s.label}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wider opacity-95 md:mt-2 md:text-sm">{s.label}</p>
               </div>
             ))}
           </div>
