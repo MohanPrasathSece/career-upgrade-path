@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import contactImg from "@/assets/contact-hero.jpg";
+import contactImg from "@/assets/images/team.jpeg";
 import { createServerFn } from "@tanstack/react-start";
 
 const sendEmailFn = createServerFn({ method: "POST" })
-  .validator((data: { name: string; email: string; phone: string; course: string; message: string }) => data)
+  .inputValidator((data: { name: string; email: string; phone: string; course: string; message: string }) => data)
   .handler(async ({ data }) => {
     // We only import nodemailer on the server
     const nodemailer = await import("nodemailer");
@@ -149,7 +149,7 @@ function Contact() {
                 <Field label="Course Interest">
                   <select value={form.course} onChange={(e) => setForm({...form, course: e.target.value})} className="input">
                     <option>Dental Nursing - 1 Year</option>
-                    <option>Apprenticeship Pathway</option>
+
                     <option>Government Funded Route</option>
                     <option>Just exploring</option>
                   </select>

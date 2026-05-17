@@ -6,7 +6,6 @@ import {
   useRouter,
   HeadContent,
   Scripts,
-  ScrollRestoration,
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
@@ -73,10 +72,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Career Upgrade - Online Dental Nursing Academy UK" },
-      { name: "description", content: "Become a fully qualified dental nurse in the UK. Flexible online learning, expert tutors, GDC registration pathway and government-funded options." },
-      { property: "og:title", content: "Career Upgrade - Online Dental Nursing Academy UK" },
-      { property: "og:description", content: "Upgrade your future in dental nursing with flexible UK-recognised online training." },
+      { title: "Career Upgrade - Online Dental Nursing Training UK" },
+      { name: "description", content: "Career Upgrade is a modern, online dental nursing training in the UK. Flexible learning, expert tutors, and a clear path to GDC registration." },
+      { property: "og:title", content: "Career Upgrade - Online Dental Nursing Training UK" },
+      { property: "og:description", content: "Upgrade your future in dental nursing with flexible online training." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Career Upgrade" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -107,7 +106,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
-        <ScrollRestoration />
         <ScrollToTop />
         <Scripts />
       </body>

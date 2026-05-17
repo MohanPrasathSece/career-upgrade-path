@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Compass, Target, Users, MessageSquare, CalendarRange, HandHeart, ClipboardCheck, GraduationCap, ArrowRight, CheckCircle2, Sparkles, ShieldCheck, BookOpen } from "lucide-react";
-import aboutImg from "@/assets/about-students.jpg";
+import aboutImg from "@/assets/images/teamnew.jpeg";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About & Student Support - Career Upgrade" },
-      { name: "description", content: "Discover Career Upgrade - a UK online dental nursing academy. Learn how our tutors, assessors and customer service team support every student." },
+      { name: "description", content: "Discover Career Upgrade - a UK online dental nursing training. Learn how our tutors, assessors and customer service team support every student." },
       { property: "og:title", content: "About & Student Support - Career Upgrade" },
       { property: "og:description", content: "Supporting you every step of the way to becoming a qualified UK dental nurse." },
       { property: "og:url", content: "/about" },
@@ -48,7 +48,7 @@ function About() {
       <PageHero
         eyebrow="About Career Upgrade"
         title="Supporting You Every Step of the Way"
-        subtitle="We're a dedicated UK online dental nursing academy on a mission to make qualifying as a dental nurse simple, supported and accessible to everyone."
+        subtitle="We're a dedicated UK online dental nursing training on a mission to make qualifying as a dental nurse simple, supported and accessible to everyone."
         image={aboutImg}
       />
 
@@ -56,11 +56,11 @@ function About() {
       <Section>
         <div className="mx-auto max-w-3xl text-center">
           <SectionEyebrow>Who we are</SectionEyebrow>
-          <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
-            A modern academy built around you
+          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+            A modern training built around you
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            Career Upgrade is an online dental nursing academy for UK students aged 16+. We combine flexible online learning with real tutor and assessor support, leading to a UK-recognised qualification and a clear pathway to General Dental Council registration. Whether you're starting out, switching careers, or already working in a practice - we'll meet you where you are.
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Career Upgrade is an online dental nursing training for UK students aged 16+. We combine flexible online learning with real tutor and assessor support, leading to a qualification and a clear pathway to General Dental Council registration. Whether you're starting out, switching careers, or already working in a practice - we'll meet you where you are.
           </p>
         </div>
       </Section>
@@ -70,7 +70,7 @@ function About() {
         <div className="grid gap-6 md:grid-cols-2">
           {[
             { icon: Target, label: "Our Mission", title: "Open dental nursing to everyone in the UK", desc: "Remove barriers to qualifying - through flexible delivery, transparent costs and human support that doesn't disappear after enrolment." },
-            { icon: Compass, label: "Our Vision", title: "The most trusted online dental academy in the UK", desc: "A future where qualified dental nurses come from every background and every postcode - equipped with confidence and modern skills." },
+            { icon: Compass, label: "Our Vision", title: "The most trusted online dental training in the UK", desc: "A future where qualified dental nurses come from every background and every postcode - equipped with confidence and modern skills." },
           ].map((c) => (
             <div key={c.label} className="rounded-3xl border border-border bg-card p-8 shadow-soft transition hover:shadow-card hover:-translate-y-1 md:p-10">
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-soft">
@@ -88,7 +88,7 @@ function About() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Student Support</SectionEyebrow>
-          <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
+          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
             Real people. Real support. Whenever you need it.
           </h2>
         </div>
@@ -110,7 +110,7 @@ function About() {
         <Section>
           <div className="mx-auto max-w-2xl text-center">
             <SectionEyebrow>How Learning Works</SectionEyebrow>
-            <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
+            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
               From application to qualified - in 5 clear steps
             </h2>
           </div>
@@ -143,7 +143,7 @@ function About() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionEyebrow>Why students trust us</SectionEyebrow>
-            <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
+            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
               Trusted by students across the UK
             </h2>
             <ul className="mt-8 space-y-3">

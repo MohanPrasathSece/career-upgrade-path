@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Globe, Calendar, UserCheck, Award, Stethoscope, Heart, ShieldCheck, Smile, BriefcaseBusiness, ArrowRight, CheckCircle2, Wallet, Landmark, CreditCard, GraduationCap, FileCheck, Shirt, ScrollText } from "lucide-react";
-import coursesImg from "@/assets/courses-hero.jpg";
+import coursesImg from "@/assets/images/team_of_nurses.png";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
       { title: "Dental Nursing Course & Funding - Career Upgrade" },
-      { name: "description", content: "Our 1-year flexible online UK dental nursing course. Government funding, payment plans, apprenticeship pathways and everything included." },
+      { name: "description", content: "Our 1-year flexible online UK dental nursing course. Government funding, payment plans and everything included." },
       { property: "og:title", content: "Dental Nursing Course & Funding - Career Upgrade" },
       { property: "og:description", content: "Flexible course, transparent funding options, GDC pathway." },
       { property: "og:url", content: "/courses" },
@@ -39,12 +39,10 @@ const funding = [
   { icon: Landmark, title: "Government Funded Learners", desc: "Eligible UK students may qualify for full funding.", tag: "Most popular", gradient: true },
   { icon: CreditCard, title: "Flexible Payment Plans", desc: "Spread the cost with affordable monthly instalments." },
   { icon: Wallet, title: "Fee Paying Options", desc: "Pay upfront or via your employer with a discount." },
-  { icon: BriefcaseBusiness, title: "Apprenticeship Opportunities", desc: "Learn while employed in a UK dental practice." },
 ];
 
 const benefits = [
   { icon: FileCheck, title: "DBS Check" },
-  { icon: Shirt, title: "Uniform & Scrubs" },
   { icon: ScrollText, title: "Exam Fees" },
   { icon: ShieldCheck, title: "GDC Registration Support" },
 ];
@@ -65,11 +63,11 @@ function Courses() {
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
             <div>
               <SectionEyebrow>Course Overview</SectionEyebrow>
-              <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
+              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
                 One year. Online. Built around you.
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Our flagship course leads to a UK-recognised dental nursing qualification and a clear path to General Dental Council registration. Designed for ages 16+, with rolling start dates, expert support and everything included.
+                Our flagship course leads to a dental nursing qualification and a clear path to General Dental Council registration. Designed for ages 16+, with rolling start dates, expert support and everything included.
               </p>
               <Link to="/contact" className="mt-7 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition">
                 Apply Today <ArrowRight className="h-4 w-4" />
@@ -94,7 +92,7 @@ function Courses() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>What You'll Learn</SectionEyebrow>
-          <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
+          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
             A complete, modern dental nursing curriculum
           </h2>
         </div>
@@ -116,7 +114,7 @@ function Courses() {
         <Section>
           <div className="mx-auto max-w-2xl text-center">
             <SectionEyebrow>Funding Options</SectionEyebrow>
-            <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
+            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
               Pay your way - funding for every situation
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -154,7 +152,7 @@ function Courses() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionEyebrow>Work While You Study</SectionEyebrow>
-            <h2 className="mt-4 font-display text-3xl font-bold text-balance md:text-4xl">
+            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
               Earn from day one as a trainee dental nurse
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -201,7 +199,7 @@ function Courses() {
           <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-lemon/40 blur-3xl" />
           <div className="relative grid items-center gap-6 md:grid-cols-[1.4fr_1fr]">
             <div>
-              <h2 className="font-display text-3xl font-bold text-balance md:text-4xl">Apply Today & Upgrade Your Career</h2>
+              <h2 className="font-display text-2xl font-bold sm:text-3xl md:text-4xl">Apply Today & Upgrade Your Career</h2>
               <p className="mt-3 max-w-xl opacity-90">Free consultation, transparent pricing and a personal funding plan in one call.</p>
             </div>
             <div className="md:text-right">

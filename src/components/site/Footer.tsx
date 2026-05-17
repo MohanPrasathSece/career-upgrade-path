@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { GraduationCap, Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import logoImg from "@/assets/icon.png";
 
 export function Footer() {
   return (
@@ -8,9 +9,11 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link to="/" className="flex items-center gap-2.5">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-primary shadow-soft">
-                <GraduationCap className="h-5 w-5 text-primary-foreground" />
-              </span>
+              <img
+                src={logoImg}
+                alt="Career Upgrade Logo"
+                className="h-11 w-11 object-contain rounded-xl shadow-soft"
+              />
               <span className="leading-tight">
                 <span className="block font-display text-lg font-bold">Career Upgrade</span>
                 <span className="block text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
@@ -41,7 +44,7 @@ export function Footer() {
               <li><Link to="/" className="hover:text-primary">Home</Link></li>
               <li><Link to="/about" className="hover:text-primary">About & Support</Link></li>
               <li><Link to="/courses" className="hover:text-primary">Courses & Funding</Link></li>
-              <li><Link to="/faq" className="hover:text-primary">FAQ & Testimonials</Link></li>
+              <li><Link to="/faq" className="hover:text-primary">FAQ & Support</Link></li>
               <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
             </ul>
           </div>
@@ -92,7 +95,7 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} Career Upgrade. All rights reserved.</p>
           <div className="flex flex-col items-center gap-1 md:items-end">
-            <p>UK Recognised Qualification · GDC Registration Pathway</p>
+            <p>Qualification · GDC Registration Pathway</p>
             <p>
               Developed by{" "}
               <a href="https://zyradigitals.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">
