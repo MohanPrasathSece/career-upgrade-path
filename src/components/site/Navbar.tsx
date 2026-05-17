@@ -34,65 +34,70 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "bg-background/85 backdrop-blur-xl shadow-soft border-b border-border/60"
-          : "bg-background/40 backdrop-blur-md"
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <img
-            src={logoImg}
-            alt="Career Upgrade Logo"
-            className="h-10 w-10 object-contain rounded-xl shadow-soft transition-transform group-hover:scale-105"
-          />
-          <span className="leading-tight">
-            <span className="block font-display text-base font-bold text-foreground md:text-lg">
-              Career Upgrade
+    <>
+      <header
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+          scrolled
+            ? "bg-background/85 backdrop-blur-xl shadow-soft border-b border-border/60"
+            : "bg-background/40 backdrop-blur-md"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <img
+              src={logoImg}
+              alt="Career Upgrade Logo"
+              className="h-10 w-10 object-contain rounded-xl shadow-soft transition-transform group-hover:scale-105"
+            />
+            <span className="leading-tight">
+              <span className="block font-display text-base font-bold text-foreground md:text-lg">
+                Career Upgrade
+              </span>
+              <span className="block text-[10px] font-medium uppercase tracking-[0.16em] text-primary md:text-[11px]">
+                Online Dental Nursing
+              </span>
             </span>
-            <span className="block text-[10px] font-medium uppercase tracking-[0.16em] text-primary md:text-[11px]">
-              Online Dental Nursing
-            </span>
-          </span>
-        </Link>
-
-        <nav className="hidden items-center gap-1 lg:flex">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              activeOptions={{ exact: l.to === "/" }}
-              activeProps={{ className: "text-primary bg-secondary" }}
-              inactiveProps={{ className: "text-foreground/75 hover:text-primary hover:bg-secondary/60" }}
-              className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="hidden lg:block">
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5"
-          >
-            Apply Now
           </Link>
-        </div>
 
-        <button
-          className="grid h-10 w-10 place-items-center rounded-full border border-border bg-background lg:hidden transition-transform active:scale-95"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5 animate-in fade-in spin-in duration-200" /> : <Menu className="h-5 w-5 animate-in fade-in duration-200" />}
-        </button>
-      </div>
+          <nav className="hidden items-center gap-1 lg:flex">
+            {links.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeOptions={{ exact: l.to === "/" }}
+                activeProps={{ className: "text-primary bg-secondary" }}
+                inactiveProps={{ className: "text-foreground/75 hover:text-primary hover:bg-secondary/60" }}
+                className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="hidden lg:block">
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5"
+            >
+              Apply Now
+            </Link>
+          </div>
+
+          <button
+            className="grid h-10 w-10 place-items-center rounded-full border border-border bg-background lg:hidden transition-transform active:scale-95"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-5 w-5 animate-in fade-in spin-in duration-200" /> : <Menu className="h-5 w-5 animate-in fade-in duration-200" />}
+          </button>
+        </div>
+      </header>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-background/98 backdrop-blur-2xl lg:hidden animate-fade-in animate-duration-300">
+        <div
+          className="fixed inset-0 z-50 flex h-screen w-screen flex-col bg-white backdrop-blur-2xl lg:hidden animate-fade-in"
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.98)" }}
+        >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border/50">
             <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2.5 group">
               <img
@@ -142,6 +147,6 @@ export function Navbar() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
