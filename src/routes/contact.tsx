@@ -4,42 +4,7 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, Loader2 
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import contactImg from "@/assets/images/team.jpeg";
-import { createServerFn } from "@tanstack/react-start";
 
-const sendEmailFn = createServerFn({ method: "POST" })
-  .inputValidator((data: { name: string; email: string; phone: string; course: string; message: string }) => data)
-  .handler(async ({ data }) => {
-    // We only import nodemailer on the server
-    const nodemailer = await import("nodemailer");
-
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.example.com",
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
-      auth: {
-        user: process.env.SMTP_USER || "user@example.com",
-        pass: process.env.SMTP_PASS || "password",
-      },
-    });
-
-    try {
-      await transporter.sendMail({
-        from: process.env.SMTP_FROM || '"Career Upgrade" <no-reply@careerupgrade.uk>',
-        to: process.env.SMTP_TO || "admissions@careerupgrade.uk",
-        subject: `New Enquiry from ${data.name}`,
-        text: `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nCourse: ${data.course}\nMessage: ${data.message}`,
-        html: `<p><strong>Name:</strong> ${data.name}</p>
-               <p><strong>Email:</strong> ${data.email}</p>
-               <p><strong>Phone:</strong> ${data.phone}</p>
-               <p><strong>Course:</strong> ${data.course}</p>
-               <p><strong>Message:</strong><br/>${data.message.replace(/\n/g, "<br/>")}</p>`,
-      });
-      return { success: true };
-    } catch (error) {
-      console.error("SMTP error:", error);
-      return { success: false, error: "Failed to send email" };
-    }
-  });
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -76,16 +41,23 @@ function Contact() {
     setIsSending(true);
     setError(null);
     try {
-      const result = await sendEmailFn({ data: form });
-      if (result.success) {
-        setSent(true);
-        setTimeout(() => setSent(false), 5000);
-        setForm({ name: "", email: "", phone: "", course: "Dental Nursing - 1 Year", message: "" });
-      } else {
-        setError(result.error || "Failed to send message. Please try again.");
-      }
+      const subject = `New Enquiry from ${form.name}`;
+      const body = `Name: ${form.name}
+Email: ${form.email}
+Phone: ${form.phone}
+Course Interest: ${form.course}
+
+Message:
+${form.message}`;
+      
+      const mailtoUrl = `mailto:admissions@careerupgrade.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+      
+      setSent(true);
+      setTimeout(() => setSent(false), 6000);
+      setForm({ name: "", email: "", phone: "", course: "Dental Nursing - 1 Year", message: "" });
     } catch (err) {
-      setError("An unexpected error occurred. Please try again later.");
+      setError("An unexpected error occurred. Please try again.");
     } finally {
       setIsSending(false);
     }
