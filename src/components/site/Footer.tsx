@@ -8,7 +8,15 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 py-16 md:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <Link to="/" className="flex items-center gap-2.5">
+            <Link
+              to="/"
+              className="flex items-center gap-2.5"
+              onClick={() => {
+                if (window.location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+            >
               <img
                 src={logoImg}
                 alt="Career Upgrade Logo"
@@ -41,11 +49,27 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">Explore</h4>
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
-              <li><Link to="/" className="hover:text-primary">Home</Link></li>
-              <li><Link to="/about" className="hover:text-primary">About & Support</Link></li>
-              <li><Link to="/courses" className="hover:text-primary">Courses & Funding</Link></li>
-              <li><Link to="/faq" className="hover:text-primary">FAQ & Support</Link></li>
-              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+              {[
+                { to: "/", label: "Home" },
+                { to: "/about", label: "About & Support" },
+                { to: "/courses", label: "Courses & Funding" },
+                { to: "/faq", label: "FAQ & Support" },
+                { to: "/contact", label: "Contact" },
+              ].map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="hover:text-primary"
+                    onClick={() => {
+                      if (window.location.pathname === l.to) {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

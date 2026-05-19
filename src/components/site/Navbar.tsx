@@ -43,7 +43,15 @@ export function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
-          <Link to="/" className="flex items-center gap-2.5 group">
+          <Link
+            to="/"
+            className="flex items-center gap-2.5 group"
+            onClick={() => {
+              if (window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             <img
               src={logoImg}
               alt="Career Upgrade Logo"
@@ -68,6 +76,11 @@ export function Navbar() {
                 activeProps={{ className: "text-primary bg-secondary" }}
                 inactiveProps={{ className: "text-foreground/75 hover:text-primary hover:bg-secondary/60" }}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
+                onClick={() => {
+                  if (window.location.pathname === l.to) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
               >
                 {l.label}
               </Link>
@@ -78,6 +91,11 @@ export function Navbar() {
             <Link
               to="/contact"
               className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5"
+              onClick={() => {
+                if (window.location.pathname === "/contact") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
             >
               Apply Now
             </Link>
@@ -99,7 +117,16 @@ export function Navbar() {
           style={{ backgroundColor: "rgba(255, 255, 255, 0.98)" }}
         >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border/50">
-            <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2.5 group">
+            <Link
+              to="/"
+              onClick={() => {
+                setOpen(false);
+                if (window.location.pathname === "/") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="flex items-center gap-2.5 group"
+            >
               <img
                 src={logoImg}
                 alt="Career Upgrade Logo"
@@ -127,7 +154,12 @@ export function Navbar() {
               <Link
                 key={l.to}
                 to={l.to}
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false);
+                  if (window.location.pathname === l.to) {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
                 activeOptions={{ exact: l.to === "/" }}
                 activeProps={{ className: "text-primary scale-110 font-bold" }}
                 inactiveProps={{ className: "text-foreground/85 hover:text-primary" }}
@@ -139,7 +171,12 @@ export function Navbar() {
             ))}
             <Link
               to="/contact"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                if (window.location.pathname === "/contact") {
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="mt-6 w-full max-w-[280px] inline-flex items-center justify-center rounded-full bg-gradient-primary px-6 py-4 text-base font-semibold text-primary-foreground shadow-glow hover:-translate-y-0.5 transition duration-300"
             >
               Apply Now
