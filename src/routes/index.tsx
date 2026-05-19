@@ -4,8 +4,8 @@ import {
   BriefcaseBusiness, Heart, GraduationCap, BookOpenCheck, Stethoscope, Sparkles,
   ArrowRight, CheckCircle2, Star, Quote, Wallet, ScrollText, Shirt, FileCheck,
 } from "lucide-react";
-import heroImg from "@/assets/images/dental_nuse.png";
-import tutorImg from "@/assets/images/male_nurse.png";
+import heroImg from "@/assets/images/herosec_image.png";
+import tutorImg from "@/assets/images/male_nirse.png";
 import { Section, SectionEyebrow } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { Counter } from "@/components/site/Counter";
@@ -65,15 +65,15 @@ function Home() {
   return (
     <SiteLayout>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-hero">
+      <section className="relative overflow-hidden bg-gradient-hero mx-3 my-3 rounded-[2rem] md:mx-0 md:my-0 md:rounded-none">
         <div className="absolute inset-0 -z-10 [background:radial-gradient(60%_50%_at_85%_15%,oklch(0.88_0.19_128/0.45),transparent_60%),radial-gradient(40%_40%_at_5%_90%,oklch(0.62_0.13_235/0.18),transparent_60%)]" />
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:grid-cols-[1.05fr_1fr] md:gap-10 md:px-8 md:py-24 lg:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 py-12 md:grid-cols-[1.05fr_1fr] md:gap-10 md:px-8 md:py-24 lg:py-28">
           <div className="animate-[fade-up_0.7s_ease-out]">
             <SectionEyebrow>UK Dental Nursing Training</SectionEyebrow>
-            <h1 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-foreground sm:text-4xl md:text-5xl lg:text-[3.5rem]">
+            <h1 className="mt-5 font-display text-[26px] font-bold leading-[1.1] text-balance text-foreground sm:text-4xl md:text-5xl lg:text-[3.5rem]">
               Become a Fully Qualified <span className="text-primary">Dental Nurse</span> in the UK
             </h1>
-            <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-xl text-[15px] sm:text-lg leading-relaxed text-muted-foreground">
               Flexible online learning with expert tutor support, flexible payment plans and a clear pathway to UK GDC registration.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -91,27 +91,14 @@ function Home() {
                 Book Free Consultation
               </Link>
             </div>
-            <div className="mt-10 flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {[1,2,3,4].map((i) => (
-                  <div key={i} className="h-9 w-9 rounded-full border-2 border-background bg-gradient-to-br from-primary/70 to-lemon" />
-                ))}
-              </div>
-              <div className="text-sm">
-                <div className="flex items-center gap-1 text-lemon-foreground">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-lemon text-lemon" />)}
-                </div>
-                <p className="text-muted-foreground">Trusted by 1,000+ UK students</p>
-              </div>
-            </div>
           </div>
 
-          <div className="relative mx-auto w-[85%] sm:w-[75%] md:w-[75%]">
+          <div className="relative w-full">
             <div className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-primary opacity-25 blur-3xl" />
             <img
               src={heroImg}
               alt="Smiling dental nurse student"
-              className="aspect-[4/5] w-full rounded-[2rem] object-cover shadow-card md:aspect-[5/6]"
+              className="w-full rounded-[2rem] shadow-card"
               width={1536}
               height={1280}
             />
@@ -159,10 +146,10 @@ function Home() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Why Choose Us</SectionEyebrow>
-          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
             Everything you need to qualify - built around your life
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground">
+          <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground">
             A modern training with expert support, real flexibility and a track record of qualifying confident dental nurses.
           </p>
         </div>
@@ -199,10 +186,10 @@ function Home() {
           </div>
           <div>
             <SectionEyebrow>Expert Support</SectionEyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
               Learn from experienced dental professionals
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground leading-relaxed">
               You're never alone on your learning journey. Our qualified tutors and assessors are practicing dental professionals who provide personalized feedback, guide you through clinical competencies, and prepare you for real-world practice success.
             </p>
             <div className="mt-6 flex gap-6">
@@ -225,10 +212,10 @@ function Home() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
               <SectionEyebrow>Career Benefits</SectionEyebrow>
-              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+              <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
                 A career with real demand, security & progression
               </h2>
-              <p className="mt-4 text-base sm:text-lg text-muted-foreground">
+              <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground">
                 Dental nursing is one of the UK's most resilient healthcare careers. Once registered, your skills travel with you.
               </p>
               <ul className="mt-8 space-y-3.5">
@@ -247,8 +234,8 @@ function Home() {
                     <Stethoscope className="h-6 w-6" />
                   </span>
                   <div>
-                    <h3 className="font-display text-xl font-bold">UK GDC Registered Pathway</h3>
-                    <p className="text-sm text-muted-foreground">Recognised by employers nationwide</p>
+                    <h3 className="font-display text-lg font-bold">UK GDC Registered Pathway</h3>
+                    <p className="text-xs text-muted-foreground">Recognised by employers nationwide</p>
                   </div>
                 </div>
                 <div className="mt-6 grid grid-cols-2 gap-4">
@@ -257,13 +244,13 @@ function Home() {
                       <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-lemon/40 text-lemon-foreground">
                         <e.icon className="h-5 w-5" />
                       </span>
-                      <p className="mt-2 text-sm font-semibold">{e.title}</p>
+                      <p className="mt-2 text-xs font-semibold">{e.title}</p>
                     </div>
                   ))}
                 </div>
                 <div className="mt-6 rounded-2xl bg-gradient-primary p-5 text-primary-foreground">
-                  <p className="text-sm font-semibold uppercase tracking-wider opacity-90">Included free</p>
-                  <p className="mt-1 font-display text-xl font-bold">Everything to launch your career</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider opacity-90">Included free</p>
+                  <p className="mt-1 font-display text-lg font-bold">Everything to launch your career</p>
                 </div>
               </div>
             </div>
@@ -271,30 +258,16 @@ function Home() {
         </Section>
       </section>
 
-      {/* STATS */}
-      <Section>
-        <div className="rounded-[2rem] border border-border bg-gradient-primary p-6 sm:p-10 text-primary-foreground shadow-glow md:p-16">
-          <div className="grid grid-cols-2 gap-6 sm:gap-10 text-center md:grid-cols-4">
-            {stats.map((s) => (
-              <div key={s.label}>
-                <div className="font-display text-3xl font-bold sm:text-4xl md:text-6xl">
-                  <Counter to={s.to} suffix={s.suffix} />
-                </div>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wider opacity-95 md:mt-2 md:text-sm">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
+
 
       {/* PLATFORM FEATURES */}
       <Section animate={true}>
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Modern Learning</SectionEyebrow>
-          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
             A premium learning experience on any device
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground">
+          <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground">
             Our state-of-the-art virtual campus is designed to make studying engaging, simple, and completely seamless.
           </p>
         </div>
@@ -323,7 +296,7 @@ function Home() {
           <div className="grid items-center gap-8 md:grid-cols-[1.4fr_1fr]">
             <div>
               <SectionEyebrow>Ready to begin?</SectionEyebrow>
-              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+              <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
                 Start Your Dental Nursing Journey Today
               </h2>
               <p className="mt-3 max-w-xl text-muted-foreground">

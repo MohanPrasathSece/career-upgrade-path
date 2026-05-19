@@ -95,7 +95,7 @@ export function Navbar() {
 
       {open && (
         <div
-          className="fixed inset-0 z-50 flex h-screen w-screen flex-col bg-white backdrop-blur-2xl lg:hidden animate-fade-in"
+          className="fixed inset-0 z-50 flex h-screen w-screen flex-col bg-white backdrop-blur-2xl lg:hidden animate-[fade-in_0.15s_ease-out]"
           style={{ backgroundColor: "rgba(255, 255, 255, 0.98)" }}
         >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border/50">
@@ -131,8 +131,8 @@ export function Navbar() {
                 activeOptions={{ exact: l.to === "/" }}
                 activeProps={{ className: "text-primary scale-110 font-bold" }}
                 inactiveProps={{ className: "text-foreground/85 hover:text-primary" }}
-                className="text-2xl font-display font-medium transition-all duration-300 transform hover:scale-105"
-                style={{ animationDelay: `${index * 50}ms` }}
+                className="text-lg font-display font-medium transition-all duration-300 transform hover:scale-105"
+                style={{ animationDelay: `${index * 30}ms` }}
               >
                 {l.label}
               </Link>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, Loader2 } from "lucide-react";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
-import contactImg from "@/assets/images/team.jpeg";
+import contactImg from "@/assets/images/team_of_nurses.png";
 
 
 export const Route = createFileRoute("/contact")({
@@ -21,9 +21,9 @@ export const Route = createFileRoute("/contact")({
 });
 
 const info = [
-  { icon: Phone, label: "Phone", value: "+44 20 4538 1200", href: "tel:+442045381200" },
+  { icon: Phone, label: "Phone", value: "07944 624 039", href: "tel:+447944624039" },
   { icon: Mail, label: "Email", value: "admissions@careerupgrade.uk", href: "mailto:admissions@careerupgrade.uk" },
-  { icon: MapPin, label: "Address", value: "71-75 Shelton Street, London, WC2H 9JQ" },
+  { icon: MapPin, label: "Address", value: "Capital Office, 124 City Road, London, EC1V 2NX" },
   { icon: Clock, label: "Working Hours", value: "Mon–Fri · 9:00 – 18:00" },
 ];
 
@@ -103,7 +103,7 @@ ${form.message}`;
         <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
           <div className="rounded-3xl border border-border bg-card p-8 shadow-card md:p-10">
             <SectionEyebrow>Send us a message</SectionEyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold md:text-3xl">We typically reply within 1 working hour</h2>
+            <h2 className="mt-4 font-display text-[22px] font-bold md:text-3xl">We typically reply within 1 working hour</h2>
 
             <form onSubmit={onSubmit} className="mt-7 grid gap-4">
               <div className="grid gap-4 md:grid-cols-2">
@@ -137,7 +137,7 @@ ${form.message}`;
                   {isSending ? "Sending..." : "Send Enquiry"}
                 </button>
                 <a
-                  href="https://wa.me/442045381200?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course."
+                  href="https://wa.me/447944624039?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold hover:border-primary hover:text-primary transition"
@@ -164,7 +164,7 @@ ${form.message}`;
             <div className="overflow-hidden rounded-3xl border border-border shadow-card">
               <iframe
                 title="Career Upgrade office location"
-                src="https://www.google.com/maps?q=71-75%20Shelton%20Street%2C%20London%2C%20WC2H%209JQ&output=embed"
+                src="https://www.google.com/maps?q=124+City+Road%2C+London%2C+EC1V+2NX&output=embed"
                 className="h-[340px] w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -193,11 +193,11 @@ ${form.message}`;
             <h2 className="font-display text-3xl font-bold text-balance md:text-4xl">Speak With Our Admissions Team Today</h2>
             <p className="mt-4 opacity-90">Call us, message us, or send the form - we're ready to help you start.</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <a href="tel:+442045381200" className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-semibold text-primary shadow-soft hover:-translate-y-0.5 transition">
+              <a href="tel:+447944624039" className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-semibold text-primary shadow-soft hover:-translate-y-0.5 transition">
                 <Phone className="h-4 w-4" /> Call Admissions
               </a>
               <a
-                href="https://wa.me/442045381200?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course."
+                href="https://wa.me/447944624039?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-white/20 transition"

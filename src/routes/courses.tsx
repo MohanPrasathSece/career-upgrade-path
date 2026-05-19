@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Clock, Globe, Calendar, UserCheck, Award, Stethoscope, Heart, ShieldCheck, Smile, BriefcaseBusiness, ArrowRight, CheckCircle2, Wallet, Landmark, CreditCard, GraduationCap, FileCheck, Shirt, ScrollText } from "lucide-react";
-import coursesImg from "@/assets/images/team_of_nurses.png";
+import coursesImg from "@/assets/images/team1.png";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -63,7 +63,7 @@ function Courses() {
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
             <div>
               <SectionEyebrow>Course Overview</SectionEyebrow>
-              <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+              <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
                 One year. Online. Built around you.
               </h2>
               <p className="mt-4 text-muted-foreground">
@@ -92,7 +92,7 @@ function Courses() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>What You'll Learn</SectionEyebrow>
-          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
             A complete, modern dental nursing curriculum
           </h2>
         </div>
@@ -114,7 +114,7 @@ function Courses() {
         <Section>
           <div className="mx-auto max-w-2xl text-center">
             <SectionEyebrow>Funding Options</SectionEyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
               Pay your way - funding for every situation
             </h2>
             <p className="mt-4 text-muted-foreground">
@@ -152,7 +152,7 @@ function Courses() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionEyebrow>Work While You Study</SectionEyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
               Earn from day one as a trainee dental nurse
             </h2>
             <p className="mt-4 text-muted-foreground">

@@ -77,10 +77,10 @@ export function PageHero({
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 md:grid-cols-2 md:gap-14 md:px-8 md:py-24">
         <div className="animate-[fade-up_0.7s_ease-out]">
           {eyebrow && <SectionEyebrow>{eyebrow}</SectionEyebrow>}
-          <h1 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
+          <h1 className="mt-5 font-display text-2xl font-bold leading-[1.05] text-balance text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
+          <p className="mt-5 max-w-xl text-[15px] sm:text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
         </div>
         {image && (
           <div className="relative mx-auto w-[85%] sm:w-[75%] md:w-full animate-[scale-in_0.6s_ease-out]">

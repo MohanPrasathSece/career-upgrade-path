@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Compass, Target, Users, MessageSquare, CalendarRange, HandHeart, ClipboardCheck, GraduationCap, ArrowRight, CheckCircle2, Sparkles, ShieldCheck, BookOpen } from "lucide-react";
-import aboutImg from "@/assets/images/teamnew.jpeg";
+import aboutImg from "@/assets/images/online_study_home.png";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -56,10 +56,10 @@ function About() {
       <Section>
         <div className="mx-auto max-w-3xl text-center">
           <SectionEyebrow>Who we are</SectionEyebrow>
-          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 font-display text-xl font-bold sm:text-3xl md:text-4xl">
             A modern training built around you
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-sm sm:text-lg leading-relaxed text-muted-foreground">
             Career Upgrade is an online dental nursing training for UK students aged 16+. We combine flexible online learning with real tutor and assessor support, leading to a qualification and a clear pathway to General Dental Council registration. Whether you're starting out, switching careers, or already working in a practice - we'll meet you where you are.
           </p>
         </div>
@@ -88,7 +88,7 @@ function About() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>Student Support</SectionEyebrow>
-          <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h2 className="mt-4 font-display text-xl font-bold sm:text-3xl md:text-4xl">
             Real people. Real support. Whenever you need it.
           </h2>
         </div>
@@ -110,7 +110,7 @@ function About() {
         <Section>
           <div className="mx-auto max-w-2xl text-center">
             <SectionEyebrow>How Learning Works</SectionEyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 font-display text-xl font-bold sm:text-3xl md:text-4xl">
               From application to qualified - in 5 clear steps
             </h2>
           </div>
@@ -143,7 +143,7 @@ function About() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <SectionEyebrow>Why students trust us</SectionEyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 font-display text-xl font-bold sm:text-3xl md:text-4xl">
               Trusted by students across the UK
             </h2>
             <ul className="mt-8 space-y-3">

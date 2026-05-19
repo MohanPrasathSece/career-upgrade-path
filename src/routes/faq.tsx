@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ChevronDown, Quote, Star, ArrowRight, Sparkles } from "lucide-react";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
+import faqImg from "@/assets/images/courses_hero_dental.png";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -72,13 +73,23 @@ function FAQPage() {
         eyebrow="Help Centre"
         title="Frequently Asked Questions"
         subtitle="Everything you need to know before you apply - funding, format, age, support and what makes our UK dental nursing course different."
+        image={faqImg}
       />
 
       <Section>
-        <div className="mx-auto grid max-w-5xl gap-3">
-          {faqs.map((f, i) => (
-            <FAQItem key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
-          ))}
+        <div className="mx-auto max-w-6xl">
+          <div className="grid gap-3 md:grid-cols-2 md:items-start">
+            <div className="flex flex-col gap-3">
+              {faqs.filter((_, i) => i % 2 === 0).map((f, i) => (
+                <FAQItem key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
+              ))}
+            </div>
+            <div className="flex flex-col gap-3">
+              {faqs.filter((_, i) => i % 2 === 1).map((f) => (
+                <FAQItem key={f.q} q={f.q} a={f.a} />
+              ))}
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -87,7 +98,7 @@ function FAQPage() {
         <Section>
           <div className="mx-auto max-w-2xl text-center">
             <SectionEyebrow>Career Progression</SectionEyebrow>
-            <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+            <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
               Where can dental nursing take you?
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
@@ -119,7 +130,7 @@ function FAQPage() {
           <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-secondary text-primary shadow-soft">
             <Sparkles className="h-6 w-6" />
           </span>
-          <h2 className="mt-5 font-display text-2xl font-bold sm:text-3xl md:text-4xl">
+          <h2 className="mt-5 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
             A state-of-the-art curriculum compliant with GDC standards.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-muted-foreground">Designed to prepare confident, highly skilled, and fully competent professionals for modern dental clinics.</p>
@@ -132,7 +143,7 @@ function FAQPage() {
           <div className="absolute -left-10 -bottom-10 h-64 w-64 rounded-full bg-lemon/40 blur-3xl" />
           <div className="relative grid items-center gap-6 md:grid-cols-[1.4fr_1fr]">
             <div>
-              <h2 className="font-display text-3xl font-bold text-balance md:text-4xl">Ready to Start Your Future?</h2>
+              <h2 className="font-display text-[26px] font-bold text-balance md:text-4xl">Ready to Start Your Future?</h2>
               <p className="mt-3 max-w-xl opacity-90">Speak with admissions today - free, no obligation and we'll answer every remaining question.</p>
             </div>
             <div className="md:text-right">

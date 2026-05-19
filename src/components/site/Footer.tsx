@@ -53,9 +53,9 @@ export function Footer() {
             <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">Get in touch</h4>
             <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
               <li>
-                <a href="tel:+442045381200" className="flex items-start gap-2.5 hover:text-primary transition">
+                <a href="tel:+447944624039" className="flex items-start gap-2.5 hover:text-primary transition">
                   <Phone className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>+44 20 4538 1200</span>
+                  <span>07944 624 039</span>
                 </a>
               </li>
               <li>
@@ -66,43 +66,30 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-                <span>71-75 Shelton Street, London, WC2H 9JQ</span>
+                <span>Capital Office, 124 City Road, London, EC1V 2NX</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">Stay informed</h4>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Get course updates and funding deadlines in your inbox.
+            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">Partnership</h4>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              Career Upgrade is proud to work in partnership with{" "}
+              <a href="https://impactmeglobal.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">
+                Impactmeglobal
+              </a>.
             </p>
-            <form className="mt-4 flex overflow-hidden rounded-full border border-border bg-card focus-within:border-primary">
-              <input
-                type="email"
-                placeholder="you@email.com"
-                className="flex-1 bg-transparent px-4 py-2.5 text-sm outline-none"
-              />
-              <button
-                type="button"
-                className="bg-gradient-primary px-4 text-sm font-semibold text-primary-foreground"
-              >
-                Join
-              </button>
-            </form>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} Career Upgrade. All rights reserved.</p>
-          <div className="flex flex-col items-center gap-1 md:items-end">
-            <p>Qualification · GDC Registration Pathway</p>
-            <p>
-              Developed by{" "}
-              <a href="https://zyradigitals.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">
-                Zyra Digitals
-              </a>
-            </p>
-          </div>
+          <p>
+            Developed by{" "}
+            <a href="https://zyradigitals.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">
+              Zyra Digitals
+            </a>
+          </p>
         </div>
       </div>
     </footer>
