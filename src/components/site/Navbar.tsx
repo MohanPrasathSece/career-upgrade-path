@@ -62,7 +62,7 @@ export function Navbar() {
                 Career Upgrade
               </span>
               <span className="block text-[10px] font-medium uppercase tracking-[0.16em] text-primary md:text-[11px]">
-                Online Dental Nursing
+                Online Dental School
               </span>
             </span>
           </Link>
@@ -74,7 +74,9 @@ export function Navbar() {
                 to={l.to}
                 activeOptions={{ exact: l.to === "/" }}
                 activeProps={{ className: "text-primary bg-secondary" }}
-                inactiveProps={{ className: "text-foreground/75 hover:text-primary hover:bg-secondary/60" }}
+                inactiveProps={{
+                  className: "text-foreground/75 hover:text-primary hover:bg-secondary/60",
+                }}
                 className="rounded-full px-4 py-2 text-sm font-medium transition-colors"
                 onClick={() => {
                   if (window.location.pathname === l.to) {
@@ -106,7 +108,11 @@ export function Navbar() {
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
-            {open ? <X className="h-5 w-5 animate-in fade-in spin-in duration-200" /> : <Menu className="h-5 w-5 animate-in fade-in duration-200" />}
+            {open ? (
+              <X className="h-5 w-5 animate-in fade-in spin-in duration-200" />
+            ) : (
+              <Menu className="h-5 w-5 animate-in fade-in duration-200" />
+            )}
           </button>
         </div>
       </header>
@@ -137,7 +143,7 @@ export function Navbar() {
                   Career Upgrade
                 </span>
                 <span className="block text-[10px] font-medium uppercase tracking-[0.16em] text-primary">
-                  Online Dental Nursing
+                  Online Dental School
                 </span>
               </span>
             </Link>

@@ -1,8 +1,28 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Award, Calendar, CreditCard, Landmark, ShieldCheck, Clock, Users, HeadphonesIcon,
-  BriefcaseBusiness, Heart, GraduationCap, BookOpenCheck, Stethoscope, Sparkles,
-  ArrowRight, CheckCircle2, Star, Quote, Wallet, ScrollText, Shirt, FileCheck,
+  Award,
+  Calendar,
+  CreditCard,
+  Landmark,
+  ShieldCheck,
+  Clock,
+  Users,
+  HeadphonesIcon,
+  BriefcaseBusiness,
+  Heart,
+  GraduationCap,
+  BookOpenCheck,
+  Stethoscope,
+  Sparkles,
+  ArrowRight,
+  CheckCircle2,
+  Star,
+  Quote,
+  Wallet,
+  ScrollText,
+  Shirt,
+  FileCheck,
+  Syringe,
 } from "lucide-react";
 import heroImg from "@/assets/images/herosec_image.png";
 import tutorImg from "@/assets/images/male_nirse.png";
@@ -14,8 +34,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Career Upgrade - Become a Qualified Dental Nurse in the UK" },
-      { name: "description", content: "Flexible online dental nursing training with expert tutor support, payment plans and a GDC registration pathway. Apply today." },
-      { property: "og:title", content: "Career Upgrade - Online Dental Nursing UK" },
+      {
+        name: "description",
+        content:
+          "Flexible online dental nursing training with expert tutor support, payment plans and a GDC registration pathway. Apply today.",
+      },
+      { property: "og:title", content: "Career Upgrade - Online Dental School UK" },
       { property: "og:description", content: "100% pass rate. Start anytime. Qualification." },
       { property: "og:url", content: "/" },
     ],
@@ -33,12 +57,36 @@ const trustHighlights = [
 ];
 
 const whyUs = [
-  { icon: Clock, title: "1-Year Flexible Course", desc: "Complete your qualification at a pace that fits your life." },
-  { icon: BookOpenCheck, title: "Learn Online Anytime", desc: "Modern e-learning platform available 24/7 on any device." },
-  { icon: Users, title: "Tutor & Assessor Support", desc: "Dedicated experts guide you from enrolment to qualification." },
-  { icon: BriefcaseBusiness, title: "Work While Studying", desc: "Train as a dental nurse and earn from day one." },
-  { icon: HeadphonesIcon, title: "Friendly Customer Service", desc: "A real human is always one message away." },
-  { icon: Wallet, title: "Funded & Fee Paying Options", desc: "Government funding or affordable instalment plans." },
+  {
+    icon: Clock,
+    title: "1-Year Flexible Course",
+    desc: "Complete your qualification at a pace that fits your life.",
+  },
+  {
+    icon: BookOpenCheck,
+    title: "Learn Online Anytime",
+    desc: "Modern e-learning platform available 24/7 on any device.",
+  },
+  {
+    icon: Users,
+    title: "Tutor & Assessor Support",
+    desc: "Dedicated experts guide you from enrolment to qualification.",
+  },
+  {
+    icon: BriefcaseBusiness,
+    title: "Work While Studying",
+    desc: "Train as a dental nurse and earn from day one.",
+  },
+  {
+    icon: HeadphonesIcon,
+    title: "Friendly Customer Service",
+    desc: "A real human is always one message away.",
+  },
+  {
+    icon: Wallet,
+    title: "Funded & Fee Paying Options",
+    desc: "Government funding or affordable instalment plans.",
+  },
 ];
 
 const careerBenefits = [
@@ -52,6 +100,11 @@ const enrollment = [
   { icon: FileCheck, title: "DBS Check Included" },
   { icon: ScrollText, title: "Exam Fees Included" },
   { icon: ShieldCheck, title: "GDC Registration Support" },
+  {
+    icon: Syringe,
+    title: "Hepatitis B Vaccination Required",
+    desc: "Required before starting work in dental practice",
+  },
 ];
 
 const stats = [
@@ -74,7 +127,8 @@ function Home() {
               Become a Fully Qualified <span className="text-primary">Dental Nurse</span> in the UK
             </h1>
             <p className="mt-6 max-w-xl text-[15px] sm:text-lg leading-relaxed text-muted-foreground">
-              Flexible online learning with expert tutor support, flexible payment plans and a clear pathway to UK GDC registration.
+              Flexible online learning with expert tutor support, flexible payment plans and a clear
+              pathway to UK GDC registration.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -132,7 +186,10 @@ function Home() {
       <div className="border-y border-border bg-soft">
         <div className="mx-auto grid max-w-7xl gap-3 px-5 py-6 sm:grid-cols-2 md:grid-cols-5 md:px-8">
           {trustHighlights.map((t) => (
-            <div key={t.label} className="flex items-center gap-2.5 text-sm font-medium text-foreground/80">
+            <div
+              key={t.label}
+              className="flex items-center gap-2.5 text-sm font-medium text-foreground/80"
+            >
               <span className="grid h-9 w-9 place-items-center rounded-full bg-secondary text-primary">
                 <t.icon className="h-4 w-4" />
               </span>
@@ -150,7 +207,8 @@ function Home() {
             Everything you need to qualify - built around your life
           </h2>
           <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground">
-            A modern training with expert support, real flexibility and a track record of qualifying confident dental nurses.
+            A modern training with expert support, real flexibility and a track record of qualifying
+            confident dental nurses.
           </p>
         </div>
         <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -190,16 +248,22 @@ function Home() {
               Learn from experienced dental professionals
             </h2>
             <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground leading-relaxed">
-              You're never alone on your learning journey. Our qualified tutors and assessors are practicing dental professionals who provide personalized feedback, guide you through clinical competencies, and prepare you for real-world practice success.
+              You're never alone on your learning journey. Our qualified tutors and assessors are
+              practicing dental professionals who provide personalized feedback, guide you through
+              clinical competencies, and prepare you for real-world practice success.
             </p>
             <div className="mt-6 flex gap-6">
               <div>
                 <p className="text-2xl font-bold text-primary">1-on-1</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Tutor Support</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+                  Tutor Support
+                </p>
               </div>
               <div className="border-l border-border pl-6">
                 <p className="text-2xl font-bold text-primary">24 Hr</p>
-                <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Feedback Loop</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+                  Feedback Loop
+                </p>
               </div>
             </div>
           </div>
@@ -216,11 +280,15 @@ function Home() {
                 A career with real demand, security & progression
               </h2>
               <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground">
-                Dental nursing is one of the UK's most resilient healthcare careers. Once registered, your skills travel with you.
+                Dental nursing is one of the UK's most resilient healthcare careers. Once
+                registered, your skills travel with you.
               </p>
               <ul className="mt-8 space-y-3.5">
                 {careerBenefits.map((b) => (
-                  <li key={b} className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-soft">
+                  <li
+                    key={b}
+                    className="flex items-start gap-3 rounded-xl border border-border bg-card p-4 shadow-soft"
+                  >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                     <span className="font-medium text-foreground/90">{b}</span>
                   </li>
@@ -235,30 +303,50 @@ function Home() {
                   </span>
                   <div>
                     <h3 className="font-display text-lg font-bold">UK GDC Registered Pathway</h3>
-                    <p className="text-xs text-muted-foreground">Recognised by employers nationwide</p>
+                    <p className="text-xs text-muted-foreground">
+                      Recognised by employers nationwide
+                    </p>
                   </div>
                 </div>
                 <div className="mt-6 grid grid-cols-2 gap-4">
                   {enrollment.map((e) => (
-                    <div key={e.title} className="rounded-2xl border border-border bg-soft p-4 text-center">
-                      <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-lemon/40 text-lemon-foreground">
+                    <div
+                      key={e.title}
+                      className="flex flex-col items-center justify-center rounded-2xl border border-border bg-soft p-4 text-center"
+                    >
+                      <span className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-lemon/40 text-lemon-foreground flex-shrink-0">
                         <e.icon className="h-5 w-5" />
                       </span>
-                      <p className="mt-2 text-xs font-semibold">{e.title}</p>
+                      <p className="mt-2 text-xs font-semibold text-foreground leading-snug">
+                        {e.title}
+                      </p>
+                      {e.desc && (
+                        <p className="mt-1 text-[10px] text-muted-foreground leading-normal">
+                          {e.desc}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
                 <div className="mt-6 rounded-2xl bg-gradient-primary p-5 text-primary-foreground">
-                  <p className="text-xs font-semibold uppercase tracking-wider opacity-90">Included free</p>
-                  <p className="mt-1 font-display text-lg font-bold">Everything to launch your career</p>
+                  <p className="text-xs font-semibold uppercase tracking-wider opacity-90">
+                    Included free
+                  </p>
+                  <p className="mt-1 font-display text-lg font-bold">
+                    Everything to launch your career
+                  </p>
+                </div>
+                <div className="mt-5 border-t border-border pt-4 text-center">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    All learners need Hepatitis B vaccination before they can start working in
+                    dental practice.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </Section>
       </section>
-
-
 
       {/* PLATFORM FEATURES */}
       <Section animate={true}>
@@ -268,16 +356,29 @@ function Home() {
             A premium learning experience on any device
           </h2>
           <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground">
-            Our state-of-the-art virtual campus is designed to make studying engaging, simple, and completely seamless.
+            Our state-of-the-art virtual campus is designed to make studying engaging, simple, and
+            completely seamless.
           </p>
         </div>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {[
-            { title: "Bite-Sized Video Modules", desc: "No boring textbooks. Learn through engaging video lectures, clinical animations, and interactive anatomy models." },
-            { title: "Progress Dashboard", desc: "Track your milestones, mock exams, and portfolio submissions in real-time with an easy-to-use modern interface." },
-            { title: "Interactive Mock Exams", desc: "Build confidence with practice tests styled exactly like the actual GDC pathway qualification exams." },
+            {
+              title: "Bite-Sized Video Modules",
+              desc: "No boring textbooks. Learn through engaging video lectures, clinical animations, and interactive anatomy models.",
+            },
+            {
+              title: "Progress Dashboard",
+              desc: "Track your milestones, mock exams, and portfolio submissions in real-time with an easy-to-use modern interface.",
+            },
+            {
+              title: "Interactive Mock Exams",
+              desc: "Build confidence with practice tests styled exactly like the actual GDC pathway qualification exams.",
+            },
           ].map((item, i) => (
-            <div key={i} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-card hover:border-primary/40">
+            <div
+              key={i}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-soft transition hover:-translate-y-1 hover:shadow-card hover:border-primary/40"
+            >
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-soft">
                 <Sparkles className="h-5 w-5" />
               </span>
@@ -300,14 +401,21 @@ function Home() {
                 Start Your Dental Nursing Journey Today
               </h2>
               <p className="mt-3 max-w-xl text-muted-foreground">
-                Speak with our admissions team and get a personalised plan - including funding options and start dates.
+                Speak with our admissions team and get a personalised plan - including funding
+                options and start dates.
               </p>
             </div>
             <div className="flex flex-wrap gap-3 md:justify-end">
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition"
+              >
                 Apply Now <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/courses" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold hover:border-primary hover:text-primary transition">
+              <Link
+                to="/courses"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold hover:border-primary hover:text-primary transition"
+              >
                 Explore Course
               </Link>
             </div>

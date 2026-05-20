@@ -25,12 +25,13 @@ export function Footer() {
               <span className="leading-tight">
                 <span className="block font-display text-lg font-bold">Career Upgrade</span>
                 <span className="block text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
-                  Online Dental Nursing
+                  Online Dental School
                 </span>
               </span>
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Upgrade Your Future in Dental Nursing. Flexible, expert-led online training with a UK GDC pathway.
+              Upgrade Your Future in Dental Nursing. Flexible, expert-led online training with a UK
+              GDC pathway.
             </p>
             <div className="mt-5 flex gap-2">
               {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
@@ -74,18 +75,26 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">Get in touch</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">
+              Get in touch
+            </h4>
             <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
               <li>
-                <a href="tel:+447944624039" className="flex items-start gap-2.5 hover:text-primary transition">
+                <a
+                  href="tel:+447944624039"
+                  className="flex items-start gap-2.5 hover:text-primary transition"
+                >
                   <Phone className="mt-0.5 h-4 w-4 text-primary" />
                   <span>07944 624 039</span>
                 </a>
               </li>
               <li>
-                <a href="mailto:admissions@careerupgrade.uk" className="flex items-start gap-2.5 hover:text-primary transition">
+                <a
+                  href="mailto:info@careerupgradedentalschool.co.uk"
+                  className="flex items-start gap-2.5 hover:text-primary transition"
+                >
                   <Mail className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>admissions@careerupgrade.uk</span>
+                  <span>info@careerupgradedentalschool.co.uk</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
@@ -96,12 +105,20 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">Partnership</h4>
+            <h4 className="text-sm font-bold uppercase tracking-wider text-foreground">
+              Partnership
+            </h4>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Career Upgrade is proud to work in partnership with{" "}
-              <a href="https://impactmeglobal.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">
+              <a
+                href="https://impactmeglobal.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-primary hover:underline"
+              >
                 Impactmeglobal
-              </a>.
+              </a>
+              .
             </p>
           </div>
         </div>
@@ -110,7 +127,12 @@ export function Footer() {
           <p>© {new Date().getFullYear()} Career Upgrade. All rights reserved.</p>
           <p>
             Developed by{" "}
-            <a href="https://zyradigitals.com" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary hover:underline">
+            <a
+              href="https://zyradigitals.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary hover:underline"
+            >
               Zyra Digitals
             </a>
           </p>

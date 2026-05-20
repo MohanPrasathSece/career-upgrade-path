@@ -8,56 +8,90 @@ import faqImg from "@/assets/images/courses_hero_dental.png";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ & Information - Career Upgrade" },
-      { name: "description", content: "Answers to common questions about our UK online dental nursing course, payment plans and study requirements." },
-      { property: "og:title", content: "FAQ & Information - Career Upgrade" },
+      { title: "FAQ & Information - Career Upgrade Online Dental School" },
+      {
+        name: "description",
+        content:
+          "Answers to common questions about our UK online dental nursing course, payment plans and study requirements.",
+      },
+      { property: "og:title", content: "FAQ & Information - Career Upgrade Online Dental School" },
       { property: "og:description", content: "Everything you need to know before you apply." },
       { property: "og:url", content: "/faq" },
     ],
     links: [{ rel: "canonical", href: "/faq" }],
-    scripts: [{
-      type: "application/ld+json",
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqs.map(f => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
-        })),
-      }),
-    }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
   }),
   component: FAQPage,
 });
 
 const faqs = [
-  { q: "Who can apply?", a: "Anyone aged 16 or over living in the UK with a passion for healthcare and dental nursing. No prior experience is required." },
-  { q: "Is the course fully online?", a: "Yes - the theory is delivered through our modern online platform. Practical competencies are completed in a UK dental practice setting with assessor support." },
-  { q: "Can I work while studying?", a: "Absolutely. Most of our students train as dental nurses in a UK practice while they study. Many employers also contribute to course fees." },
-  { q: "Are payment plans available?", a: "Yes. We offer flexible monthly instalment plans and government-funded routes for eligible learners." },
-  { q: "Is the qualification recognised?", a: "Yes. Our course leads to a dental nursing qualification and a clear pathway to General Dental Council (GDC) registration." },
-  { q: "How long is the course?", a: "The standard duration is 1 year, with flexible scheduling. Some students complete sooner; others take longer - we work to your pace." },
-  { q: "What support will I receive?", a: "Dedicated tutors, qualified assessors, friendly customer service and one-to-one guidance from enrolment to qualification." },
-  { q: "What age can I apply from?", a: "From age 16. We welcome school leavers, career changers and those returning to learning." },
+  {
+    q: "Who can apply?",
+    a: "Anyone aged 16 or over living in the UK with a passion for healthcare and dental nursing. No prior experience is required.",
+  },
+  {
+    q: "Is the course fully online?",
+    a: "Yes - the theory is delivered through our modern online platform. Practical competencies are completed in a UK dental practice setting with assessor support.",
+  },
+  {
+    q: "Can I work while studying?",
+    a: "Absolutely. Most of our students train as dental nurses in a UK practice while they study. Many employers also contribute to course fees.",
+  },
+  {
+    q: "Are payment plans available?",
+    a: "Yes. We offer flexible monthly instalment plans and government-funded routes for eligible learners.",
+  },
+  {
+    q: "Is the qualification recognised?",
+    a: "Yes. Our course leads to a dental nursing qualification and a clear pathway to General Dental Council (GDC) registration.",
+  },
+  {
+    q: "How long is the course?",
+    a: "The standard duration is 1 year, with flexible scheduling. Some students complete sooner; others take longer - we work to your pace.",
+  },
+  {
+    q: "What support will I receive?",
+    a: "Dedicated tutors, qualified assessors, friendly customer service and one-to-one guidance from enrolment to qualification.",
+  },
+  {
+    q: "What age can I apply from?",
+    a: "From age 16. We welcome school leavers, career changers and those returning to learning.",
+  },
 ];
-
-
 
 function FAQItem({ q, a, defaultOpen = false }: { q: string; a: string; defaultOpen?: boolean }) {
   const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className={`overflow-hidden rounded-2xl border bg-card transition ${open ? "border-primary/40 shadow-card" : "border-border shadow-soft"}`}>
+    <div
+      className={`overflow-hidden rounded-2xl border bg-card transition ${open ? "border-primary/40 shadow-card" : "border-border shadow-soft"}`}
+    >
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
       >
         <span className="font-display text-base font-bold md:text-lg">{q}</span>
-        <span className={`grid h-9 w-9 flex-shrink-0 place-items-center rounded-full transition ${open ? "bg-gradient-primary text-primary-foreground rotate-180" : "bg-secondary text-primary"}`}>
+        <span
+          className={`grid h-9 w-9 flex-shrink-0 place-items-center rounded-full transition ${open ? "bg-gradient-primary text-primary-foreground rotate-180" : "bg-secondary text-primary"}`}
+        >
           <ChevronDown className="h-4 w-4" />
         </span>
       </button>
-      <div className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+      <div
+        className={`grid transition-all duration-300 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+      >
         <div className="overflow-hidden">
           <p className="px-6 pb-6 text-sm leading-relaxed text-muted-foreground">{a}</p>
         </div>
@@ -80,14 +114,18 @@ function FAQPage() {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-3 md:grid-cols-2 md:items-start">
             <div className="flex flex-col gap-3">
-              {faqs.filter((_, i) => i % 2 === 0).map((f, i) => (
-                <FAQItem key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
-              ))}
+              {faqs
+                .filter((_, i) => i % 2 === 0)
+                .map((f, i) => (
+                  <FAQItem key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
+                ))}
             </div>
             <div className="flex flex-col gap-3">
-              {faqs.filter((_, i) => i % 2 === 1).map((f) => (
-                <FAQItem key={f.q} q={f.q} a={f.a} />
-              ))}
+              {faqs
+                .filter((_, i) => i % 2 === 1)
+                .map((f) => (
+                  <FAQItem key={f.q} q={f.q} a={f.a} />
+                ))}
             </div>
           </div>
         </div>
@@ -102,21 +140,39 @@ function FAQPage() {
               Where can dental nursing take you?
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-              Qualifying as a dental nurse is just the beginning. Once registered with the GDC, a world of professional development opens up.
+              Qualifying as a dental nurse is just the beginning. Once registered with the GDC, a
+              world of professional development opens up.
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
-              { role: "Dental Hygienist & Therapist", pathway: "Further clinical study", desc: "Perform clinical treatments, hygiene therapies, and diagnostic work under prescription." },
-              { role: "Practice Manager", pathway: "Management & Leadership", desc: "Oversee clinic operations, staff scheduling, regulatory compliance, and business growth." },
-              { role: "Treatment Coordinator", pathway: "Clinical Consultation", desc: "Act as the primary bridge between patients and clinicians for complex cosmetic or implant therapies." },
+              {
+                role: "Dental Hygienist & Therapist",
+                pathway: "Further clinical study",
+                desc: "Perform clinical treatments, hygiene therapies, and diagnostic work under prescription.",
+              },
+              {
+                role: "Practice Manager",
+                pathway: "Management & Leadership",
+                desc: "Oversee clinic operations, staff scheduling, regulatory compliance, and business growth.",
+              },
+              {
+                role: "Treatment Coordinator",
+                pathway: "Clinical Consultation",
+                desc: "Act as the primary bridge between patients and clinicians for complex cosmetic or implant therapies.",
+              },
             ].map((p, i) => (
-              <div key={i} className="rounded-3xl border border-border bg-card p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-card">
+              <div
+                key={i}
+                className="rounded-3xl border border-border bg-card p-8 shadow-soft transition hover:-translate-y-1 hover:shadow-card"
+              >
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary text-primary-foreground font-bold shadow-soft">
                   {i + 1}
                 </span>
                 <h3 className="mt-5 font-display text-xl font-bold">{p.role}</h3>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-primary">{p.pathway}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-primary">
+                  {p.pathway}
+                </p>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
               </div>
             ))}
@@ -133,7 +189,10 @@ function FAQPage() {
           <h2 className="mt-5 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
             A state-of-the-art curriculum compliant with GDC standards.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground">Designed to prepare confident, highly skilled, and fully competent professionals for modern dental clinics.</p>
+          <p className="mt-4 text-base sm:text-lg text-muted-foreground">
+            Designed to prepare confident, highly skilled, and fully competent professionals for
+            modern dental clinics.
+          </p>
         </div>
       </Section>
 
@@ -143,11 +202,19 @@ function FAQPage() {
           <div className="absolute -left-10 -bottom-10 h-64 w-64 rounded-full bg-lemon/40 blur-3xl" />
           <div className="relative grid items-center gap-6 md:grid-cols-[1.4fr_1fr]">
             <div>
-              <h2 className="font-display text-[26px] font-bold text-balance md:text-4xl">Ready to Start Your Future?</h2>
-              <p className="mt-3 max-w-xl opacity-90">Speak with admissions today - free, no obligation and we'll answer every remaining question.</p>
+              <h2 className="font-display text-[26px] font-bold text-balance md:text-4xl">
+                Ready to Start Your Future?
+              </h2>
+              <p className="mt-3 max-w-xl opacity-90">
+                Speak with admissions today - free, no obligation and we'll answer every remaining
+                question.
+              </p>
             </div>
             <div className="md:text-right">
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-semibold text-primary shadow-soft hover:-translate-y-0.5 transition">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-semibold text-primary shadow-soft hover:-translate-y-0.5 transition"
+              >
                 Contact Us <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

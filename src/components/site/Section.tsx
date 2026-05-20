@@ -23,7 +23,7 @@ export function Section({
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
     if (ref.current) {
       observer.observe(ref.current);
@@ -41,7 +41,8 @@ export function Section({
           ? {
               opacity: visible ? 1 : 0,
               transform: visible ? "translateY(0)" : "translateY(40px)",
-              transition: "opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)",
+              transition:
+                "opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)",
             }
           : undefined
       }
@@ -80,7 +81,9 @@ export function PageHero({
           <h1 className="mt-5 font-display text-2xl font-bold leading-[1.05] text-balance text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
             {title}
           </h1>
-          <p className="mt-5 max-w-xl text-[15px] sm:text-lg leading-relaxed text-muted-foreground">{subtitle}</p>
+          <p className="mt-5 max-w-xl text-[15px] sm:text-lg leading-relaxed text-muted-foreground">
+            {subtitle}
+          </p>
         </div>
         {image && (
           <div className="relative mx-auto w-[85%] sm:w-[75%] md:w-full animate-[scale-in_0.6s_ease-out]">
