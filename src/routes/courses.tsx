@@ -54,7 +54,7 @@ const overview = [
   { icon: Globe, label: "Format", value: "100% Online" },
   { icon: Calendar, label: "Start Dates", value: "Anytime" },
   { icon: UserCheck, label: "Age", value: "16+" },
-  { icon: Award, label: "Outcome", value: "UK Qualification" },
+  { icon: Award, label: "Outcome", value: "UK GDC Qualification" },
 ];
 
 const learn = [
@@ -106,7 +106,7 @@ const funding = [
   {
     icon: Wallet,
     title: "Fee Paying Options",
-    desc: "Pay upfront or via your employer with a discount.",
+    desc: "Pay upfront for a discount or via employer or spread the cost via holding deposit to secure your place which is non-refundable towards the total cost of fees.",
   },
 ];
 
@@ -173,9 +173,9 @@ function Courses() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <SectionEyebrow>What You'll Learn</SectionEyebrow>
-          <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
-            A complete, modern dental nursing curriculum
-          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Full curriculum details coming soon. Get in touch with our admissions team for more information.
+          </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {learn.map((l) => (

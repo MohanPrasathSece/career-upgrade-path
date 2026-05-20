@@ -262,7 +262,7 @@ ${form.message}`;
                   <CheckCircle2 className="h-4 w-4 text-primary" /> Personalised funding plan
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary" /> No obligation, ever
+                  <CheckCircle2 className="h-4 w-4 text-primary" /> No obligation
                 </li>
               </ul>
             </div>

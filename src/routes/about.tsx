@@ -7,7 +7,6 @@ import {
   CalendarRange,
   HandHeart,
   ClipboardCheck,
-  GraduationCap,
   ArrowRight,
   CheckCircle2,
   Sparkles,
@@ -244,7 +243,6 @@ function About() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {[
-              { icon: GraduationCap, n: "1000+", l: "Students qualified" },
               { icon: Sparkles, n: "100%", l: "Pass rate" },
               { icon: BookOpen, n: "24/7", l: "Online platform" },
               { icon: HandHeart, n: "1:1", l: "Personal support" },
