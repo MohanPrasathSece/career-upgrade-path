@@ -141,7 +141,7 @@ function FAQPage() {
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
               Qualifying as a dental nurse is just the beginning. Once registered with the GDC, a
-              world of professional development opens up.
+              wide range of professional development opportunities become available.
             </p>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -160,6 +160,41 @@ function FAQPage() {
                 role: "Treatment Coordinator",
                 pathway: "Clinical Consultation",
                 desc: "Act as the primary bridge between patients and clinicians for complex cosmetic or implant therapies.",
+              },
+              {
+                role: "Dental Radiography",
+                pathway: "POST-REGISTRATION COURSE",
+                desc: "Learn to safely take and process dental X-rays within clinical practice.",
+              },
+              {
+                role: "Oral Health Education",
+                pathway: "PREVENTIVE CARE",
+                desc: "Support patients with oral hygiene education and preventive dental care advice.",
+              },
+              {
+                role: "Orthodontic Nursing",
+                pathway: "SPECIALIST DENTAL CARE",
+                desc: "Assist with orthodontic procedures and patient care within specialist practices.",
+              },
+              {
+                role: "Sedation Nursing",
+                pathway: "ADVANCED PATIENT SUPPORT",
+                desc: "Develop skills in supporting patients receiving conscious sedation treatment.",
+              },
+              {
+                role: "Implant Nursing",
+                pathway: "IMPLANT DENTISTRY",
+                desc: "Assist clinicians during implant procedures and restorative treatments.",
+              },
+              {
+                role: "Fluoride Varnish Application",
+                pathway: "PREVENTIVE TREATMENT",
+                desc: "Gain additional skills in preventive fluoride application for patient care.",
+              },
+              {
+                role: "Special Care / Hospital Dentistry",
+                pathway: "CLINICAL SUPPORT ROLE",
+                desc: "Work alongside multidisciplinary teams within hospital and specialist environments.",
               },
             ].map((p, i) => (
               <div
