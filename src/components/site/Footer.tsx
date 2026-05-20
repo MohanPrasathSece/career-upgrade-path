@@ -34,12 +34,18 @@ export function Footer() {
               GDC pathway.
             </p>
             <div className="mt-5 flex gap-2">
-              {[Facebook, Instagram, Linkedin, Youtube].map((Icon, i) => (
+              {[
+                { Icon: Facebook, href: "#", aria: "Facebook" },
+                { Icon: Instagram, href: "#", aria: "Instagram" },
+                { Icon: Linkedin, href: "#", aria: "LinkedIn" },
+                { Icon: Youtube, href: "#", aria: "YouTube" },
+                { Icon: Mail, href: "mailto:info@careerupgradedentalschool.co.uk", aria: "Email" },
+              ].map(({ Icon, href, aria }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={href}
                   className="grid h-9 w-9 place-items-center rounded-full border border-border bg-card text-foreground/70 transition hover:border-primary hover:text-primary hover:-translate-y-0.5"
-                  aria-label="social"
+                  aria-label={aria}
                 >
                   <Icon className="h-4 w-4" />
                 </a>
