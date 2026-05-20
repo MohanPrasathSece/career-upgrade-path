@@ -37,8 +37,8 @@ const info = [
   {
     icon: Mail,
     label: "Email",
-    value: "admissions@careerupgrade.uk",
-    href: "mailto:admissions@careerupgrade.uk",
+    value: "info@careerupgradedentalschool.co.uk",
+    href: "mailto:info@careerupgradedentalschool.co.uk",
   },
   { icon: MapPin, label: "Address", value: "Capital Office, 124 City Road, London, EC1V 2NX" },
   { icon: Clock, label: "Working Hours", value: "Mon–Fri · 9:00 – 18:00" },
@@ -73,7 +73,7 @@ Course Interest: ${form.course}
 Message:
 ${form.message}`;
 
-      const mailtoUrl = `mailto:admissions@careerupgrade.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const mailtoUrl = `mailto:info@careerupgradedentalschool.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = mailtoUrl;
 
       setSent(true);

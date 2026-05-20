@@ -39,7 +39,6 @@ export function Footer() {
                 { Icon: Instagram, href: "#", aria: "Instagram" },
                 { Icon: Linkedin, href: "#", aria: "LinkedIn" },
                 { Icon: Youtube, href: "#", aria: "YouTube" },
-                { Icon: Mail, href: "mailto:info@careerupgradedentalschool.co.uk", aria: "Email" },
               ].map(({ Icon, href, aria }, i) => (
                 <a
                   key={i}
