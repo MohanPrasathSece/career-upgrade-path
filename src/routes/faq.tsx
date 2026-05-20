@@ -196,6 +196,11 @@ function FAQPage() {
                 pathway: "CLINICAL SUPPORT ROLE",
                 desc: "Work alongside multidisciplinary teams within hospital and specialist environments.",
               },
+              {
+                role: "Endodontic Nursing",
+                pathway: "SPECIALIST ENDODONTIC CARE",
+                desc: "Assist with root canal treatments and advanced endodontic procedures within specialist dental settings.",
+              },
             ].map((p, i) => (
               <div
                 key={i}
