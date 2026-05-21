@@ -248,9 +248,7 @@ function Home() {
               Learn from experienced dental professionals
             </h2>
             <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground leading-relaxed">
-              You're never alone on your learning journey. Our qualified tutors and assessors are
-              practicing dental professionals who provide personalized feedback, guide you through
-              clinical competencies, and prepare you for real-world practice success.
+               All our tutors and assessors are fully qualified dental nurses registered with the General Dental Council (GDC UK) and have obtained additional qualifications in tutoring and assessing dental nurses, ensuring high-quality professional training and support.
             </p>
             <div className="mt-6 flex gap-6">
               <div>
