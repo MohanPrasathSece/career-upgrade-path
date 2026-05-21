@@ -20,7 +20,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About & Student Support - Career Upgrade Online Dental School" },
+      { title: "About & Student Support - Career Upgrade Online Dental Nursing School" },
       {
         name: "description",
         content:
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/about")({
       },
       {
         property: "og:title",
-        content: "About & Student Support - Career Upgrade Online Dental School",
+        content: "About & Student Support - Career Upgrade Online Dental Nursing School",
       },
       {
         property: "og:description",
@@ -96,7 +96,7 @@ function About() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="About Career Upgrade Online Dental School"
+        eyebrow="About Career Upgrade Online Dental Nursing School"
         title="Supporting You Every Step of the Way"
         subtitle="We're a dedicated UK online dental nursing training on a mission to make qualifying as a dental nurse simple, supported and accessible to everyone."
         image={aboutImg}
@@ -107,14 +107,10 @@ function About() {
         <div className="mx-auto max-w-3xl text-center">
           <SectionEyebrow>Who we are</SectionEyebrow>
           <h2 className="mt-4 font-display text-xl font-bold sm:text-3xl md:text-4xl">
-            A modern training built around you
+            Start Your Dental Nursing Career With Confidence
           </h2>
           <p className="mt-4 text-sm sm:text-lg leading-relaxed text-muted-foreground">
-            Career Upgrade Online Dental School is an online dental nursing training for UK students
-            aged 16+. We combine flexible online learning with real tutor and assessor support,
-            leading to a qualification and a clear pathway to General Dental Council registration.
-            Whether you're starting out, switching careers, or already working in a practice - we'll
-            meet you where you are.
+            At Career Upgrade Online Dental Nursing School, we provide flexible and supportive online learning designed to help students build successful careers in the dental industry. Whether you are starting fresh or changing careers, our programme gives you the knowledge, confidence, and support needed to qualify as a dental nurse.
           </p>
         </div>
       </Section>

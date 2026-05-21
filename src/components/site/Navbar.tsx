@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mail, Phone } from "lucide-react";
 import logoImg from "@/assets/icon.png";
 
 const links = [
@@ -42,6 +42,26 @@ export function Navbar() {
             : "bg-background/40 backdrop-blur-md"
         }`}
       >
+        {/* Top Contact Bar */}
+        <div className="w-full bg-primary text-primary-foreground text-xs py-1">
+          <div className="mx-auto relative flex max-w-7xl items-center justify-center px-5 md:px-8 min-h-[28px]">
+            <div className="flex items-center justify-center gap-4 md:gap-6">
+              <a href="mailto:info@careerupgrade.com" className="flex items-center gap-1.5 hover:opacity-80 transition">
+                <Mail className="h-3.5 w-3.5" />
+                <span>info@careerupgrade.com</span>
+              </a>
+              <a href="tel:+447944624039" className="flex items-center gap-1.5 hover:opacity-80 transition">
+                <Phone className="h-3.5 w-3.5" />
+                <span>+44 7944 624039</span>
+              </a>
+            </div>
+            {/* Language Switcher */}
+            <div className="absolute right-5 md:right-8">
+              <div id="google_translate_element" className="h-[20px] overflow-hidden rounded flex items-center"></div>
+            </div>
+          </div>
+        </div>
+
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 md:py-4">
           <Link
             to="/"
@@ -62,7 +82,7 @@ export function Navbar() {
                 Career Upgrade
               </span>
               <span className="block text-[10px] font-medium uppercase tracking-[0.16em] text-primary md:text-[11px]">
-                Online Dental School
+                Online Dental Nursing School
               </span>
             </span>
           </Link>
@@ -143,7 +163,7 @@ export function Navbar() {
                   Career Upgrade
                 </span>
                 <span className="block text-[10px] font-medium uppercase tracking-[0.16em] text-primary">
-                  Online Dental School
+                  Online Dental Nursing School
                 </span>
               </span>
             </Link>

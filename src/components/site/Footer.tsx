@@ -25,7 +25,7 @@ export function Footer() {
               <span className="leading-tight">
                 <span className="block font-display text-lg font-bold">Career Upgrade</span>
                 <span className="block text-[11px] font-medium uppercase tracking-[0.16em] text-primary">
-                  Online Dental School
+                  Online Dental Nursing School
                 </span>
               </span>
             </Link>

@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
         content:
           "Flexible online dental nursing training with expert tutor support, payment plans and a GDC registration pathway. Apply today.",
       },
-      { property: "og:title", content: "Career Upgrade - Online Dental School UK" },
+      { property: "og:title", content: "Career Upgrade - Online Dental Nursing School UK" },
       { property: "og:description", content: "100% pass rate. Start anytime. Qualification." },
       { property: "og:url", content: "/" },
     ],

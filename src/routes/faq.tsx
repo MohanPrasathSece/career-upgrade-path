@@ -8,13 +8,13 @@ import faqImg from "@/assets/images/courses_hero_dental.png";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ & Information - Career Upgrade Online Dental School" },
+      { title: "FAQ & Information - Career Upgrade Online Dental Nursing School" },
       {
         name: "description",
         content:
           "Answers to common questions about our UK online dental nursing course, payment plans and study requirements.",
       },
-      { property: "og:title", content: "FAQ & Information - Career Upgrade Online Dental School" },
+      { property: "og:title", content: "FAQ & Information - Career Upgrade Online Dental Nursing School" },
       { property: "og:description", content: "Everything you need to know before you apply." },
       { property: "og:url", content: "/faq" },
     ],

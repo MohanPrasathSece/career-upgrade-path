@@ -28,7 +28,7 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
-      { title: "Dental Nursing Course & Funding - Career Upgrade Online Dental School" },
+      { title: "Dental Nursing Course & Funding - Career Upgrade Online Dental Nursing School" },
       {
         name: "description",
         content:
@@ -36,7 +36,7 @@ export const Route = createFileRoute("/courses")({
       },
       {
         property: "og:title",
-        content: "Dental Nursing Course & Funding - Career Upgrade Online Dental School",
+        content: "Dental Nursing Course & Funding - Career Upgrade Online Dental Nursing School",
       },
       {
         property: "og:description",
@@ -92,21 +92,21 @@ const learn = [
 
 const funding = [
   {
-    icon: Landmark,
-    title: "Government Funded Learners",
-    desc: "Eligible UK students may qualify for full funding.",
+    icon: CreditCard,
+    title: "Flexible Payment Plans",
+    desc: "Spread the cost of your course with affordable monthly instalments through Direct Debit, making learning more manageable and accessible.",
     tag: "Most popular",
     gradient: true,
   },
   {
-    icon: CreditCard,
-    title: "Flexible Payment Plans",
-    desc: "Spread the cost with affordable monthly instalments.",
+    icon: Landmark,
+    title: "Secure Your Place",
+    desc: "A holding deposit is required to secure your place on the course. Please note that the holding deposit is non-refundable.",
   },
   {
     icon: Wallet,
-    title: "Fee Paying Options",
-    desc: "Pay upfront for a discount or via employer or spread the cost via holding deposit to secure your place which is non-refundable towards the total cost of fees.",
+    title: "Full Payment Discount",
+    desc: "Receive a 10% discount when paying your course fees in full upfront.",
   },
 ];
 
@@ -164,6 +164,53 @@ function Courses() {
                   <p className="mt-0.5 font-display text-lg font-bold">{o.value}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* Career Progression Opportunities */}
+      <Section>
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionEyebrow>Career Progression</SectionEyebrow>
+          <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
+            Career Progression After Qualifying
+          </h2>
+          <p className="mt-4 text-muted-foreground text-lg">
+            The NCFE Level 3 Diploma in Dental Nursing is a strong option if you want to:
+          </p>
+        </div>
+        <div className="mt-12 mx-auto max-w-4xl">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              "Become a qualified dental nurse",
+              "Progress into specialist dental nursing roles",
+              "Work within dental practices and healthcare settings",
+              "Continue further study to become a dental hygienist, therapist, or even a dentist"
+            ].map((point, i) => (
+              <div key={i} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition hover:-translate-y-1 hover:shadow-card hover:border-primary/40">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-secondary text-primary transition-colors">
+                  <CheckCircle2 className="h-5 w-5" />
+                </span>
+                <p className="text-sm font-medium leading-relaxed">{point}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 overflow-hidden rounded-3xl border border-blue-200 bg-blue-50 p-8 shadow-card sm:p-10 text-center relative">
+            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-200/50 blur-3xl" />
+            <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-blue-200/50 blur-3xl" />
+            
+            <div className="relative z-10">
+              <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-white text-blue-600 shadow-soft mb-5">
+                <GraduationCap className="h-7 w-7" />
+              </span>
+              <h3 className="font-display text-xl font-bold text-blue-900 md:text-2xl">
+                Even become a dentist later with further study
+              </h3>
+              <p className="mt-3 text-sm text-blue-800/80 leading-relaxed max-w-2xl mx-auto">
+                Your NCFE Level 3 Diploma is more than just a qualification; it is the first step on a rewarding career path that can take you to the very top of the dental profession.
+              </p>
             </div>
           </div>
         </div>

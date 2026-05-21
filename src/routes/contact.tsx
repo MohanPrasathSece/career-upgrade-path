@@ -17,13 +17,13 @@ import contactImg from "@/assets/images/team_of_nurses.png";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Career Upgrade Online Dental School - Speak With Admissions" },
+      { title: "Contact Career Upgrade Online Dental Nursing School - Speak With Admissions" },
       {
         name: "description",
         content:
           "Get in touch with our friendly UK admissions team. Phone, WhatsApp, email and a quick contact form to start your dental nursing journey.",
       },
-      { property: "og:title", content: "Contact Career Upgrade Online Dental School" },
+      { property: "og:title", content: "Contact Career Upgrade Online Dental Nursing School" },
       { property: "og:description", content: "Speak with our admissions team today." },
       { property: "og:url", content: "/contact" },
     ],
@@ -90,7 +90,7 @@ ${form.message}`;
     <SiteLayout>
       <PageHero
         eyebrow="We're here to help"
-        title="Contact Career Upgrade Online Dental School"
+        title="Contact Career Upgrade Online Dental Nursing School"
         subtitle="Speak with our friendly admissions team about funding, start dates and everything you need to know about becoming a UK dental nurse."
         image={contactImg}
       />
