@@ -119,6 +119,9 @@ const GoogleTranslate = () => {
         </div>
       </div>
 
+      {/* Hidden container for Google Translate widget */}
+      <div id="google_translate_element" style={{ display: "none" }} />
+
       <style>{`
         /* Hide all of Google's native components and overlays */
         .goog-te-banner-frame { display: none !important; }

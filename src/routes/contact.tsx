@@ -60,7 +60,11 @@ function Contact() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.email.trim() || form.message.trim().length < 5) return;
+    // Basic validation with user feedback
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError("Please fill out all required fields.");
+      return;
+    }
 
     setIsSending(true);
     setError(null);
