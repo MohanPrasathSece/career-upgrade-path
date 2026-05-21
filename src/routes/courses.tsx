@@ -197,18 +197,19 @@ function Courses() {
             ))}
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-3xl border border-blue-200 bg-blue-50 p-8 shadow-card sm:p-10 text-center relative">
-            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-200/50 blur-3xl" />
-            <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-blue-200/50 blur-3xl" />
+          {/* Highlighted Feature Card using green theme */}
+          <div className="mt-8 overflow-hidden rounded-3xl border border-primary/20 bg-primary/5 p-8 shadow-card sm:p-10 text-center relative">
+            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
+            <div className="absolute -left-10 -bottom-10 h-40 w-40 rounded-full bg-primary/10 blur-3xl" />
             
             <div className="relative z-10">
-              <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-white text-blue-600 shadow-soft mb-5">
+              <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-white text-primary shadow-soft mb-5">
                 <GraduationCap className="h-7 w-7" />
               </span>
-              <h3 className="font-display text-xl font-bold text-blue-900 md:text-2xl">
+              <h3 className="font-display text-xl font-bold text-primary md:text-2xl">
                 Even become a dentist later with further study
               </h3>
-              <p className="mt-3 text-sm text-blue-800/80 leading-relaxed max-w-2xl mx-auto">
+              <p className="mt-3 text-sm text-primary/80 leading-relaxed max-w-2xl mx-auto">
                 Your NCFE Level 3 Diploma is more than just a qualification; it is the first step on a rewarding career path that can take you to the very top of the dental profession.
               </p>
             </div>
