@@ -40,7 +40,7 @@ export const Route = createFileRoute("/faq")({
 const faqs = [
   {
     q: "Who can apply?",
-    a: "Anyone aged 16 or over living in the UK with a passion for healthcare and dental nursing. No prior experience is required.",
+    a: "Living in the UK with a passion for healthcare and dental nursing. No prior experience is required.",
   },
   {
     q: "Is the course fully online?",
@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: "Is the qualification recognised?",
-    a: "Yes. Our course leads to a dental nursing qualification and a clear pathway to General Dental Council (GDC) registration.",
+    a: "Yes. Our course leads to a dental nursing qualification and a clear pathway to GDC registration.",
   },
   {
     q: "How long is the course?",
@@ -64,11 +64,11 @@ const faqs = [
   },
   {
     q: "What support will I receive?",
-    a: "Dedicated tutors, qualified assessors, friendly customer service and one-to-one guidance from enrolment to qualification.",
+    a: "Dedicated tutors, qualified assessors, friendly customer service and one‑to‑one guidance from enrolment to qualification.",
   },
   {
     q: "What age can I apply from?",
-    a: "From age 16. We welcome school leavers, career changers and those returning to learning.",
+    a: "We welcome applicants of any age who are passionate about dental nursing.",
   },
 ];
 
