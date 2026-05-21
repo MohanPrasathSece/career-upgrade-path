@@ -1,4 +1,5 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
+import "./contact.css";
 import { useState } from "react";
 import {
   Phone,
@@ -65,8 +66,7 @@ function Contact() {
     setError(null);
     try {
       const subject = `New Enquiry from ${form.name}`;
-      const body = `Name: ${form.name}
-Email: ${form.email}
+      const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nCourse: ${form.course}\nMessage: ${form.message}`;
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
@@ -306,24 +306,6 @@ Email: ${form.email}
         </div>
       </Section>
 
-      <style>{`
-        .input {
-          width: 100%;
-          border-radius: 0.85rem;
-          border: 1px solid var(--border);
-          background: var(--soft);
-          padding: 0.85rem 1rem;
-          font-size: 0.9rem;
-          color: var(--foreground);
-          outline: none;
-          transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-        }
-        .input:focus {
-          border-color: var(--primary);
-          background: var(--card);
-          box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 14%, transparent);
-        }
-      `}</style>
     </SiteLayout>
   );
 }

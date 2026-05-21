@@ -70,7 +70,7 @@ const GoogleTranslate = () => {
   };
 
   return (
-    <div className="relative translate-dropdown-container flex items-center">
+    <div className="relative translate-dropdown-container flex items-center z-60">
       <Button
         variant="outline"
         size="sm"
@@ -91,7 +91,7 @@ const GoogleTranslate = () => {
 
       {/* Custom Dropdown */}
       <div
-        className={`absolute top-full right-0 mt-2 w-44 sm:w-48 bg-white rounded-xl shadow-xl border border-border overflow-hidden transition-all duration-300 z-[100] ${isVisible
+        className={`absolute top-full right-0 mt-2 w-44 sm:w-48 bg-white rounded-xl shadow-xl border border-border overflow-hidden transition-all duration-300 z-60 ${isVisible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 -translate-y-2 scale-95 pointer-events-none"
           }`}

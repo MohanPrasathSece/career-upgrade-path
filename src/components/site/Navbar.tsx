@@ -1,8 +1,9 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
 import { Menu, X, Mail, Phone } from "lucide-react";
-import logoImg from "@/assets/icon.png";
 import GoogleTranslate from "@/components/site/GoogleTranslate";
+import logoImg from "@/assets/icon.png";
+
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About & Support" },
@@ -49,9 +50,7 @@ export function Navbar() {
               </a>
             </div>
             {/* Language Switcher */}
-            <div className="absolute right-5 md:right-8 flex items-center gap-2">
-                  <GoogleTranslate />
-            </div>
+
           </div>
         </div>
 
@@ -101,7 +100,8 @@ export function Navbar() {
               </Link>
             ))}
           </nav>
-
+            {/* Language Switcher (single instance) */}
+            <GoogleTranslate />
           <div className="hidden lg:block">
             <Link
               to="/contact"
@@ -167,6 +167,7 @@ export function Navbar() {
             >
               <X className="h-5 w-5" />
             </button>
+
           </div>
           <nav className="flex flex-1 flex-col items-center justify-center gap-6 px-8 py-10">
             {links.map((l, index) => (
