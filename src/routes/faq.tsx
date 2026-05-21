@@ -68,7 +68,7 @@ const faqs = [
   },
   {
     q: "What age can I apply from?",
-    a: "We welcome applicants of any age who are passionate about dental nursing.",
+    a: "Applicants must be at least 16 years old.",
   },
 ];
 
