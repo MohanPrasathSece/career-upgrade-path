@@ -21,7 +21,6 @@ const LANGUAGES = [
 const GoogleTranslate = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLang, setActiveLang] = useState("en");
-  const [isReady, setIsReady] = useState(false);
 
   // Initialise Google Translate widget (hidden)
   useEffect(() => {
@@ -36,7 +35,6 @@ const GoogleTranslate = () => {
             },
             "google_translate_element"
           );
-          setIsReady(true);
         }
       };
     }
@@ -46,32 +44,16 @@ const GoogleTranslate = () => {
       script.id = scriptId;
       script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       script.async = true;
-      script.onload = () => {
-        if (window.googleTranslateElementInit) {
-          window.googleTranslateElementInit();
-        }
-      };
       document.body.appendChild(script);
     }
   }, []);
 
-  // Change language via the hidden select created by Google widget, wait until ready
   const changeLanguage = (code: string) => {
-    const attempt = () => {
-      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
-      if (select) {
-        select.value = code;
-        select.dispatchEvent(new Event('change'));
-        setActiveLang(code);
-        setIsOpen(false);
-      }
-    };
-    if (isReady) {
-      attempt();
-    } else {
-      // retry after a short delay until the widget is ready
-      setTimeout(() => changeLanguage(code), 300);
-    }
+    const currentUrl = encodeURIComponent(window.location.href);
+    const translateUrl = `https://translate.google.com/translate?sl=auto&tl=${code}&u=${currentUrl}`;
+    window.location.href = translateUrl;
+    setActiveLang(code);
+    setIsOpen(false);
   };
 
   // Close dropdown when clicking outside
@@ -102,11 +84,13 @@ const GoogleTranslate = () => {
       {/* Custom dropdown */}
       <div
         className={`absolute right-0 mt-2 w-48 bg-white rounded shadow-md border border-gray-200 transition-opacity duration-200 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        style={{ zIndex: 1000 }}
       >
         {LANGUAGES.map(l => (
           <button
+            type="button"
             key={l.code}
-            onClick={() => changeLanguage(l.code)}
+            onClick={(e) => { e.stopPropagation(); changeLanguage(l.code); }}
             className={`w-full text-left px-3 py-2 text-sm hover:bg-gray-100 ${activeLang === l.code ? "font-medium" : ""}`}
           >
             {l.name}
