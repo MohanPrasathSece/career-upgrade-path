@@ -67,15 +67,20 @@ function Contact() {
       const subject = `New Enquiry from ${form.name}`;
       const body = `Name: ${form.name}
 Email: ${form.email}
-Phone: ${form.phone}
-Course Interest: ${form.course}
-
-Message:
-${form.message}`;
-
-      const mailtoUrl = `mailto:info@careerupgradedentalschool.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
-
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          course: form.course,
+          message: form.message,
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to send email');
       setSent(true);
       setTimeout(() => setSent(false), 6000);
       setForm({ name: "", email: "", phone: "", course: "Dental Nursing - 1 Year", message: "" });
@@ -107,7 +112,7 @@ ${form.message}`;
                 <p className="mt-5 text-xs font-bold uppercase tracking-wider text-primary">
                   {c.label}
                 </p>
-                <p className="mt-1 font-display font-bold text-foreground">{c.value}</p>
+                <p className="mt-1 font-display font-bold text-foreground break-words">{c.value}</p>
               </>
             );
             return c.href ? (

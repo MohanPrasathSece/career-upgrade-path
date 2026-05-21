@@ -94,7 +94,7 @@ const funding = [
   {
     icon: CreditCard,
     title: "Flexible Payment Plans",
-    desc: "Spread the cost of your course with affordable monthly instalments through Direct Debit, making learning more manageable and accessible.",
+    desc: "Spread the cost of your course over 12 months with affordable monthly instalments through Direct Debit, making learning more manageable and accessible.",
     tag: "Most popular",
     gradient: true,
   },

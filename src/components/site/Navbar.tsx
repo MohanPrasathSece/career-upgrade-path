@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X, Mail, Phone } from "lucide-react";
 import logoImg from "@/assets/icon.png";
-
+import GoogleTranslate from "@/components/site/GoogleTranslate";
 const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About & Support" },
@@ -23,42 +23,8 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Initialize Google Translate widget
-  const initGoogleTranslate = () => {
-    if ((window as any).google && (window as any).google.translate) {
-      new (window as any).google.translate.TranslateElement(
-        {
-          pageLanguage: 'en',
-          includedLanguages: 'en,es,fr,de',
-          layout: (window as any).google.translate.TranslateElement.InlineLayout.SIMPLE,
-        },
-        'google_translate_element'
-      );
-    }
-  };
 
-  // Load Google Translate script and set global callback
-  useEffect(() => {
-    // Assign global callback for script
-    (window as any).googleTranslateElementInit = initGoogleTranslate;
-    // If script already present, initialize immediately
-    if ((window as any).google && (window as any).google.translate) {
-      initGoogleTranslate();
-    } else {
-      const script = document.createElement('script');
-      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-    // Cleanup on unmount
-    return () => {
-      const el = document.getElementById('google_translate_element');
-      if (el) el.innerHTML = '';
-    };
-  }, []);
 
-  const [showTranslate, setShowTranslate] = useState(false);
-  const toggleTranslate = () => setShowTranslate(!showTranslate);
 
   return (
     <>
@@ -84,19 +50,7 @@ export function Navbar() {
             </div>
             {/* Language Switcher */}
             <div className="absolute right-5 md:right-8 flex items-center gap-2">
-              <button
-                type="button"
-                onClick={toggleTranslate}
-                className="rounded-full bg-primary px-3 py-1 text-sm text-primary-foreground hover:bg-primary/80 transition"
-              >
-                Translate
-              </button>
-              {showTranslate && (
-                <div
-                  id="google_translate_element"
-                  className="h-[20px] overflow-hidden rounded flex items-center"
-                ></div>
-              )}
+                  <GoogleTranslate />
             </div>
           </div>
         </div>
