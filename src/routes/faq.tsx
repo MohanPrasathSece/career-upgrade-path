@@ -40,7 +40,7 @@ export const Route = createFileRoute("/faq")({
 const faqs = [
   {
     q: "Who can apply?",
-    a: "Living in the UK with a passion for healthcare and dental nursing. No prior experience is required.",
+    a: "Living in the UK with passion for dental nursing. No prior experience is required.",
   },
   {
     q: "Is the course fully online?",
@@ -68,7 +68,7 @@ const faqs = [
   },
   {
     q: "What age can I apply from?",
-    a: "Applicants must be at least 16 years old.",
+    a: "Applicants must be 16+. We welcome motivated individuals at any stage of their journey.",
   },
 ];
 
