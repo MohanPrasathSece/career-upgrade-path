@@ -53,7 +53,7 @@ const trustHighlights = [
   { icon: Calendar, label: "Start Anytime" },
   { icon: CreditCard, label: "Flexible Payment Plans" },
   { icon: Landmark, label: "Government Funded Options" },
-  { icon: ShieldCheck, label: "Qualification" },
+  { icon: ShieldCheck, label: "UK GDC Qualification" },
 ];
 
 const whyUs = [
