@@ -1,6 +1,7 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import "./contact.css";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import {
   Phone,
   Mail,
@@ -46,7 +47,6 @@ const info = [
 ];
 
 function Contact() {
-  const router = useRouter();
   const [sent, setSent] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -60,7 +60,6 @@ function Contact() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Basic validation with user feedback
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setError("Please fill out all required fields.");
       return;
@@ -69,27 +68,23 @@ function Contact() {
     setIsSending(true);
     setError(null);
     try {
-      const subject = `New Enquiry from ${form.name}`;
-      const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nCourse: ${form.course}\nMessage: ${form.message}`;
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
+      await emailjs.send(
+        "service_careerupgrade",   // EmailJS Service ID
+        "template_careerupgrade",  // EmailJS Template ID
+        {
+          from_name: form.name,
+          from_email: form.email,
           phone: form.phone,
           course: form.course,
           message: form.message,
-        }),
-      });
-      if (!response.ok) throw new Error('Failed to send email');
+        },
+        "YOUR_EMAILJS_PUBLIC_KEY"  // EmailJS Public Key
+      );
       setSent(true);
       setTimeout(() => setSent(false), 6000);
       setForm({ name: "", email: "", phone: "", course: "Dental Nursing - 1 Year", message: "" });
     } catch (err) {
-      setError("An unexpected error occurred. Please try again.");
+      setError("Failed to send your message. Please try WhatsApp or email us directly.");
     } finally {
       setIsSending(false);
     }
