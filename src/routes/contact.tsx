@@ -115,19 +115,13 @@ function Contact() {
 
             <h2 className="font-display text-2xl font-bold text-foreground">Enquiry Received!</h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Thanks for reaching out,{" "}
-              <span className="font-semibold text-foreground">{submittedName}</span>. Our admissions
-              team will get back to you within{" "}
-              <span className="font-semibold text-primary">1 working hour</span>.
+              Thanks for reaching out, <span className="font-semibold text-foreground">{submittedName}</span>. Our admissions
+              team will get back to you within <span className="font-semibold text-primary">1 working hour</span>.
             </p>
 
-            <div className="mt-5 rounded-2xl bg-secondary p-4 text-sm text-left space-y-1.5">
-              <p>
-                <span className="font-semibold">Name:</span> {submittedName}
-              </p>
-              <p>
-                <span className="font-semibold">Email:</span> {submittedEmail}
-              </p>
+            <div className="mt-5 space-y-2">
+              <p className="text-sm"><span className="font-semibold">Name:</span> {submittedName}</p>
+              <p className="text-sm"><span className="font-semibold">Email:</span> {submittedEmail}</p>
             </div>
 
             <button
