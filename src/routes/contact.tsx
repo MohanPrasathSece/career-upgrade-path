@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import "./contact.css";
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import {
   Phone,
   Mail,
@@ -11,6 +10,7 @@ import {
   Send,
   CheckCircle2,
   Loader2,
+  X,
 } from "lucide-react";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -48,6 +48,8 @@ const info = [
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
@@ -64,24 +66,18 @@ function Contact() {
       setError("Please fill out all required fields.");
       return;
     }
-
     setIsSending(true);
     setError(null);
     try {
-      await emailjs.send(
-        "service_careerupgrade",   // EmailJS Service ID
-        "template_careerupgrade",  // EmailJS Template ID
-        {
-          from_name: form.name,
-          from_email: form.email,
-          phone: form.phone,
-          course: form.course,
-          message: form.message,
-        },
-        "YOUR_EMAILJS_PUBLIC_KEY"  // EmailJS Public Key
-      );
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) throw new Error("Failed to send email");
+      setSubmittedName(form.name);
+      setSubmittedEmail(form.email);
       setSent(true);
-      setTimeout(() => setSent(false), 6000);
       setForm({ name: "", email: "", phone: "", course: "Dental Nursing - 1 Year", message: "" });
     } catch (err) {
       setError("Failed to send your message. Please try WhatsApp or email us directly.");
@@ -92,6 +88,58 @@ function Contact() {
 
   return (
     <SiteLayout>
+      {/* ── Success Modal ── */}
+      {sent && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4"
+          style={{ backgroundColor: "rgba(0,0,0,0.55)" }}
+          onClick={() => setSent(false)}
+        >
+          <div
+            className="relative w-full max-w-md rounded-3xl bg-white p-10 shadow-2xl text-center animate-in fade-in zoom-in-95 duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close */}
+            <button
+              onClick={() => setSent(false)}
+              className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground hover:bg-secondary transition"
+              aria-label="Close"
+            >
+              <X className="h-4 w-4" />
+            </button>
+
+            {/* Check icon */}
+            <div className="mx-auto mb-5 grid h-20 w-20 place-items-center rounded-full bg-gradient-primary shadow-glow">
+              <CheckCircle2 className="h-10 w-10 text-primary-foreground" />
+            </div>
+
+            <h2 className="font-display text-2xl font-bold text-foreground">Enquiry Received!</h2>
+            <p className="mt-3 text-muted-foreground leading-relaxed">
+              Thanks for reaching out,{" "}
+              <span className="font-semibold text-foreground">{submittedName}</span>. Our admissions
+              team will get back to you within{" "}
+              <span className="font-semibold text-primary">1 working hour</span>.
+            </p>
+
+            <div className="mt-5 rounded-2xl bg-secondary p-4 text-sm text-left space-y-1.5">
+              <p>
+                <span className="font-semibold">Name:</span> {submittedName}
+              </p>
+              <p>
+                <span className="font-semibold">Email:</span> {submittedEmail}
+              </p>
+            </div>
+
+            <button
+              onClick={() => setSent(false)}
+              className="mt-6 w-full rounded-full bg-gradient-primary py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      )}
+
       <PageHero
         eyebrow="We're here to help"
         title="Contact Career Upgrade Online Dental Nursing School"
@@ -123,10 +171,7 @@ function Contact() {
                 {inner}
               </a>
             ) : (
-              <div
-                key={c.label}
-                className="rounded-2xl border border-border bg-card p-6 shadow-soft"
-              >
+              <div key={c.label} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
                 {inner}
               </div>
             );
@@ -186,7 +231,6 @@ function Contact() {
                     className="input"
                   >
                     <option>Dental Nursing - 1 Year</option>
-
                     <option>Government Funded Route</option>
                     <option>Just exploring</option>
                   </select>
@@ -208,7 +252,7 @@ function Contact() {
                 <button
                   disabled={isSending}
                   type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition disabled:opacity-70 disabled:hover:-translate-y-0 disabled:hover:shadow-soft"
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-200 hover:shadow-glow hover:-translate-y-1 hover:brightness-110 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-soft disabled:hover:brightness-100"
                 >
                   {isSending ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -230,13 +274,6 @@ function Contact() {
               {error && (
                 <div className="mt-2 flex items-center gap-3 rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm font-medium text-destructive">
                   {error}
-                </div>
-              )}
-
-              {sent && (
-                <div className="mt-2 flex items-center gap-3 rounded-xl border border-primary/30 bg-secondary p-4 text-sm font-medium text-primary">
-                  <CheckCircle2 className="h-5 w-5" /> Thanks - we've received your enquiry and will
-                  reply shortly.
                 </div>
               )}
             </form>
@@ -304,7 +341,6 @@ function Contact() {
           </div>
         </div>
       </Section>
-
     </SiteLayout>
   );
 }
