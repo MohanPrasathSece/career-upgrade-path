@@ -17,11 +17,9 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
-  // Allow self‑signed certs in dev environments (optional)
   tls: { rejectUnauthorized: false },
 });
 
-// Verify SMTP connection on startup
 transporter.verify((error) => {
   if (error) {
     console.error("❌ SMTP connection failed:", error.message);
@@ -33,23 +31,13 @@ transporter.verify((error) => {
 app.post("/api/send-email", async (req, res) => {
   const { name, email, phone, course, message } = req.body;
 
-  console.log("\n─────────────────────────────────────");
-  console.log("📩 New enquiry received");
-  console.log(`   Name:    ${name}`);
-  console.log(`   Email:   ${email}`);
-  console.log(`   Phone:   ${phone || "N/A"}`);
-  console.log(`   Course:  ${course || "N/A"}`);
-  console.log(`   Message: ${message}`);
-  console.log("─────────────────────────────────────");
-
   if (!name || !email || !message) {
-    console.warn("⚠️  Missing required fields — email not sent");
     res.status(400).json({ error: "Missing required fields." });
     return;
   }
 
   try {
-    const info = await transporter.sendMail({
+    await transporter.sendMail({
       from: `"${name}" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       replyTo: email,
@@ -65,16 +53,14 @@ app.post("/api/send-email", async (req, res) => {
       `,
     });
 
-    console.log(`✅ Email sent successfully! Message ID: ${info.messageId}`);
     res.status(200).json({ success: true });
-  } catch (err: any) {
-    console.error("❌ Failed to send email:", err.message);
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : "Failed to send email.";
+    console.error("❌ Failed to send email:", message);
     res.status(500).json({ error: "Failed to send email." });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`\n🚀 Email server running at http://localhost:${PORT}`);
-  console.log(`   Sending to: ${process.env.CONTACT_EMAIL || process.env.SMTP_USER}`);
-  console.log(`   SMTP host:  ${process.env.SMTP_HOST}:${process.env.SMTP_PORT}\n`);
+  console.log(`\n🚀 Email server running at http://localhost:${PORT}\n`);
 });
