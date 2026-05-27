@@ -459,15 +459,8 @@ function AdminSubmissions() {
             </div>
 
             {/* Panel footer */}
-            <div className="px-5 py-4 border-t border-gray-200 bg-gray-50/50">
-              <button
-                onClick={() => handleDelete(selected.id)}
-                disabled={deleting === selected.id}
-                className="w-full flex items-center justify-center gap-2 py-2.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 rounded-xl text-sm font-medium transition"
-              >
-                <Trash2 className="h-4 w-4" />
-                {deleting === selected.id ? "Deleting..." : "Delete Submission"}
-              </button>
+            <div className="px-5 py-3 border-t border-gray-200 bg-gray-50/50 text-center">
+              <span className="text-gray-400 text-xs">Career Upgrade Admin</span>
             </div>
           </div>
         )}
