@@ -1,5 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import jwt from "jsonwebtoken";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const jwt = require("jsonwebtoken");
 import { pbkdf2Sync, randomBytes } from "crypto";
 import { getSupabase } from "../_lib/supabase";
 
@@ -37,6 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       .single();
 
     if (error || !data) {
+      console.error("Auth error:", error?.message || "User not found");
       return res.status(401).json({ error: "Invalid username or password." });
     }
 
@@ -54,7 +57,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const token = jwt.sign({ username, sub: data.id }, JWT_SECRET, { expiresIn: "7d" });
     return res.status(200).json({ token });
   } catch (e: any) {
-    console.error("Login error:", e.message);
-    return res.status(500).json({ error: "Login failed." });
+    console.error("Login crash:", e.message);
+    return res.status(500).json({ 
+      error: "Internal Server Error", 
+      details: e.message,
+      stack: process.env.NODE_ENV === "development" ? e.stack : undefined
+    });
   }
 }
