@@ -132,7 +132,7 @@ function Home() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                to="/apply"
                 className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5"
               >
                 Apply Now
@@ -405,13 +405,13 @@ function Home() {
             </div>
             <div className="flex flex-wrap gap-3 md:justify-end">
               <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition"
+                to="/apply"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-primary px-8 py-4 text-base font-semibold text-primary-foreground shadow-glow transition-all hover:-translate-y-1 sm:w-auto"
               >
-                Apply Now <ArrowRight className="h-4 w-4" />
+                Apply Now
               </Link>
               <Link
-                to="/courses"
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold hover:border-primary hover:text-primary transition"
               >
                 Explore Course

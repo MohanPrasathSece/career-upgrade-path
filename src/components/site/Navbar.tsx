@@ -104,10 +104,10 @@ export function Navbar() {
             <GoogleTranslate />
           <div className="hidden lg:block">
             <Link
-              to="/contact"
+              to="/apply"
               className="inline-flex items-center justify-center rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-soft transition hover:shadow-glow hover:-translate-y-0.5"
               onClick={() => {
-                if (window.location.pathname === "/contact") {
+                if (window.location.pathname === "/apply") {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
@@ -190,10 +190,10 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              to="/contact"
+              to="/apply"
               onClick={() => {
                 setOpen(false);
-                if (window.location.pathname === "/contact") {
+                if (window.location.pathname === "/apply") {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}

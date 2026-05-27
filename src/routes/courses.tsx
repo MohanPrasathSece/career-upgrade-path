@@ -369,9 +369,9 @@ function Courses() {
             <div className="md:text-right">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-semibold text-primary shadow-soft hover:-translate-y-0.5 transition"
+                className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-glow transition"
               >
-                Apply Now <ArrowRight className="h-4 w-4" />
+                Start Your Application <ArrowRight className="h-5 w-5" />
               </Link>
             </div>
           </div>

@@ -2,15 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import "./contact.css";
 import { useState } from "react";
 import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  MessageCircle,
-  Send,
-  CheckCircle2,
-  Loader2,
-  X,
+  Phone, Mail, MapPin, Clock, MessageCircle,
+  Send, CheckCircle2, Loader2, X,
 } from "lucide-react";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
@@ -22,8 +15,7 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact Career Upgrade Online Dental Nursing School - Speak With Admissions" },
       {
         name: "description",
-        content:
-          "Get in touch with our friendly UK admissions team. Phone, WhatsApp, email and a quick contact form to start your dental nursing journey.",
+        content: "Get in touch with our friendly UK admissions team. Phone, WhatsApp, email and a quick contact form to start your dental nursing journey.",
       },
       { property: "og:title", content: "Contact Career Upgrade Online Dental Nursing School" },
       { property: "og:description", content: "Speak with our admissions team today." },
@@ -36,12 +28,7 @@ export const Route = createFileRoute("/contact")({
 
 const info = [
   { icon: Phone, label: "Phone", value: "07944 624 039", href: "tel:+447944624039" },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "info@careerupgradedentalschool.co.uk",
-    href: "mailto:info@careerupgradedentalschool.co.uk",
-  },
+  { icon: Mail, label: "Email", value: "info@careerupgradedentalschool.co.uk", href: "mailto:info@careerupgradedentalschool.co.uk" },
   { icon: MapPin, label: "Address", value: "Capital Office, 124 City Road, London, EC1V 2NX" },
   { icon: Clock, label: "Working Hours", value: "Mon–Fri · 9:00 – 18:00" },
 ];
@@ -53,11 +40,7 @@ function Contact() {
   const [isSending, setIsSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    course: "Dental Nursing - 1 Year",
-    message: "",
+    name: "", email: "", phone: "", message: "",
   });
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -69,7 +52,7 @@ function Contact() {
     setIsSending(true);
     setError(null);
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("/api/enquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -78,8 +61,8 @@ function Contact() {
       setSubmittedName(form.name);
       setSubmittedEmail(form.email);
       setSent(true);
-      setForm({ name: "", email: "", phone: "", course: "Dental Nursing - 1 Year", message: "" });
-    } catch (err) {
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
       setError("Failed to send your message. Please try WhatsApp or email us directly.");
     } finally {
       setIsSending(false);
@@ -88,7 +71,7 @@ function Contact() {
 
   return (
     <SiteLayout>
-      {/* ── Success Modal ── */}
+      {/* Success Modal */}
       {sent && (
         <div
           className="fixed inset-0 z-[999] flex items-center justify-center p-4"
@@ -99,29 +82,21 @@ function Contact() {
             className="relative w-full max-w-md rounded-3xl bg-white p-10 shadow-2xl text-center animate-in fade-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close */}
-            <button
-              onClick={() => setSent(false)}
-              className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground hover:bg-secondary transition"
-              aria-label="Close"
-            >
+            <button onClick={() => setSent(false)} className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-border text-muted-foreground hover:bg-secondary transition" aria-label="Close">
               <X className="h-4 w-4" />
             </button>
-
-            {/* Check icon */}
             <div className="mx-auto mb-5 grid h-20 w-20 place-items-center rounded-full bg-gradient-primary shadow-glow">
               <CheckCircle2 className="h-10 w-10 text-primary-foreground" />
             </div>
-
             <h2 className="font-display text-2xl font-bold text-foreground">Enquiry Received!</h2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Thanks for reaching out, <span className="font-semibold text-foreground">{submittedName}</span>. Our admissions team will get back to you soon.
+              Thanks for reaching out, <span className="font-semibold text-foreground">{submittedName}</span>. Our admissions team will get back to you within <span className="font-semibold text-primary">1 working hour</span>.
             </p>
-
-            <button
-              onClick={() => setSent(false)}
-              className="mt-6 w-full rounded-full bg-gradient-primary py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 active:scale-95 transition-all duration-200"
-            >
+            <div className="mt-5 rounded-2xl bg-secondary p-4 text-sm text-left space-y-1.5">
+              <p><span className="font-semibold">Name:</span> {submittedName}</p>
+              <p><span className="font-semibold">Email:</span> {submittedEmail}</p>
+            </div>
+            <button onClick={() => setSent(false)} className="mt-6 w-full rounded-full bg-gradient-primary py-3.5 text-sm font-semibold text-primary-foreground shadow-soft hover:shadow-glow hover:-translate-y-0.5 active:scale-95 transition-all duration-200">
               Done
             </button>
           </div>
@@ -144,24 +119,14 @@ function Contact() {
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-soft">
                   <c.icon className="h-5 w-5" />
                 </span>
-                <p className="mt-5 text-xs font-bold uppercase tracking-wider text-primary">
-                  {c.label}
-                </p>
+                <p className="mt-5 text-xs font-bold uppercase tracking-wider text-primary">{c.label}</p>
                 <p className="mt-1 font-display font-bold text-foreground break-words">{c.value}</p>
               </>
             );
             return c.href ? (
-              <a
-                key={c.label}
-                href={c.href}
-                className="rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-card hover:border-primary/40"
-              >
-                {inner}
-              </a>
+              <a key={c.label} href={c.href} className="rounded-2xl border border-border bg-card p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-card hover:border-primary/40">{inner}</a>
             ) : (
-              <div key={c.label} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
-                {inner}
-              </div>
+              <div key={c.label} className="rounded-2xl border border-border bg-card p-6 shadow-soft">{inner}</div>
             );
           })}
         </div>
@@ -175,124 +140,49 @@ function Contact() {
             <h2 className="mt-4 font-display text-[22px] font-bold md:text-3xl">
               We typically reply within 1 working hour
             </h2>
-
             <form onSubmit={onSubmit} className="mt-7 grid gap-4">
               <div className="grid gap-4 md:grid-cols-2">
                 <Field label="Full Name" required>
-                  <input
-                    type="text"
-                    required
-                    maxLength={100}
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="input"
-                    placeholder="Jane Smith"
-                  />
+                  <input type="text" required maxLength={100} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="input" placeholder="Jane Smith" />
                 </Field>
                 <Field label="Email" required>
-                  <input
-                    type="email"
-                    required
-                    maxLength={150}
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="input"
-                    placeholder="you@email.com"
-                  />
+                  <input type="email" required maxLength={150} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="input" placeholder="you@email.com" />
                 </Field>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
                 <Field label="Phone Number">
-                  <input
-                    type="tel"
-                    maxLength={20}
-                    value={form.phone}
-                    onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                    className="input"
-                    placeholder="07XXX XXXXXX"
-                  />
-                </Field>
-                <Field label="Course Interest">
-                  <select
-                    value={form.course}
-                    onChange={(e) => setForm({ ...form, course: e.target.value })}
-                    className="input"
-                  >
-                    <option>Dental Nursing - 1 Year</option>
-                    <option>Government Funded Route</option>
-                    <option>Just exploring</option>
-                  </select>
+                  <input type="tel" maxLength={20} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="input" placeholder="07XXX XXXXXX" />
                 </Field>
               </div>
               <Field label="Message" required>
-                <textarea
-                  required
-                  maxLength={1000}
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="input resize-none"
-                  placeholder="Tell us a little about yourself and your goals…"
-                />
+                <textarea required maxLength={1000} rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="input resize-none" placeholder="Tell us a little about yourself and your goals…" />
               </Field>
-
               <div className="flex flex-wrap items-center gap-3 pt-2">
-                <button
-                  disabled={isSending}
-                  type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-200 hover:shadow-glow hover:-translate-y-1 hover:brightness-110 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-soft disabled:hover:brightness-100"
-                >
-                  {isSending ? (
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                  ) : (
-                    <Send className="h-4 w-4" />
-                  )}
+                <button disabled={isSending} type="submit" className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-soft transition-all duration-200 hover:shadow-glow hover:-translate-y-1 hover:brightness-110 active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-soft disabled:hover:brightness-100">
+                  {isSending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
                   {isSending ? "Sending..." : "Send Enquiry"}
                 </button>
-                <a
-                  href="https://wa.me/447944624039?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold hover:border-primary hover:text-primary transition"
-                >
+                <a href="https://wa.me/447944624039?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold hover:border-primary hover:text-primary transition">
                   <MessageCircle className="h-4 w-4" /> WhatsApp Us
                 </a>
               </div>
-
               {error && (
-                <div className="mt-2 flex items-center gap-3 rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm font-medium text-destructive">
-                  {error}
-                </div>
+                <div className="mt-2 flex items-center gap-3 rounded-xl border border-destructive/30 bg-destructive/10 p-4 text-sm font-medium text-destructive">{error}</div>
               )}
             </form>
           </div>
 
           <div className="flex flex-col gap-5">
             <div className="overflow-hidden rounded-3xl border border-border shadow-card">
-              <iframe
-                title="Career Upgrade office location"
-                src="https://www.google.com/maps?q=124+City+Road%2C+London%2C+EC1V+2NX&output=embed"
-                className="h-[340px] w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              <iframe title="Career Upgrade office location" src="https://www.google.com/maps?q=124+City+Road%2C+London%2C+EC1V+2NX&output=embed" className="h-[340px] w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>
             <div className="rounded-3xl border border-border bg-gradient-soft p-7 shadow-soft">
               <h3 className="font-display text-xl font-bold">Quick response, real humans</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Our admissions team replies within 1 working hour during opening times. For urgent
-                enquiries, message us on WhatsApp.
-              </p>
+              <p className="mt-2 text-sm text-muted-foreground">Our admissions team replies within 1 working hour during opening times. For urgent enquiries, message us on WhatsApp.</p>
               <ul className="mt-5 space-y-2 text-sm">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary" /> Free 1:1 consultation
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary" /> Personalised funding plan
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-primary" /> No obligation
-                </li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-primary" /> Free 1:1 consultation</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-primary" /> Personalised funding plan</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-primary" /> No obligation</li>
               </ul>
             </div>
           </div>
@@ -304,25 +194,13 @@ function Contact() {
         <div className="relative overflow-hidden rounded-[2rem] bg-gradient-primary p-10 text-primary-foreground shadow-glow md:p-16">
           <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-lemon/40 blur-3xl" />
           <div className="relative text-center">
-            <h2 className="font-display text-3xl font-bold text-balance md:text-4xl">
-              Speak With Our Admissions Team Today
-            </h2>
-            <p className="mt-4 opacity-90">
-              Call us, message us, or send the form - we're ready to help you start.
-            </p>
+            <h2 className="font-display text-3xl font-bold text-balance md:text-4xl">Speak With Our Admissions Team Today</h2>
+            <p className="mt-4 opacity-90">Call us, message us, or send the form - we're ready to help you start.</p>
             <div className="mt-7 flex flex-wrap justify-center gap-3">
-              <a
-                href="tel:+447944624039"
-                className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-semibold text-primary shadow-soft hover:-translate-y-0.5 transition"
-              >
+              <a href="tel:+447944624039" className="inline-flex items-center gap-2 rounded-full bg-card px-7 py-3.5 text-sm font-semibold text-primary shadow-soft hover:-translate-y-0.5 transition">
                 <Phone className="h-4 w-4" /> Call Admissions
               </a>
-              <a
-                href="https://wa.me/447944624039?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-white/20 transition"
-              >
+              <a href="https://wa.me/447944624039?text=Hi%20Career%20Upgrade%2C%20I%27m%20interested%20in%20your%20Dental%20Nursing%20course." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-white/20 transition">
                 <MessageCircle className="h-4 w-4" /> WhatsApp
               </a>
             </div>
@@ -333,15 +211,7 @@ function Contact() {
   );
 }
 
-function Field({
-  label,
-  required,
-  children,
-}: {
-  label: string;
-  required?: boolean;
-  children: React.ReactNode;
-}) {
+function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
     <label className="block">
       <span className="mb-1.5 block text-sm font-semibold text-foreground/85">

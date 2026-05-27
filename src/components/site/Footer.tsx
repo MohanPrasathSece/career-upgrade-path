@@ -130,6 +130,11 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} Career Upgrade. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-primary transition">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-primary transition">Terms &amp; Conditions</Link>
+            <Link to="/admin/login" className="hover:text-primary transition">Admin Login</Link>
+          </div>
           <p>
             Developed by{" "}
             <a
