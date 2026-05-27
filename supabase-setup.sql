@@ -97,6 +97,6 @@ create policy "Service role full access on admin_users"
   on public.admin_users for all using (true) with check (true);
 
 -- Default admin credentials — CREATE VIA API AFTER DEPLOYMENT
--- Use the /api/admin/login endpoint with username "admin" and password "Admin@2025"
+-- Use the /api/admin/login endpoint with username "admin" and password "CareerUpgradeAdmin@2026"
 -- The password will be automatically hashed on first login.
 -- Or run: INSERT INTO public.admin_users (username, password) VALUES ('admin', 'plaintext-for-first-login');

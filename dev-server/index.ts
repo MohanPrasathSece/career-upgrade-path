@@ -1,12 +1,12 @@
+import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import nodemailer from "nodemailer";
 import { createClient } from "@supabase/supabase-js";
-import { config } from "dotenv";
-import jwt from "jsonwebtoken";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const jwt = require("jsonwebtoken");
 import { randomBytes, pbkdf2Sync } from "crypto";
-
-config();
 
 const app = express();
 const PORT = process.env.SERVER_PORT || 3001;
