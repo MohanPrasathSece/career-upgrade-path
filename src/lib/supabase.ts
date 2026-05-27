@@ -10,9 +10,15 @@ export type Submission = {
   name: string;
   email: string;
   phone: string | null;
+  address: string | null;
+  date_of_birth: string | null;
   course: string | null;
+  funding_type: string | null;
+  when_to_start: string | null;
+  additional_info: string | null;
   message: string;
   is_read: boolean;
   notes: string | null;
+  status: string;
   created_at: string;
 };

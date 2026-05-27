@@ -82,7 +82,7 @@ function AdminSubmissions() {
       setSubmissions((prev) => prev.filter((s) => s.id !== id));
       if (selected?.id === id) setSelected(null);
     } catch (e: any) {
-      alert(e.message);
+      setError(e.message || "Failed to delete submission.");
     } finally {
       setDeleting(null);
     }

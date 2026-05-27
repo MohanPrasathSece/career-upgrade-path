@@ -56,7 +56,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     await transporter.sendMail({
-      from: `"${full_name}" <${process.env.SMTP_USER}>`,
+      from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       replyTo: email,
       subject: `New Application from ${full_name}`,

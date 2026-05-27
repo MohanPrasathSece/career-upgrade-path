@@ -84,7 +84,7 @@ function AdminApplications() {
       setApplications((prev) => prev.filter((a) => a.id !== id));
       if (selected?.id === id) setSelected(null);
     } catch (e: any) {
-      alert(e.message);
+      setError(e.message || "Failed to delete application.");
     } finally {
       setDeleting(null);
     }

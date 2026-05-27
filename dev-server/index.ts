@@ -3,11 +3,28 @@ import cors from "cors";
 import nodemailer from "nodemailer";
 import { createClient } from "@supabase/supabase-js";
 import { config } from "dotenv";
+import jwt from "jsonwebtoken";
+import { randomBytes, pbkdf2Sync } from "crypto";
 
 config();
 
 const app = express();
 const PORT = process.env.SERVER_PORT || 3001;
+const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
+
+// ── Password hashing ──────────────────────────────────────────────────────────
+function hashPassword(password: string): string {
+  const salt = randomBytes(16).toString("hex");
+  const hash = pbkdf2Sync(password, salt, 100000, 64, "sha512").toString("hex");
+  return `${salt}:${hash}`;
+}
+
+function verifyPassword(password: string, stored: string): boolean {
+  const [salt, hash] = stored.split(":");
+  if (!salt || !hash) return false;
+  const computed = pbkdf2Sync(password, salt, 100000, 64, "sha512").toString("hex");
+  return hash === computed;
+}
 
 app.use(cors({ origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"] }));
 app.use(express.json());
@@ -43,23 +60,7 @@ async function requireAdmin(req: express.Request, res: express.Response, next: e
     return;
   }
   try {
-    // Token is base64 encoded "username:password"
-    const decoded = Buffer.from(token, "base64").toString("utf-8");
-    const [username, password] = decoded.split(":");
-    if (!username || !password) throw new Error("Invalid token");
-
-    const supabase = getSupabase();
-    const { data, error } = await supabase
-      .from("admin_users")
-      .select("id")
-      .eq("username", username)
-      .eq("password", password)
-      .single();
-
-    if (error || !data) {
-      res.status(401).json({ error: "Unauthorized" });
-      return;
-    }
+    jwt.verify(token, JWT_SECRET);
     next();
   } catch {
     res.status(401).json({ error: "Unauthorized" });
@@ -137,7 +138,7 @@ app.post("/api/send-email", async (req, res) => {
   // Send email
   try {
     const info = await transporter.sendMail({
-      from: `"${name}" <${process.env.SMTP_USER}>`,
+      from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       replyTo: email,
       subject: `New Enquiry from ${name}`,
@@ -179,7 +180,7 @@ app.post("/api/enquiries", async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: `"${name}" <${process.env.SMTP_USER}>`,
+      from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       replyTo: email,
       subject: `New Enquiry from ${name}`,
@@ -285,7 +286,7 @@ app.post("/api/apply", async (req, res) => {
   // Send email
   try {
     await transporter.sendMail({
-      from: `"${full_name}" <${process.env.SMTP_USER}>`,
+      from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       replyTo: email,
       subject: `New Application from ${full_name}`,
@@ -382,12 +383,25 @@ app.post("/api/admin/login", async (req, res) => {
       .eq("username", username)
       .single();
 
-    if (error || !data || data.password !== password) {
+    if (error || !data) {
       res.status(401).json({ error: "Invalid username or password." });
       return;
     }
 
-    const token = Buffer.from(`${username}:${password}`).toString("base64");
+    // Support both hashed and plaintext (migration period)
+    let passwordValid = false;
+    if (data.password.includes(":")) {
+      passwordValid = verifyPassword(password, data.password);
+    } else {
+      passwordValid = data.password === password;
+    }
+
+    if (!passwordValid) {
+      res.status(401).json({ error: "Invalid username or password." });
+      return;
+    }
+
+    const token = jwt.sign({ username, sub: data.id }, JWT_SECRET, { expiresIn: "7d" });
     console.log(`✅ Admin login: ${username}`);
     res.json({ token });
   } catch (e: any) {
@@ -396,6 +410,25 @@ app.post("/api/admin/login", async (req, res) => {
   }
 });
 
+// ── Startup: migrate plaintext passwords ───────────────────────────────────
+async function migrateAdminPasswords() {
+  try {
+    const supabase = getSupabase();
+    const { data } = await supabase.from("admin_users").select("id, username, password");
+    if (!data) return;
+    for (const user of data) {
+      if (user.password && !user.password.includes(":")) {
+        const hashed = hashPassword(user.password);
+        await supabase.from("admin_users").update({ password: hashed }).eq("id", user.id);
+        console.log(`🔐 Migrated password for ${user.username}`);
+      }
+    }
+  } catch (e: any) {
+    console.error("Password migration error:", e.message);
+  }
+}
+
 app.listen(PORT, () => {
   console.log(`\n🚀 Server running at http://localhost:${PORT}`);
+  migrateAdminPasswords();
 });

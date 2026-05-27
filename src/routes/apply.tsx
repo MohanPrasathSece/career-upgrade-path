@@ -50,9 +50,10 @@ function ApplyPage() {
     phone: "",
     address: "",
     date_of_birth: "",
+    course: "" as string,
     funding_type: "" as "Government Funded" | "Fee Paying" | "",
     when_to_start: "",
-    message: "",
+    additional_info: "",
   });
 
   const set = (field: string, value: string) =>
@@ -81,7 +82,7 @@ function ApplyPage() {
       setSent(true);
       setForm({
         full_name: "", email: "", phone: "", address: "",
-        date_of_birth: "", funding_type: "", when_to_start: "", message: "",
+        date_of_birth: "", course: "", funding_type: "", when_to_start: "", additional_info: "",
       });
     } catch {
       setError("Failed to submit your application. Please try WhatsApp or email us directly.");
@@ -183,6 +184,12 @@ function ApplyPage() {
 
               {/* Course */}
               <div className="grid gap-4 md:grid-cols-2">
+                <Field label="Course" required>
+                  <select value={form.course} onChange={(e) => set("course", e.target.value)} className="input" required>
+                    <option value="">Select a course...</option>
+                    {COURSES.map((c) => <option key={c}>{c}</option>)}
+                  </select>
+                </Field>
                 <Field label="When do you want to start?">
                   <select value={form.when_to_start} onChange={(e) => set("when_to_start", e.target.value)} className="input">
                     <option value="">Select...</option>
@@ -219,10 +226,10 @@ function ApplyPage() {
                 </div>
               </Field>
 
-              {/* Message */}
+              {/* Additional Info */}
               <Field label="Additional Information">
-                <textarea maxLength={1000} rows={4} value={form.message}
-                  onChange={(e) => set("message", e.target.value)}
+                <textarea maxLength={1000} rows={4} value={form.additional_info}
+                  onChange={(e) => set("additional_info", e.target.value)}
                   className="input resize-none"
                   placeholder="Tell us about your background, experience, and goals…" />
               </Field>
