@@ -125,9 +125,9 @@ function Courses() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Our Course & Funding"
-        title="NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing"
-        subtitle="A 1-year flexible online UK qualification (610/3114/8) leading directly to GDC registration. Explore transparent funding options designed to remove barriers."
+        eyebrow="Courses & Funding"
+        title="Dental Nursing Course & Funding Options"
+        subtitle="A 1-year flexible UK dental nursing qualification, online, with funding options designed to remove barriers - so you can focus on your future."
         image={coursesImg}
       />
 
