@@ -17,7 +17,14 @@ export const Route = createFileRoute("/admin/submissions")({
   component: AdminSubmissions,
 });
 
-const COURSES = ["All", "Dental Nursing - 1 Year", "Government Funded Route", "Just exploring", "Other / Not sure"];
+const COURSES = [
+  "All",
+  "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing",
+  "Dental Nursing - 1 Year",
+  "Government Funded Route",
+  "Just exploring",
+  "Other / Not sure"
+];
 const STATUS = ["All", "Unread", "Read"];
 
 function Badge({ children, color }: { children: React.ReactNode; color: string }) {

@@ -18,7 +18,13 @@ export const Route = createFileRoute("/admin/applications")({
   component: AdminApplications,
 });
 
-const COURSES = ["All", "Dental Nursing - 1 Year", "Government Funded Route", "Other / Not sure"];
+const COURSES = [
+  "All",
+  "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing",
+  "Dental Nursing - 1 Year",
+  "Government Funded Route",
+  "Other / Not sure"
+];
 const STATUS = ["All", "Unread", "Read"];
 const FUNDING_TYPES = ["All", "Government Funded", "Fee Paying"];
 

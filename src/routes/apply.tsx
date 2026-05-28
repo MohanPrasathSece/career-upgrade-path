@@ -26,9 +26,7 @@ export const Route = createFileRoute("/apply")({
 });
 
 const COURSES = [
-  "Dental Nursing - 1 Year",
-  "Government Funded Route",
-  "Other / Not sure",
+  "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing",
 ];
 
 const START_OPTIONS = [
@@ -50,7 +48,7 @@ function ApplyPage() {
     phone: "",
     address: "",
     date_of_birth: "",
-    course: "" as string,
+    course: "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing" as string,
     funding_type: "" as "Government Funded" | "Fee Paying" | "",
     when_to_start: "",
     additional_info: "",

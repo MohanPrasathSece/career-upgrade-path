@@ -125,9 +125,9 @@ function Courses() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Courses & Funding"
-        title="Dental Nursing Course & Funding Options"
-        subtitle="A 1-year flexible UK dental nursing qualification, online, with funding options designed to remove barriers - so you can focus on your future."
+        eyebrow="Our Course & Funding"
+        title="NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing"
+        subtitle="A 1-year flexible online UK qualification (610/3114/8) leading directly to GDC registration. Explore transparent funding options designed to remove barriers."
         image={coursesImg}
       />
 
@@ -141,9 +141,7 @@ function Courses() {
                 One year. Online. Built around you.
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Our flagship course leads to a dental nursing qualification and a clear path to
-                General Dental Council registration. Designed for ages 16+, with rolling start
-                dates, expert support and everything included.
+                This fully accredited qualification (Course Code: 610/3114/8) leads to a professional dental nursing qualification and a clear path to General Dental Council (GDC) registration. Designed for ages 16+ with rolling intakes, tutor support, and exam fees included.
               </p>
               <Link
                 to="/contact"
@@ -177,7 +175,7 @@ function Courses() {
             Career Progression After Qualifying
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            The NCFE Level 3 Diploma in Dental Nursing is a strong option if you want to:
+            The NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing is a strong option if you want to:
           </p>
         </div>
         <div className="mt-12 mx-auto max-w-4xl">
@@ -210,7 +208,7 @@ function Courses() {
                 Even become a dentist later with further study
               </h3>
               <p className="mt-3 text-sm text-primary/80 leading-relaxed max-w-2xl mx-auto">
-                Your NCFE Level 3 Diploma is more than just a qualification; it is the first step on a rewarding career path that can take you to the very top of the dental profession.
+                Your NCFE CACHE Level 3 Diploma is more than just a qualification; it is the first step on a rewarding career path that can take you to the very top of the dental profession.
               </p>
             </div>
           </div>
