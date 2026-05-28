@@ -140,8 +140,8 @@ function Courses() {
               <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
                 One year. Online. Built around you.
               </h2>
-              <p className="mt-4 text-muted-foreground">
-                This fully accredited qualification (Course Code: 610/3114/8) leads to a professional dental nursing qualification and a clear path to General Dental Council (GDC) registration. Designed for ages 16+ with rolling intakes, tutor support, and exam fees included.
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Our fully accredited course, the <strong>NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing (610/3114/8)</strong>, leads to a professional dental nursing qualification and a clear path to General Dental Council (GDC) registration. Designed for ages 16+ with rolling intakes, tutor support, and exam fees included.
               </p>
               <Link
                 to="/contact"
@@ -217,10 +217,13 @@ function Courses() {
 
       {/* What students learn */}
       <Section>
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <SectionEyebrow>What You'll Learn</SectionEyebrow>
-          <p className="mt-4 text-muted-foreground">
-            Full curriculum details coming soon. Get in touch with our admissions team for more information.
+          <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl">
+            Course Curriculum
+          </h2>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            The curriculum of the <strong>NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing (610/3114/8)</strong> is designed to equip you with the essential clinical knowledge and patient care skills required to succeed in a professional dental career:
           </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -292,9 +295,8 @@ function Courses() {
             <h2 className="mt-4 font-display text-[22px] font-bold sm:text-3xl md:text-4xl">
               Earn from day one as a trainee dental nurse
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Many of our students train in real UK dental practices while studying. You build
-              experience, contacts and income - and many employers contribute towards course fees.
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              While studying the <strong>NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing (610/3114/8)</strong>, you can work as a trainee dental nurse in real UK dental practices. You build clinical hours, hands-on experience, and earn an income from day one - and many employers contribute towards course fees.
             </p>
             <ul className="mt-6 space-y-3">
               {[
