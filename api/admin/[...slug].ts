@@ -7,7 +7,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
-  const slug = (req.query.slug || []) as string[];
+  // Extract slug segments from req.url pathname to ensure 100% robust routing on Vercel
+  const url = new URL(req.url || "", `http://${req.headers.host || "localhost"}`);
+  const segments = url.pathname.split("/").filter(Boolean);
+  const adminIndex = segments.indexOf("admin");
+  const slug = adminIndex !== -1 ? segments.slice(adminIndex + 1) : [];
+
   const resource = slug[0]; // "submissions" or "applications"
   const id = slug[1];
   const action = slug[2];

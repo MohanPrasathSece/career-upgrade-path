@@ -79,7 +79,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
   );
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-gray-50 overflow-hidden notranslate">
       {/* Desktop sidebar */}
       <div className="hidden lg:flex lg:w-64 lg:flex-shrink-0">
         <div className="w-full">

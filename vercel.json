@@ -4,6 +4,8 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "routes": [
+    { "src": "/api/admin/login", "dest": "/api/admin/login.ts" },
+    { "src": "/api/admin/(.*)", "dest": "/api/admin/[...slug].ts" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
