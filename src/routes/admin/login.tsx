@@ -25,7 +25,16 @@ function AdminLogin() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-      const data = await res.json();
+
+      let data;
+      const contentType = res.headers.get("content-type");
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        const text = await res.text();
+        throw new Error(text || `Server error: ${res.status} ${res.statusText}`);
+      }
+
       if (!res.ok) throw new Error(data.error || "Invalid credentials");
       localStorage.setItem("admin_token", data.token);
       navigate({ to: "/admin/submissions" });

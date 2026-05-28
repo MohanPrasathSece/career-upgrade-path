@@ -1,6 +1,4 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 import type { VercelRequest } from "@vercel/node";
 
 const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-change-me";
