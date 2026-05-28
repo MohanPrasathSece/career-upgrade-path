@@ -5,13 +5,15 @@ import {
   Menu,
   GraduationCap,
   ClipboardList,
+  LayoutDashboard,
 } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@/assets/icon.png";
 
 const navItems = [
+  { to: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { to: "/admin/applications", icon: ClipboardList, label: "Applications" },
-  { to: "/admin/submissions", icon: Inbox, label: "Enquiry" },
+  { to: "/admin/submissions", icon: Inbox, label: "Enquiries" },
 ];
 
 export function AdminLayout({ children }: { children: React.ReactNode }) {

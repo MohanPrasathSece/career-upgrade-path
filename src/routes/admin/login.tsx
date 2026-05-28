@@ -39,7 +39,7 @@ function AdminLogin() {
         throw new Error(data.details ? `${data.error} (${data.details})` : (data.error || "Invalid credentials"));
       }
       localStorage.setItem("admin_token", data.token);
-      navigate({ to: "/admin/submissions" });
+      navigate({ to: "/admin/dashboard" });
     } catch (err: any) {
       setError(err.message);
     } finally {
