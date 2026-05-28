@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import jwt from "jsonwebtoken";
 import { pbkdf2Sync, randomBytes } from "crypto";
-import { getSupabase } from "../_lib/supabase";
+import { getSupabase } from "../_lib/supabase.js";
 
 console.log("Login API module loaded");
 
