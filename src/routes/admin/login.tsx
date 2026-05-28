@@ -35,7 +35,9 @@ function AdminLogin() {
         throw new Error(text || `Server error: ${res.status} ${res.statusText}`);
       }
 
-      if (!res.ok) throw new Error(data.error || "Invalid credentials");
+      if (!res.ok) {
+        throw new Error(data.details ? `${data.error} (${data.details})` : (data.error || "Invalid credentials"));
+      }
       localStorage.setItem("admin_token", data.token);
       navigate({ to: "/admin/submissions" });
     } catch (err: any) {
