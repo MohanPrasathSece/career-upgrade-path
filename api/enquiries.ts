@@ -56,6 +56,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   });
 
   try {
+    // 1. Send notification email to Admin
     await transporter.sendMail({
       from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
@@ -76,6 +77,42 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         <p><strong>Message:</strong><br/>${String(message).replace(/\n/g, "<br/>")}</p>
       `,
     });
+
+    // 2. Send beautiful confirmation receipt back to the student
+    await transporter.sendMail({
+      from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: `We have received your enquiry! — Career Upgrade`,
+      text: `Hi ${name},\n\nThank you for contacting Career Upgrade Dental School!\n\nWe have successfully received your enquiry.\n\nOur team will review your message and get back to you with an answer within the next 24 hours.\n\nBest regards,\nSupport Team\nCareer Upgrade Dental School`,
+      html: `
+        <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 30px 20px; border: 1px solid #e2e8f0; border-radius: 16px; background-color: #ffffff;">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <h2 style="color: #2563eb; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px;">Career Upgrade</h2>
+            <p style="color: #64748b; margin: 4px 0 0 0; font-size: 14px; font-weight: 500;">Online Dental Nursing School UK</p>
+          </div>
+          <div style="background-color: #f8fafc; border-radius: 12px; padding: 24px; border: 1px solid #f1f5f9; margin-bottom: 24px;">
+            <p style="color: #0f172a; font-size: 16px; font-weight: 600; margin-top: 0; margin-bottom: 12px;">Hi ${name},</p>
+            <p style="color: #334155; font-size: 14.5px; line-height: 1.6; margin: 0 0 16px 0;">
+              Thank you for contacting <strong>Career Upgrade Dental School</strong>! We have successfully received your message and enquiry details.
+            </p>
+            <p style="color: #334155; font-size: 14.5px; line-height: 1.6; margin: 0;">
+              Our student support team is already reviewing your request. We will reach out to you with an answer via email or phone within the next <strong>24 hours</strong>.
+            </p>
+          </div>
+          <div style="text-align: center; margin-bottom: 24px;">
+            <p style="color: #475569; font-size: 14px; margin: 0;">If you have any further details to add, please reply directly to this email.</p>
+          </div>
+          <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 24px 0;" />
+          <div style="text-align: center;">
+            <p style="color: #94a3b8; font-size: 12px; margin: 0; line-height: 1.5;">
+              This is an automated confirmation of your enquiry receipt.<br/>
+              Career Upgrade Dental School · Support Team
+            </p>
+          </div>
+        </div>
+      `,
+    });
+
     return res.status(200).json({ success: true });
   } catch (err: any) {
     console.error("Email error:", err.message);
