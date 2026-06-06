@@ -89,21 +89,21 @@ export function Footer() {
                   href="tel:+447944624039"
                   className="flex items-start gap-2.5 hover:text-primary transition"
                 >
-                  <Phone className="mt-0.5 h-4 w-4 text-primary" />
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                   <span>07944 624 039</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@careerupgradedentalnursing-school.co.uk"
+                  href="mailto:info@careerupgradedentalnursingschool.co.uk"
                   className="flex items-start gap-2.5 hover:text-primary transition"
                 >
-                  <Mail className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>info@careerupgradedentalnursing-school.co.uk</span>
+                  <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                  <span>info@careerupgrade&shy;dentalnursing&shy;school.co.uk</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 h-4 w-4 text-primary" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <span>Capital Office, 124 City Road, London, EC1V 2NX</span>
               </li>
             </ul>

@@ -8,4 +8,4 @@ Disallow: /admin/dashboard
 Disallow: /admin/submissions
 Disallow: /admin/applications
 
-Sitemap: https://careerupgradedentalnursing-school.co.uk/sitemap.xml
+Sitemap: https://careerupgradedentalnursingschool.co.uk/sitemap.xml

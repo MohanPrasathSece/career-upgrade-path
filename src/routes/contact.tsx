@@ -18,20 +18,20 @@ export const Route = createFileRoute("/contact")({
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Contact Career Upgrade | UK Dental Nursing Admissions" },
       { property: "og:description", content: "Speak with our UK admissions team about dental nursing courses, funding and start dates. We reply within 1 working hour." },
-      { property: "og:url", content: "https://careerupgradedentalnursing-school.co.uk/contact" },
-      { property: "og:image", content: "https://careerupgradedentalnursing-school.co.uk/og-image.png" },
+      { property: "og:url", content: "https://careerupgradedentalnursingschool.co.uk/contact" },
+      { property: "og:image", content: "https://careerupgradedentalnursingschool.co.uk/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Contact Career Upgrade | Dental Nursing Admissions" },
       { name: "twitter:description", content: "Speak with our UK admissions team. We reply within 1 working hour." },
     ],
-    links: [{ rel: "canonical", href: "https://careerupgradedentalnursing-school.co.uk/contact" }],
+    links: [{ rel: "canonical", href: "https://careerupgradedentalnursingschool.co.uk/contact" }],
   }),
   component: Contact,
 });
 
 const info = [
   { icon: Phone, label: "Phone", value: "07944 624 039", href: "tel:+447944624039" },
-  { icon: Mail, label: "Email", value: "info@careerupgradedentalnursing-school.co.uk", href: "mailto:info@careerupgradedentalnursing-school.co.uk" },
+  { icon: Mail, label: "Email", value: "info@careerupgrade\u00ADdentalnursing\u00ADschool.co.uk", href: "mailto:info@careerupgradedentalnursingschool.co.uk" },
   { icon: MapPin, label: "Address", value: "Capital Office, 124 City Road, London, EC1V 2NX" },
   { icon: Clock, label: "Working Hours", value: "Mon–Fri · 9:00 – 18:00" },
 ];
