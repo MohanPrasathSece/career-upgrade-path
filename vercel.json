@@ -3,7 +3,14 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
+  "crons": [
+    {
+      "path": "/api/keep-alive",
+      "schedule": "0 9 */3 * *"
+    }
+  ],
   "routes": [
+    { "src": "/api/keep-alive", "dest": "/api/keep-alive.ts" },
     { "src": "/api/admin/login", "dest": "/api/admin/login.ts" },
     { "src": "/api/admin/(.*)", "dest": "/api/admin/[...slug].ts" },
     { "handle": "filesystem" },

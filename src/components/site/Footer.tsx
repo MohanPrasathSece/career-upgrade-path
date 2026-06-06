@@ -133,7 +133,6 @@ export function Footer() {
           <div className="flex items-center gap-4">
             <Link to="/privacy-policy" className="hover:text-primary transition">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-primary transition">Terms &amp; Conditions</Link>
-            <Link to="/admin/login" className="hover:text-primary transition">Admin Login</Link>
           </div>
           <p>
             Developed by{" "}
