@@ -40,9 +40,9 @@ export function Navbar() {
         <div className="w-full bg-primary text-primary-foreground text-xs py-1">
           <div className="mx-auto relative flex max-w-7xl items-center justify-center px-5 md:px-8 min-h-[28px]">
             <div className="flex items-center justify-center gap-4 md:gap-6">
-              <a href="mailto:info@careerupgrade.com" className="flex items-center gap-1.5 hover:opacity-80 transition">
+              <a href="mailto:info@careerupgradedentalnursing-school.co.uk" className="flex items-center gap-1.5 hover:opacity-80 transition">
                 <Mail className="h-3.5 w-3.5" />
-                <span>info@careerupgrade.com</span>
+                <span>info@careerupgradedentalnursing-school.co.uk</span>
               </a>
               <a href="tel:+447944624039" className="flex items-center gap-1.5 hover:opacity-80 transition">
                 <Phone className="h-3.5 w-3.5" />

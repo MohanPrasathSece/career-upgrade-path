@@ -11,16 +11,19 @@ import applyImg from "@/assets/images/courses_hero_dental.png";
 export const Route = createFileRoute("/apply")({
   head: () => ({
     meta: [
-      { title: "Apply Now - Career Upgrade Online Dental Nursing School" },
-      {
-        name: "description",
-        content: "Apply for the UK Dental Nursing course. Fill in your details and our admissions team will be in touch within 1 working hour.",
-      },
-      { property: "og:title", content: "Apply Now - Career Upgrade Online Dental Nursing School" },
-      { property: "og:description", content: "Start your dental nursing journey today." },
-      { property: "og:url", content: "/apply" },
+      { title: "Apply for Dental Nurse Training UK | Start Your Application | Career Upgrade" },
+      { name: "description", content: "Apply now for the UK online dental nursing course. Government funded and fee-paying routes available. Aged 16+, no experience needed. Our team replies within 1 hour." },
+      { name: "keywords", content: "apply dental nurse course UK, dental nurse application UK, enrol dental nursing school, government funded dental nurse application" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Apply for Dental Nurse Training UK | Career Upgrade" },
+      { property: "og:description", content: "Apply now for the UK online dental nursing course. Government funded routes available. Aged 16+, no experience needed." },
+      { property: "og:url", content: "https://careerupgradedentalnursing-school.co.uk/apply" },
+      { property: "og:image", content: "https://careerupgradedentalnursing-school.co.uk/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Apply for Dental Nurse Training | Career Upgrade UK" },
+      { name: "twitter:description", content: "Apply now for the UK online dental nursing course. Government funded routes available." },
     ],
-    links: [{ rel: "canonical", href: "/apply" }],
+    links: [{ rel: "canonical", href: "https://careerupgradedentalnursing-school.co.uk/apply" }],
   }),
   component: ApplyPage,
 });

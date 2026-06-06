@@ -8,31 +8,19 @@ import faqImg from "@/assets/images/courses_hero_dental.png";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ & Information - Career Upgrade Online Dental Nursing School" },
-      {
-        name: "description",
-        content:
-          "Answers to common questions about our UK online dental nursing course, payment plans and study requirements.",
-      },
-      { property: "og:title", content: "FAQ & Information - Career Upgrade Online Dental Nursing School" },
-      { property: "og:description", content: "Everything you need to know before you apply." },
-      { property: "og:url", content: "/faq" },
+      { title: "Dental Nursing Course FAQs | Career Upgrade UK" },
+      { name: "description", content: "Answers to common questions about our UK online dental nursing course — funding, age requirements, course duration, GDC registration and more." },
+      { name: "keywords", content: "dental nurse course FAQ, dental nursing questions UK, government funded dental nurse, dental nurse age requirement, GDC registration FAQ" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Dental Nursing Course FAQs | Career Upgrade UK" },
+      { property: "og:description", content: "Common questions about our UK online dental nursing course — funding, requirements, and GDC registration." },
+      { property: "og:url", content: "https://careerupgradedentalnursing-school.co.uk/faq" },
+      { property: "og:image", content: "https://careerupgradedentalnursing-school.co.uk/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dental Nursing Course FAQs | Career Upgrade" },
+      { name: "twitter:description", content: "Answers to common questions about our UK online dental nursing course." },
     ],
-    links: [{ rel: "canonical", href: "/faq" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqs.map((f) => ({
-            "@type": "Question",
-            name: f.q,
-            acceptedAnswer: { "@type": "Answer", text: f.a },
-          })),
-        }),
-      },
-    ],
+    links: [{ rel: "canonical", href: "https://careerupgradedentalnursing-school.co.uk/faq" }],
   }),
   component: FAQPage,
 });

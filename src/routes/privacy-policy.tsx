@@ -33,8 +33,8 @@ function PrivacyPolicy() {
               </p>
               <p className="mt-2">
                 For any privacy-related queries, contact us at:{" "}
-                <a href="mailto:info@careerupgradedentalschool.co.uk" className="text-primary underline">
-                  info@careerupgradedentalschool.co.uk
+                <a href="mailto:info@careerupgradedentalnursing-school.co.uk" className="text-primary underline">
+                  info@careerupgradedentalnursing-school.co.uk
                 </a>
               </p>
             </div>
@@ -101,8 +101,8 @@ function PrivacyPolicy() {
               </ul>
               <p className="mt-2">
                 To exercise any of these rights, email us at{" "}
-                <a href="mailto:info@careerupgradedentalschool.co.uk" className="text-primary underline">
-                  info@careerupgradedentalschool.co.uk
+                <a href="mailto:info@careerupgradedentalnursing-school.co.uk" className="text-primary underline">
+                  info@careerupgradedentalnursing-school.co.uk
                 </a>.
               </p>
             </div>

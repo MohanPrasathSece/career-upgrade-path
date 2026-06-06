@@ -68,8 +68,8 @@ function Terms() {
                 You have the right to cancel your enrolment within 14 days of signing your
                 enrolment agreement (cooling-off period) without penalty. After this period,
                 refunds are considered on a case-by-case basis. Please contact us at{" "}
-                <a href="mailto:info@careerupgradedentalschool.co.uk" className="text-primary underline">
-                  info@careerupgradedentalschool.co.uk
+                <a href="mailto:info@careerupgradedentalnursing-school.co.uk" className="text-primary underline">
+                  info@careerupgradedentalnursing-school.co.uk
                 </a>{" "}
                 to discuss your circumstances.
               </p>
@@ -128,8 +128,8 @@ function Terms() {
               <h2 className="font-display text-xl font-bold text-foreground">10. Contact</h2>
               <p className="mt-3">
                 For any questions about these terms, please contact us at:{" "}
-                <a href="mailto:info@careerupgradedentalschool.co.uk" className="text-primary underline">
-                  info@careerupgradedentalschool.co.uk
+                <a href="mailto:info@careerupgradedentalnursing-school.co.uk" className="text-primary underline">
+                  info@careerupgradedentalnursing-school.co.uk
                 </a>
               </p>
             </div>

@@ -20,23 +20,19 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About & Student Support - Career Upgrade Online Dental Nursing School" },
-      {
-        name: "description",
-        content:
-          "Discover Career Upgrade - a UK online dental nursing training. Learn how our tutors, assessors and customer service team support every student.",
-      },
-      {
-        property: "og:title",
-        content: "About & Student Support - Career Upgrade Online Dental Nursing School",
-      },
-      {
-        property: "og:description",
-        content: "Supporting you every step of the way to becoming a qualified UK dental nurse.",
-      },
-      { property: "og:url", content: "/about" },
+      { title: "About Our Dental Nursing School | Expert Tutors & Support | Career Upgrade" },
+      { name: "description", content: "Meet the Career Upgrade team — GDC-registered dental nursing tutors and assessors dedicated to supporting every student from enrolment to qualification." },
+      { name: "keywords", content: "dental nursing tutors UK, dental nurse training support, GDC registered assessors, online dental nursing school UK" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "About Career Upgrade | UK Online Dental Nursing School" },
+      { property: "og:description", content: "GDC-registered tutors and assessors supporting every student from enrolment to qualification." },
+      { property: "og:url", content: "https://careerupgradedentalnursing-school.co.uk/about" },
+      { property: "og:image", content: "https://careerupgradedentalnursing-school.co.uk/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "About Career Upgrade | UK Dental Nursing School" },
+      { name: "twitter:description", content: "GDC-registered tutors and assessors supporting every student from enrolment to qualification." },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: "https://careerupgradedentalnursing-school.co.uk/about" }],
   }),
   component: About,
 });

@@ -28,23 +28,19 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 export const Route = createFileRoute("/courses")({
   head: () => ({
     meta: [
-      { title: "Dental Nursing Course & Funding - Career Upgrade Online Dental Nursing School" },
-      {
-        name: "description",
-        content:
-          "Our 1-year flexible online UK dental nursing course. Government funding, payment plans and everything included.",
-      },
-      {
-        property: "og:title",
-        content: "Dental Nursing Course & Funding - Career Upgrade Online Dental Nursing School",
-      },
-      {
-        property: "og:description",
-        content: "Flexible course, transparent funding options, GDC pathway.",
-      },
-      { property: "og:url", content: "/courses" },
+      { title: "Online Dental Nursing Course UK | Government Funded | Career Upgrade" },
+      { name: "description", content: "1-year flexible online dental nursing course with government funding options, payment plans and a clear GDC registration pathway. Start anytime, aged 16+." },
+      { name: "keywords", content: "dental nursing course UK, online dental nurse training, government funded dental nurse course, dental nurse diploma UK, GDC qualification, NCFE Level 3 dental nursing" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Online Dental Nursing Course UK | Government Funded Options" },
+      { property: "og:description", content: "1-year flexible online dental nursing qualification. Government funding, payment plans, GDC registration pathway. Start anytime." },
+      { property: "og:url", content: "https://careerupgradedentalnursing-school.co.uk/courses" },
+      { property: "og:image", content: "https://careerupgradedentalnursing-school.co.uk/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Online Dental Nursing Course UK | Career Upgrade" },
+      { name: "twitter:description", content: "1-year flexible online dental nursing qualification. Government funding available. Start anytime, aged 16+." },
     ],
-    links: [{ rel: "canonical", href: "/courses" }],
+    links: [{ rel: "canonical", href: "https://careerupgradedentalnursing-school.co.uk/courses" }],
   }),
   component: Courses,
 });

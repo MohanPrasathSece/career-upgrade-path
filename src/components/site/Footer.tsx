@@ -95,11 +95,11 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:info@careerupgradedentalschool.co.uk"
+                  href="mailto:info@careerupgradedentalnursing-school.co.uk"
                   className="flex items-start gap-2.5 hover:text-primary transition"
                 >
                   <Mail className="mt-0.5 h-4 w-4 text-primary" />
-                  <span>info@careerupgradedentalschool.co.uk</span>
+                  <span>info@careerupgradedentalnursing-school.co.uk</span>
                 </a>
               </li>
               <li className="flex items-start gap-2.5">

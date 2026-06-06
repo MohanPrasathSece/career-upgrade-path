@@ -33,17 +33,19 @@ import { Counter } from "@/components/site/Counter";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Career Upgrade - Become a Qualified Dental Nurse in the UK" },
-      {
-        name: "description",
-        content:
-          "Flexible online dental nursing training with expert tutor support, payment plans and a GDC registration pathway. Apply today.",
-      },
-      { property: "og:title", content: "Career Upgrade - Online Dental Nursing School UK" },
-      { property: "og:description", content: "100% pass rate. Start anytime. Qualification." },
-      { property: "og:url", content: "/" },
+      { title: "Dental Nurse Course UK | Online Dental Nursing Training | Career Upgrade" },
+      { name: "description", content: "Train to become a qualified dental nurse online in the UK. Expert tutors, government funding available, 100% pass rate. Start anytime — apply today." },
+      { name: "keywords", content: "dental nurse course UK, online dental nursing course, dental nurse training UK, become a dental nurse, GDC registration" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Dental Nurse Course UK | Career Upgrade Online Dental Nursing School" },
+      { property: "og:description", content: "Train to become a qualified dental nurse online. Government funding, 100% pass rate, GDC pathway. Start anytime." },
+      { property: "og:url", content: "https://careerupgradedentalnursing-school.co.uk/" },
+      { property: "og:image", content: "https://careerupgradedentalnursing-school.co.uk/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dental Nurse Course UK | Career Upgrade" },
+      { name: "twitter:description", content: "Train to become a qualified dental nurse online. Government funding, 100% pass rate, GDC pathway." },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://careerupgradedentalnursing-school.co.uk/" }],
   }),
   component: Home,
 });

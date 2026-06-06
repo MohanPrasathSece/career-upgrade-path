@@ -237,11 +237,11 @@ app.get("/api/admin/submissions/export", requireAdmin, async (req, res) => {
   const { data, error } = await supabase.from("submissions").select("*").order("created_at", { ascending: false });
   if (error) return res.status(500).json({ error: error.message });
 
-  const headers = ["ID", "Name", "Email", "Phone", "Address", "Date of Birth", "Course", "Funding Type", "When to Start", "Additional Info", "Message", "Read", "Status", "Notes", "Date"];
+  const headers = ["ID", "Name", "Email", "Phone", "Message", "Read", "Notes", "Date"];
   const rows = (data || []).map((s: any) => [
-    s.id, s.name, s.email, s.phone || "", s.address || "", s.date_of_birth || "", s.course || "", s.funding_type || "", s.when_to_start || "", `"${(s.additional_info || "").replace(/"/g, '""')}"`,
+    s.id, s.name, s.email, s.phone || "",
     `"${(s.message || "").replace(/"/g, '""')}"`,
-    s.is_read ? "Yes" : "No", s.status,
+    s.is_read ? "Yes" : "No",
     `"${(s.notes || "").replace(/"/g, '""')}"`,
     new Date(s.created_at).toLocaleString("en-GB"),
   ]);
@@ -256,7 +256,7 @@ app.get("/api/admin/submissions/export", requireAdmin, async (req, res) => {
 app.post("/api/apply", async (req, res) => {
   const {
     full_name, email, phone, address, date_of_birth,
-    course, funding_type, when_to_start, additional_info,
+    funding_type, when_to_start, message,
   } = req.body;
 
   if (!full_name || !email || !phone || !funding_type) {
@@ -271,14 +271,14 @@ app.post("/api/apply", async (req, res) => {
       full_name, email, phone,
       address: address || null,
       date_of_birth: date_of_birth || null,
-      course: course || "Dental Nursing - 1 Year",
       funding_type,
       when_to_start: when_to_start || null,
-      additional_info: additional_info || null,
+      message: message || null,
       is_read: false,
       status: "New",
     });
     if (error) console.error("⚠️  Supabase insert error:", error.message);
+    else console.log("✅ Application saved to Supabase");
   } catch (e: any) {
     console.error("⚠️  Supabase error:", e.message);
   }
@@ -289,8 +289,8 @@ app.post("/api/apply", async (req, res) => {
       from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       replyTo: email,
-      subject: `New Application from ${full_name}`,
-      text: `Name: ${full_name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address || "N/A"}\nDOB: ${date_of_birth || "N/A"}\nCourse: ${course || "N/A"}\nFunding: ${funding_type}\nWhen to Start: ${when_to_start || "N/A"}\nAdditional Info: ${additional_info || "N/A"}`,
+      subject: `New Application from ${full_name} — ${funding_type}`,
+      text: `Name: ${full_name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address || "N/A"}\nDOB: ${date_of_birth || "N/A"}\nFunding: ${funding_type}\nWhen to Start: ${when_to_start || "N/A"}\nMessage: ${message || "N/A"}`,
       html: `
         <h2 style="color:#2563eb;">New Application — Career Upgrade</h2>
         <p><strong>Name:</strong> ${full_name}</p>
@@ -298,10 +298,9 @@ app.post("/api/apply", async (req, res) => {
         <p><strong>Phone:</strong> ${phone}</p>
         <p><strong>Address:</strong> ${address || "N/A"}</p>
         <p><strong>Date of Birth:</strong> ${date_of_birth || "N/A"}</p>
-        <p><strong>Course:</strong> ${course || "N/A"}</p>
-        <p><strong>Funding Type:</strong> ${funding_type}</p>
+        <p><strong>Funding Type:</strong> <strong style="color:#16a34a;">${funding_type}</strong></p>
         <p><strong>When to Start:</strong> ${when_to_start || "N/A"}</p>
-        <p><strong>Additional Info:</strong><br/>${(additional_info || "").replace(/\n/g, "<br/>")}</p>
+        <p><strong>Message:</strong><br/>${(message || "N/A").replace(/\n/g, "<br/>")}</p>
       `,
     });
     res.status(200).json({ success: true });

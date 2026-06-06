@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /admin/login
+Disallow: /admin/dashboard
+Disallow: /admin/submissions
+Disallow: /admin/applications
+
+Sitemap: https://careerupgradedentalnursing-school.co.uk/sitemap.xml
