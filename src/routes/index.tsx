@@ -22,7 +22,6 @@ import {
   ScrollText,
   Shirt,
   FileCheck,
-  Syringe,
 } from "lucide-react";
 import heroImg from "@/assets/images/herosec_image.png";
 import tutorImg from "@/assets/images/male_nirse.png";
@@ -102,11 +101,6 @@ const enrollment = [
   { icon: FileCheck, title: "DBS Check Included" },
   { icon: ScrollText, title: "Exam Fees Included" },
   { icon: ShieldCheck, title: "GDC Registration Support" },
-  {
-    icon: Syringe,
-    title: "Hepatitis B Vaccination Required",
-    desc: "Required before starting work in dental practice",
-  },
 ];
 
 const stats = [
@@ -334,12 +328,6 @@ function Home() {
                   </p>
                   <p className="mt-1 font-display text-lg font-bold">
                     Everything to launch your career
-                  </p>
-                </div>
-                <div className="mt-5 border-t border-border pt-4 text-center">
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    All learners need Hepatitis B vaccination before they can start working in
-                    dental practice.
                   </p>
                 </div>
               </div>
