@@ -6,12 +6,14 @@ import {
   GraduationCap,
   ClipboardList,
   LayoutDashboard,
+  BarChart3,
 } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@/assets/icon.png";
 
 const navItems = [
   { to: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+  { to: "/admin/analytics", icon: BarChart3, label: "Analytics" },
   { to: "/admin/applications", icon: ClipboardList, label: "Applications" },
   { to: "/admin/submissions", icon: Inbox, label: "Enquiries" },
 ];

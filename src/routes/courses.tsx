@@ -16,7 +16,6 @@ import {
   Landmark,
   CreditCard,
   GraduationCap,
-  FileCheck,
   Shirt,
   ScrollText,
 } from "lucide-react";
@@ -106,7 +105,6 @@ const funding = [
 ];
 
 const benefits = [
-  { icon: FileCheck, title: "DBS Check" },
   { icon: ScrollText, title: "Exam Fees" },
   { icon: ShieldCheck, title: "GDC Registration Support" },
 ];

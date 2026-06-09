@@ -21,7 +21,6 @@ import {
   Wallet,
   ScrollText,
   Shirt,
-  FileCheck,
 } from "lucide-react";
 import heroImg from "@/assets/images/herosec_image.png";
 import tutorImg from "@/assets/images/male_nirse.png";
@@ -98,7 +97,6 @@ const careerBenefits = [
 ];
 
 const enrollment = [
-  { icon: FileCheck, title: "DBS Check Included" },
   { icon: ScrollText, title: "Exam Fees Included" },
   { icon: ShieldCheck, title: "GDC Registration Support" },
 ];

@@ -22,6 +22,7 @@ import { Route as AdminSubmissionsRouteImport } from './routes/admin/submissions
 import { Route as AdminLoginRouteImport } from './routes/admin/login'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminApplicationsRouteImport } from './routes/admin/applications'
+import { Route as AdminAnalyticsRouteImport } from './routes/admin/analytics'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -88,6 +89,11 @@ const AdminApplicationsRoute = AdminApplicationsRouteImport.update({
   path: '/admin/applications',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
+  id: '/admin/analytics',
+  path: '/admin/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
+  '/admin/analytics': typeof AdminAnalyticsRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/privacy-policy'
     | '/terms'
+    | '/admin/analytics'
     | '/admin/applications'
     | '/admin/dashboard'
     | '/admin/login'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/privacy-policy'
     | '/terms'
+    | '/admin/analytics'
     | '/admin/applications'
     | '/admin/dashboard'
     | '/admin/login'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/privacy-policy'
     | '/terms'
+    | '/admin/analytics'
     | '/admin/applications'
     | '/admin/dashboard'
     | '/admin/login'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   TermsRoute: typeof TermsRoute
+  AdminAnalyticsRoute: typeof AdminAnalyticsRoute
   AdminApplicationsRoute: typeof AdminApplicationsRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminApplicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/analytics': {
+      id: '/admin/analytics'
+      path: '/admin/analytics'
+      fullPath: '/admin/analytics'
+      preLoaderRoute: typeof AdminAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -304,6 +324,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   TermsRoute: TermsRoute,
+  AdminAnalyticsRoute: AdminAnalyticsRoute,
   AdminApplicationsRoute: AdminApplicationsRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,

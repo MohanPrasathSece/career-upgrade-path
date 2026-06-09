@@ -129,4 +129,7 @@ export const adminApi = {
     const token = getToken();
     window.open(`/api/admin/applications/export?token=${token}`, "_blank");
   },
+
+  getAnalytics: (range: number): Promise<any> =>
+    fetch(`/api/admin/analytics?range=${range}`, { headers: authHeaders() }).then(handleResponse),
 };

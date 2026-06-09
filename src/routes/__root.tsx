@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Outlet, Link, createRootRouteWithContext, useRouter } from "@tanstack/react-router";
+import { Outlet, Link, createRootRouteWithContext, useRouter, useLocation } from "@tanstack/react-router";
+import { useEffect } from "react";
 
 function NotFoundComponent() {
   return (
@@ -67,6 +68,32 @@ import { ScrollToTop } from "../components/ui/ScrollToTop";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
+
+  useEffect(() => {
+    const trackVisit = async () => {
+      // Don't track admin pages
+      if (location.pathname.startsWith("/admin")) {
+        return;
+      }
+      try {
+        await fetch("/api/visit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            path: location.pathname,
+            referrer: document.referrer || "",
+          }),
+        });
+      } catch (err) {
+        console.error("Failed to log visit:", err);
+      }
+    };
+
+    trackVisit();
+  }, [location.pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>

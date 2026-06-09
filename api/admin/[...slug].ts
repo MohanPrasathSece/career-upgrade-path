@@ -20,6 +20,140 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const supabase = getSupabase();
 
   try {
+    // ── Analytics ──────────────────────────────────────────────────────────
+    if (resource === "analytics") {
+      if (req.method !== "GET") {
+        return res.status(405).json({ error: "Method not allowed" });
+      }
+
+      const prevDays = parseInt(url.searchParams.get("range") || "30", 10);
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - prevDays);
+
+      try {
+        // 1. Fetch Form Counts (for conversion rate calculations)
+        const [enquiryRes, applicationRes] = await Promise.all([
+          supabase.from("submissions").select("id", { count: "exact", head: true }).gte("created_at", startDate.toISOString()),
+          supabase.from("applications").select("id", { count: "exact", head: true }).gte("created_at", startDate.toISOString()),
+        ]);
+
+        const enquiryCount = enquiryRes.count || 0;
+        const applicationCount = applicationRes.count || 0;
+
+        let result: any = null;
+
+        // 2. Try Database RPC first (highly optimized)
+        try {
+          const { data, error: rpcError } = await supabase.rpc("get_analytics_summary", { prev_days: prevDays });
+          if (!rpcError && data) {
+            result = data;
+          }
+        } catch (rpcErr) {
+          // Silently catch and fallback to JS
+        }
+
+        // 3. JS Aggregation Fallback (runs if RPC fails, is not deployed, or returns error)
+        if (!result) {
+          const { data: views, error: viewsError } = await supabase
+            .from("page_views")
+            .select("created_at, path, referrer, ip_hash")
+            .gte("created_at", startDate.toISOString());
+
+          if (viewsError) throw new Error(viewsError.message);
+
+          // Process views
+          const viewsList = views || [];
+          const totalViews = viewsList.length;
+
+          // Unique visitors set
+          const uniqueIps = new Set(viewsList.map(v => v.ip_hash));
+          const uniqueVisitors = uniqueIps.size;
+
+          // Daily aggregation
+          const dailyMap = new Map<string, { views: number; uniques: Set<string> }>();
+          // Pre-populate last prevDays to ensure we don't have gaps in the charts
+          for (let i = prevDays; i >= 0; i--) {
+            const d = new Date();
+            d.setDate(d.getDate() - i);
+            const dateStr = d.toISOString().split("T")[0];
+            dailyMap.set(dateStr, { views: 0, uniques: new Set() });
+          }
+
+          // Top paths and referrers aggregators
+          const pathMap = new Map<string, { count: number; uniques: Set<string> }>();
+          const referrerMap = new Map<string, number>();
+
+          viewsList.forEach(v => {
+            const dateStr = new Date(v.created_at).toISOString().split("T")[0];
+            
+            // Daily stats
+            if (dailyMap.has(dateStr)) {
+              const dayObj = dailyMap.get(dateStr)!;
+              dayObj.views += 1;
+              dayObj.uniques.add(v.ip_hash);
+            }
+
+            // Path breakdown
+            if (!pathMap.has(v.path)) {
+              pathMap.set(v.path, { count: 0, uniques: new Set() });
+            }
+            const pObj = pathMap.get(v.path)!;
+            pObj.count += 1;
+            pObj.uniques.add(v.ip_hash);
+
+            // Referrer breakdown
+            let cleanRef = "Direct / Bookmark";
+            if (v.referrer) {
+              try {
+                const host = new URL(v.referrer).hostname;
+                if (host && !host.includes("localhost") && !host.includes("127.0.0.1")) {
+                  cleanRef = host;
+                }
+              } catch {
+                cleanRef = v.referrer;
+              }
+            }
+            referrerMap.set(cleanRef, (referrerMap.get(cleanRef) || 0) + 1);
+          });
+
+          const dailyStats = Array.from(dailyMap.entries()).map(([date, val]) => ({
+            date,
+            views: val.views,
+            uniques: val.uniques.size,
+          }));
+
+          const viewsByPath = Array.from(pathMap.entries()).map(([path, val]) => ({
+            path,
+            count: val.count,
+            unique_count: val.uniques.size,
+          })).sort((a, b) => b.count - a.count).slice(0, 15);
+
+          const viewsByReferrer = Array.from(referrerMap.entries()).map(([referrer, count]) => ({
+            referrer,
+            count,
+          })).sort((a, b) => b.count - a.count).slice(0, 10);
+
+          result = {
+            total_views: totalViews,
+            unique_visitors: uniqueVisitors,
+            views_by_path: viewsByPath,
+            views_by_referrer: viewsByReferrer,
+            daily_stats: dailyStats,
+          };
+        }
+
+        // Combine summary results with form counts and return
+        return res.status(200).json({
+          ...result,
+          enquiry_count: enquiryCount,
+          application_count: applicationCount,
+        });
+      } catch (e: any) {
+        console.error("Admin Analytics API error:", e.message);
+        return res.status(500).json({ error: e.message || "Failed to load analytics" });
+      }
+    }
+
     // ── Submissions ────────────────────────────────────────────────────────
     if (resource === "submissions") {
       // GET /api/admin/submissions

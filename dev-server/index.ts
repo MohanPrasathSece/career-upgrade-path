@@ -69,6 +69,49 @@ async function requireAdmin(req: express.Request, res: express.Response, next: e
 
 // ── Public Routes ────────────────────────────────────────────────────────────
 
+app.post("/api/visit", async (req, res) => {
+  const { path, referrer } = req.body;
+  if (!path) {
+    res.status(400).json({ error: "Missing path" });
+    return;
+  }
+
+  // Skip tracking admin routes
+  if (path.startsWith("/admin")) {
+    res.json({ success: true, skipped: true });
+    return;
+  }
+
+  const ip =
+    (req.headers["x-forwarded-for"] as string)?.split(",")[0].trim() ||
+    (req.headers["x-real-ip"] as string) ||
+    req.socket.remoteAddress ||
+    "anonymous";
+
+  const crypto = require("crypto");
+  const ipHash = crypto.createHash("sha256").update(ip).digest("hex");
+  const userAgent = req.headers["user-agent"] || null;
+
+  try {
+    const supabase = getSupabase();
+    const { error } = await supabase.from("page_views").insert({
+      path,
+      referrer: referrer || null,
+      ip_hash: ipHash,
+      user_agent: userAgent,
+    });
+    if (error) {
+      console.error("⚠️  Supabase page_view error:", error.message);
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.status(200).json({ success: true });
+  } catch (e: any) {
+    console.error("⚠️  Page view logging error:", e.message);
+    res.status(500).json({ error: e.message });
+  }
+});
+
 app.get("/api/public/faqs", async (req, res) => {
   const supabase = getSupabase();
   const { data, error } = await supabase
@@ -193,6 +236,131 @@ app.post("/api/enquiries", async (req, res) => {
 });
 
 // ── Admin Routes ──────────────────────────────────────────────────────────────
+
+app.get("/api/admin/analytics", requireAdmin, async (req, res) => {
+  const prevDays = parseInt((req.query.range as string) || "30", 10);
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - prevDays);
+
+  try {
+    const supabase = getSupabase();
+
+    // 1. Fetch Form Counts
+    const [enquiryRes, applicationRes] = await Promise.all([
+      supabase.from("submissions").select("id", { count: "exact", head: true }).gte("created_at", startDate.toISOString()),
+      supabase.from("applications").select("id", { count: "exact", head: true }).gte("created_at", startDate.toISOString()),
+    ]);
+
+    const enquiryCount = enquiryRes.count || 0;
+    const applicationCount = applicationRes.count || 0;
+
+    let result: any = null;
+
+    // 2. Try database RPC first
+    try {
+      const { data, error: rpcError } = await supabase.rpc("get_analytics_summary", { prev_days: prevDays });
+      if (!rpcError && data) {
+        result = data;
+      }
+    } catch (rpcErr) {
+      // Fallback
+    }
+
+    // 3. Fallback to JS
+    if (!result) {
+      const { data: views, error: viewsError } = await supabase
+        .from("page_views")
+        .select("created_at, path, referrer, ip_hash")
+        .gte("created_at", startDate.toISOString());
+
+      if (viewsError) {
+        res.status(500).json({ error: viewsError.message });
+        return;
+      }
+
+      const viewsList = views || [];
+      const totalViews = viewsList.length;
+      const uniqueIps = new Set(viewsList.map(v => v.ip_hash));
+      const uniqueVisitors = uniqueIps.size;
+
+      const dailyMap = new Map<string, { views: number; uniques: Set<string> }>();
+      for (let i = prevDays; i >= 0; i--) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        const dateStr = d.toISOString().split("T")[0];
+        dailyMap.set(dateStr, { views: 0, uniques: new Set() });
+      }
+
+      const pathMap = new Map<string, { count: number; uniques: Set<string> }>();
+      const referrerMap = new Map<string, number>();
+
+      const crypto = require("crypto");
+
+      viewsList.forEach((v: any) => {
+        const dateStr = new Date(v.created_at).toISOString().split("T")[0];
+        if (dailyMap.has(dateStr)) {
+          const dayObj = dailyMap.get(dateStr)!;
+          dayObj.views += 1;
+          dayObj.uniques.add(v.ip_hash);
+        }
+
+        if (!pathMap.has(v.path)) {
+          pathMap.set(v.path, { count: 0, uniques: new Set() });
+        }
+        const pObj = pathMap.get(v.path)!;
+        pObj.count += 1;
+        pObj.uniques.add(v.ip_hash);
+
+        let cleanRef = "Direct / Bookmark";
+        if (v.referrer) {
+          try {
+            const host = new URL(v.referrer).hostname;
+            if (host && !host.includes("localhost") && !host.includes("127.0.0.1")) {
+              cleanRef = host;
+            }
+          } catch {
+            cleanRef = v.referrer;
+          }
+        }
+        referrerMap.set(cleanRef, (referrerMap.get(cleanRef) || 0) + 1);
+      });
+
+      const dailyStats = Array.from(dailyMap.entries()).map(([date, val]) => ({
+        date,
+        views: val.views,
+        uniques: val.uniques.size,
+      }));
+
+      const viewsByPath = Array.from(pathMap.entries()).map(([path, val]) => ({
+        path,
+        count: val.count,
+        unique_count: val.uniques.size,
+      })).sort((a, b) => b.count - a.count).slice(0, 15);
+
+      const viewsByReferrer = Array.from(referrerMap.entries()).map(([referrer, count]) => ({
+        referrer,
+        count,
+      })).sort((a, b) => b.count - a.count).slice(0, 10);
+
+      result = {
+        total_views: totalViews,
+        unique_visitors: uniqueVisitors,
+        views_by_path: viewsByPath,
+        views_by_referrer: viewsByReferrer,
+        daily_stats: dailyStats,
+      };
+    }
+
+    res.json({
+      ...result,
+      enquiry_count: enquiryCount,
+      application_count: applicationCount,
+    });
+  } catch (e: any) {
+    console.error("❌ Admin Analytics mock error:", e.message);
+    res.status(500).json({ error: e.message || "Failed to load analytics" });
+  }
+});
 
 // Submissions
 app.get("/api/admin/submissions", requireAdmin, async (req, res) => {

@@ -100,3 +100,94 @@ create policy "Service role full access on admin_users"
 -- Use the /api/admin/login endpoint with username "admin" and password "CareerUpgradeAdmin@2026"
 -- The password will be automatically hashed on first login.
 -- Or run: INSERT INTO public.admin_users (username, password) VALUES ('admin', 'plaintext-for-first-login');
+
+
+-- ── 4. PAGE VIEWS TABLE (analytics) ─────────────────────────
+create table if not exists public.page_views (
+  id              uuid primary key default gen_random_uuid(),
+  path            text not null,
+  referrer        text,
+  ip_hash         text not null,
+  user_agent      text,
+  created_at      timestamptz not null default now()
+);
+
+create index if not exists page_views_created_at_idx
+  on public.page_views (created_at desc);
+
+create index if not exists page_views_path_idx
+  on public.page_views (path);
+
+alter table public.page_views enable row level security;
+
+drop policy if exists "Anon can insert page_views" on public.page_views;
+create policy "Anon can insert page_views"
+  on public.page_views for insert to anon with check (true);
+
+drop policy if exists "Service role full access on page_views" on public.page_views;
+create policy "Service role full access on page_views"
+  on public.page_views for all using (true) with check (true);
+
+
+-- ── 5. OPTIMIZED ANALYTICS SUMMARY RPC ──────────────────────
+create or replace function get_analytics_summary(prev_days int)
+returns json as $$
+declare
+  total_views bigint;
+  unique_visitors bigint;
+  views_by_path json;
+  views_by_referrer json;
+  daily_stats json;
+begin
+  -- 1. Total views
+  select count(*) into total_views 
+  from public.page_views 
+  where created_at >= now() - (prev_days || ' days')::interval;
+  
+  -- 2. Unique visitors
+  select count(distinct ip_hash) into unique_visitors 
+  from public.page_views 
+  where created_at >= now() - (prev_days || ' days')::interval;
+  
+  -- 3. Views by path
+  select json_agg(r) into views_by_path from (
+    select path, count(*) as count, count(distinct ip_hash) as unique_count
+    from public.page_views
+    where created_at >= now() - (prev_days || ' days')::interval
+    group by path
+    order by count desc
+    limit 15
+  ) r;
+  
+  -- 4. Views by referrer
+  select json_agg(r) into views_by_referrer from (
+    select coalesce(nullif(referrer, ''), 'Direct / Bookmark') as referrer, count(*) as count
+    from public.page_views
+    where created_at >= now() - (prev_days || ' days')::interval
+    group by referrer
+    order by count desc
+    limit 10
+  ) r;
+  
+  -- 5. Daily stats
+  select json_agg(r) into daily_stats from (
+    select 
+      created_at::date::text as date,
+      count(*) as views,
+      count(distinct ip_hash) as uniques
+    from public.page_views
+    where created_at >= now() - (prev_days || ' days')::interval
+    group by created_at::date
+    order by date asc
+  ) r;
+
+  return json_build_object(
+    'total_views', coalesce(total_views, 0),
+    'unique_visitors', coalesce(unique_visitors, 0),
+    'views_by_path', coalesce(views_by_path, '[]'::json),
+    'views_by_referrer', coalesce(views_by_referrer, '[]'::json),
+    'daily_stats', coalesce(daily_stats, '[]'::json)
+  );
+end;
+$$ language plpgsql security definer;
+

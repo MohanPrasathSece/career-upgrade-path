@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Inbox, BookOpen, TrendingUp, Clock, CheckCircle2,
   AlertCircle, ArrowRight, RefreshCw, Sparkles, ExternalLink,
-  ClipboardList, Users,
+  ClipboardList, Users, BarChart3,
 } from "lucide-react";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { adminApi, type Submission, type Application } from "@/lib/admin-api";
@@ -308,7 +308,11 @@ function AdminDashboard() {
                   <Inbox className="h-5 w-5 text-gray-400 mx-auto mb-2 group-hover:text-primary" />
                   <span className="text-xs text-gray-600 group-hover:text-gray-900">Enquiries</span>
                 </Link>
-                <a href="/" target="_blank" className="p-3 bg-gray-50 hover:bg-gray-100 rounded-2xl text-center transition group col-span-2">
+                <Link to="/admin/analytics" className="p-3 bg-gray-50 hover:bg-gray-100 rounded-2xl text-center transition group">
+                  <BarChart3 className="h-5 w-5 text-gray-400 mx-auto mb-2 group-hover:text-primary" />
+                  <span className="text-xs text-gray-600 group-hover:text-gray-900">Analytics</span>
+                </Link>
+                <a href="/" target="_blank" className="p-3 bg-gray-50 hover:bg-gray-100 rounded-2xl text-center transition group">
                   <ExternalLink className="h-5 w-5 text-gray-400 mx-auto mb-2 group-hover:text-primary" />
                   <span className="text-xs text-gray-600 group-hover:text-gray-900">Live Website</span>
                 </a>
