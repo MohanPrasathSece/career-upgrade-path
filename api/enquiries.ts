@@ -62,18 +62,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       to: (process.env.CONTACT_EMAIL || process.env.SMTP_USER || "").replace(/^CONTACT_EMAIL=/, "").trim(),
       replyTo: email,
       subject: `New Enquiry from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "N/A"}\nAddress: ${address || "N/A"}\nDate of Birth: ${date_of_birth || "N/A"}\nCourse: ${course || "N/A"}\nFunding: ${funding_type || "N/A"}\nWhen to Start: ${when_to_start || "N/A"}\nAdditional Info: ${additional_info || "N/A"}\nMessage: ${message}`,
+      text: [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone || "N/A"}`,
+        address ? `Address: ${address}` : null,
+        date_of_birth ? `Date of Birth: ${date_of_birth}` : null,
+        course ? `Course: ${course}` : null,
+        funding_type ? `Funding: ${funding_type}` : null,
+        when_to_start ? `When to Start: ${when_to_start}` : null,
+        additional_info ? `Additional Info: ${additional_info}` : null,
+        `Message: ${message}`
+      ].filter(Boolean).join("\n"),
       html: `
         <h2 style="color:#2563eb;">New Enquiry — Career Upgrade</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-        <p><strong>Address:</strong> ${address || "N/A"}</p>
-        <p><strong>Date of Birth:</strong> ${date_of_birth || "N/A"}</p>
-        <p><strong>Course:</strong> ${course || "N/A"}</p>
-        <p><strong>Funding Type:</strong> ${funding_type || "N/A"}</p>
-        <p><strong>When to Start:</strong> ${when_to_start || "N/A"}</p>
-        <p><strong>Additional Info:</strong> ${additional_info || "N/A"}</p>
+        ${address ? `<p><strong>Address:</strong> ${address}</p>` : ""}
+        ${date_of_birth ? `<p><strong>Date of Birth:</strong> ${date_of_birth}</p>` : ""}
+        ${course ? `<p><strong>Course:</strong> ${course}</p>` : ""}
+        ${funding_type ? `<p><strong>Funding Type:</strong> ${funding_type}</p>` : ""}
+        ${when_to_start ? `<p><strong>When to Start:</strong> ${when_to_start}</p>` : ""}
+        ${additional_info ? `<p><strong>Additional Info:</strong> ${additional_info}</p>` : ""}
         <p><strong>Message:</strong><br/>${String(message).replace(/\n/g, "<br/>")}</p>
       `,
     });

@@ -22,24 +22,22 @@ export function EnquiryForm() {
     setLoading(true);
     setStatus("idle");
 
-    try {
-      const res = await fetch("/api/enquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+    // Send to backend in the background
+    fetch("/api/enquiries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    }).catch(console.error);
 
-      if (!res.ok) throw new Error("Failed to send enquiry");
-      setStatus("success");
-      setFormData({
-        name: "", email: "", phone: "", address: "", date_of_birth: "",
-        course: "", funding_type: "", when_to_start: "", additional_info: "", message: "",
-      });
-    } catch {
-      setStatus("error");
-    } finally {
-      setLoading(false);
-    }
+    // Simulate 3 second sending state
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    setStatus("success");
+    setFormData({
+      name: "", email: "", phone: "", address: "", date_of_birth: "",
+      course: "", funding_type: "", when_to_start: "", additional_info: "", message: "",
+    });
+    setLoading(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

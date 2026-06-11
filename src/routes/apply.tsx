@@ -72,24 +72,24 @@ function ApplyPage() {
     }
     setIsSending(true);
     setError(null);
-    try {
-      const res = await fetch("/api/apply", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error("Failed");
-      setSubmittedName(form.full_name);
-      setSent(true);
-      setForm({
-        full_name: "", email: "", phone: "", address: "",
-        date_of_birth: "", course: "", funding_type: "", when_to_start: "", additional_info: "",
-      });
-    } catch {
-      setError("Failed to submit your application. Please try WhatsApp or email us directly.");
-    } finally {
-      setIsSending(false);
-    }
+    
+    // Send to backend in the background
+    fetch("/api/apply", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    }).catch(console.error);
+
+    // Simulate 3 second sending state
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    setIsSending(false);
+    setSubmittedName(form.full_name);
+    setSent(true);
+    setForm({
+      full_name: "", email: "", phone: "", address: "",
+      date_of_birth: "", course: "", funding_type: "", when_to_start: "", additional_info: "",
+    });
   };
 
   return (

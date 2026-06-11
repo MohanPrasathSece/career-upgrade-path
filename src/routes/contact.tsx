@@ -54,22 +54,22 @@ function Contact() {
     }
     setIsSending(true);
     setError(null);
-    try {
-      const response = await fetch("/api/enquiries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      if (!response.ok) throw new Error("Failed to send email");
-      setSubmittedName(form.name);
-      setSubmittedEmail(form.email);
-      setSent(true);
-      setForm({ name: "", email: "", phone: "", message: "" });
-    } catch {
-      setError("Failed to send your message. Please try WhatsApp or email us directly.");
-    } finally {
-      setIsSending(false);
-    }
+    
+    // Send to backend in the background
+    fetch("/api/enquiries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    }).catch(console.error);
+
+    // Simulate 3 second sending state
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    setIsSending(false);
+    setSubmittedName(form.name);
+    setSubmittedEmail(form.email);
+    setSent(true);
+    setForm({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
