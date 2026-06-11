@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "concurrently --names \"CLIENT,SERVER\" --prefix-colors \"cyan,green\" \"vite dev --host\" \"npx tsx watch dev-server/index.ts\"",
     "server": "npx tsx watch dev-server/index.ts",
-    "build": "vite build",
-    "vercel-build": "vite build",
+    "build": "vite build && node scripts/generate-seo-pages.js",
+    "vercel-build": "vite build && node scripts/generate-seo-pages.js",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
