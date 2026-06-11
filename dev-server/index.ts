@@ -182,7 +182,7 @@ app.post("/api/send-email", async (req, res) => {
   try {
     const info = await transporter.sendMail({
       from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
+      to: (process.env.CONTACT_EMAIL || process.env.SMTP_USER || "").replace(/^CONTACT_EMAIL=/, "").trim(),
       replyTo: email,
       subject: `New Enquiry from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "N/A"}\nMessage: ${message}`,
@@ -224,7 +224,7 @@ app.post("/api/enquiries", async (req, res) => {
   try {
     await transporter.sendMail({
       from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
+      to: (process.env.CONTACT_EMAIL || process.env.SMTP_USER || "").replace(/^CONTACT_EMAIL=/, "").trim(),
       replyTo: email,
       subject: `New Enquiry from ${name}`,
       html: `<h2>New Enquiry</h2><p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone || "N/A"}</p><p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>`,
@@ -455,7 +455,7 @@ app.post("/api/apply", async (req, res) => {
   try {
     await transporter.sendMail({
       from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
+      to: (process.env.CONTACT_EMAIL || process.env.SMTP_USER || "").replace(/^CONTACT_EMAIL=/, "").trim(),
       replyTo: email,
       subject: `New Application from ${full_name} — ${funding_type}`,
       text: `Name: ${full_name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address || "N/A"}\nDOB: ${date_of_birth || "N/A"}\nFunding: ${funding_type}\nWhen to Start: ${when_to_start || "N/A"}\nMessage: ${message || "N/A"}`,

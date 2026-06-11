@@ -59,7 +59,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // 1. Send notification email to Admin
     await transporter.sendMail({
       from: `"Career Upgrade" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
+      to: (process.env.CONTACT_EMAIL || process.env.SMTP_USER || "").replace(/^CONTACT_EMAIL=/, "").trim(),
       replyTo: email,
       subject: `New Enquiry from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "N/A"}\nAddress: ${address || "N/A"}\nDate of Birth: ${date_of_birth || "N/A"}\nCourse: ${course || "N/A"}\nFunding: ${funding_type || "N/A"}\nWhen to Start: ${when_to_start || "N/A"}\nAdditional Info: ${additional_info || "N/A"}\nMessage: ${message}`,
