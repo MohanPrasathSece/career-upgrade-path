@@ -70,7 +70,7 @@ const whyUs = [
   {
     icon: Users,
     title: "Tutor & Assessor Support",
-    desc: "Dedicated experts guide you from enrolment to qualification.",
+    desc: "Dedicated experts will steadily guide you from enrolment to successful completion of the course and qualification.",
   },
   {
     icon: BriefcaseBusiness,
@@ -272,8 +272,7 @@ function Home() {
                 A career with real demand, security & progression
               </h2>
               <p className="mt-4 text-[15px] sm:text-lg text-muted-foreground">
-                Dental nursing is one of the UK's most resilient healthcare careers. Once
-                registered, your skills travel with you.
+                Dental nursing is one of the resilient healthcare careers once registered your acquired skill-set in the duration of the course will grant you job opportunities.
               </p>
               <ul className="mt-8 space-y-3.5">
                 {careerBenefits.map((b) => (
