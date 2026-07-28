@@ -11,7 +11,7 @@ import {
   Users,
   Award,
 } from "lucide-react";
-import otherCoursesImg from "@/assets/images/online_study_home.png";
+import otherCoursesImg from "@/assets/images/adult_group_learning.png";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
 import { SiteLayout } from "@/components/site/SiteLayout";
 
@@ -59,7 +59,6 @@ const highlights = [
   { icon: Calendar, label: "Availability", value: "Bespoke / On-Demand" },
   { icon: Users, label: "Delivery", value: "Group or 1-on-1 Sessions" },
   { icon: BookOpen, label: "Format", value: "Hybrid / Blended Learning" },
-  { icon: Award, label: "Certification", value: "Accredited Certificate" },
 ];
 
 function OtherCourses() {
@@ -153,10 +152,10 @@ function OtherCourses() {
         <div className="mx-auto max-w-3xl text-center">
           <SectionEyebrow>Why Partner With Us</SectionEyebrow>
           <h2 className="mt-4 font-display text-2xl font-bold sm:text-3xl">
-            Accredited Delivery & Industry Excellence
+            Delivery & Industry Excellence
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Our training is optimized to create job-ready candidates with practical skills.
+            Our training is optimized to create job-ready candidates with practical skills. The staff that provide the training are highly qualified and have the necessary qualifications and skills to teach.
           </p>
         </div>
 
