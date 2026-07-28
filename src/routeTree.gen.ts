@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as OthercoursesRouteImport } from './routes/othercourses'
+import { Route as OtherCoursesRouteImport } from './routes/other-courses'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -32,6 +34,16 @@ const TermsRoute = TermsRouteImport.update({
 const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   id: '/privacy-policy',
   path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OthercoursesRoute = OthercoursesRouteImport.update({
+  id: '/othercourses',
+  path: '/othercourses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OtherCoursesRoute = OtherCoursesRouteImport.update({
+  id: '/other-courses',
+  path: '/other-courses',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -102,6 +114,8 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/faq': typeof FaqRoute
+  '/other-courses': typeof OtherCoursesRoute
+  '/othercourses': typeof OthercoursesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -118,6 +132,8 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/faq': typeof FaqRoute
+  '/other-courses': typeof OtherCoursesRoute
+  '/othercourses': typeof OthercoursesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -135,6 +151,8 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/courses': typeof CoursesRoute
   '/faq': typeof FaqRoute
+  '/other-courses': typeof OtherCoursesRoute
+  '/othercourses': typeof OthercoursesRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
@@ -153,6 +171,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/faq'
+    | '/other-courses'
+    | '/othercourses'
     | '/privacy-policy'
     | '/terms'
     | '/admin/analytics'
@@ -169,6 +189,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/faq'
+    | '/other-courses'
+    | '/othercourses'
     | '/privacy-policy'
     | '/terms'
     | '/admin/analytics'
@@ -185,6 +207,8 @@ export interface FileRouteTypes {
     | '/contact'
     | '/courses'
     | '/faq'
+    | '/other-courses'
+    | '/othercourses'
     | '/privacy-policy'
     | '/terms'
     | '/admin/analytics'
@@ -202,6 +226,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CoursesRoute: typeof CoursesRoute
   FaqRoute: typeof FaqRoute
+  OtherCoursesRoute: typeof OtherCoursesRoute
+  OthercoursesRoute: typeof OthercoursesRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   TermsRoute: typeof TermsRoute
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
@@ -226,6 +252,20 @@ declare module '@tanstack/react-router' {
       path: '/privacy-policy'
       fullPath: '/privacy-policy'
       preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/othercourses': {
+      id: '/othercourses'
+      path: '/othercourses'
+      fullPath: '/othercourses'
+      preLoaderRoute: typeof OthercoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/other-courses': {
+      id: '/other-courses'
+      path: '/other-courses'
+      fullPath: '/other-courses'
+      preLoaderRoute: typeof OtherCoursesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -322,6 +362,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CoursesRoute: CoursesRoute,
   FaqRoute: FaqRoute,
+  OtherCoursesRoute: OtherCoursesRoute,
+  OthercoursesRoute: OthercoursesRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   TermsRoute: TermsRoute,
   AdminAnalyticsRoute: AdminAnalyticsRoute,

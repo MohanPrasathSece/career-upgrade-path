@@ -175,6 +175,25 @@ const routes = [
     ]
   },
   {
+    path: '/othercourses',
+    filename: 'othercourses.html',
+    title: 'Bespoke On-Demand Training Courses | Career Upgrade Ltd',
+    description: 'Career Upgrade Ltd offers accredited, bespoke on-demand training in Retail Customer Service, Hospitality Customer Service, Warehouse Operative, and Security Officer Customer Service.',
+    keywords: 'bespoke training, customer service training, retail customer service, hospitality customer service, warehouse operative training, security officer customer service, career upgrade',
+    url: 'https://careerupgradedentalnursingschool.co.uk/othercourses',
+    schemas: [
+      globalOrgSchema,
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://careerupgradedentalnursingschool.co.uk/" },
+          { "@type": "ListItem", "position": 2, "name": "Other Courses", "item": "https://careerupgradedentalnursingschool.co.uk/othercourses" }
+        ]
+      }
+    ]
+  },
+  {
     path: '/faq',
     filename: 'faq.html',
     title: 'Dental Nursing Course FAQs | Career Upgrade UK',

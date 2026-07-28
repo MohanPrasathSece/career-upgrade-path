@@ -30,6 +30,10 @@ export const Route = createFileRoute("/apply")({
 
 const COURSES = [
   "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing",
+  "Retail Customer Service",
+  "Hospitality Customer Service",
+  "Warehouse Operative",
+  "Security Officer Customer Service",
 ];
 
 const START_OPTIONS = [

@@ -104,6 +104,10 @@ export function EnquiryForm() {
           <select name="course" value={formData.course} onChange={handleChange} className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 transition appearance-none">
             <option value="">Select a course...</option>
             <option value="Dental Nursing - 1 Year">Dental Nursing - 1 Year</option>
+            <option value="Retail Customer Service">Retail Customer Service</option>
+            <option value="Hospitality Customer Service">Hospitality Customer Service</option>
+            <option value="Warehouse Operative">Warehouse Operative</option>
+            <option value="Security Officer Customer Service">Security Officer Customer Service</option>
             <option value="Government Funded Route">Government Funded Route</option>
             <option value="Other">Other / Not sure</option>
           </select>
