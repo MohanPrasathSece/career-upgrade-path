@@ -1,0 +1,21 @@
+name: Keep Supabase Active
+
+on:
+  schedule:
+    # Runs everyday at 06:00 UTC (11:30 AM IST)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub Actions tab
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Keep-Alive API & Supabase
+        run: |
+          echo "Pinging live site keep-alive endpoint..."
+          curl -s -f "https://careerupgradedentalnursingschool.co.uk/api/keep-alive" || echo "Website endpoint ping completed"
+
+          echo "Directly pinging Supabase REST API..."
+          curl -s -f -H "apikey: sb_publishable_FKdD7AtUtds103a45_R4sg_Ttyvx4nP" \
+               "https://noyxkzdttsmgypxdiuhf.supabase.co/rest/v1/" || echo "Supabase ping completed"
+
