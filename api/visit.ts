@@ -39,13 +39,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     if (error) {
-      console.error("Supabase page_view insert error:", error.message);
-      return res.status(500).json({ error: error.message });
+      console.warn("⚠️  Supabase page_view insert skipped:", error.message);
+      return res.status(200).json({ success: false, skipped: true });
     }
 
     return res.status(200).json({ success: true });
   } catch (err: any) {
-    console.error("Tracking API error:", err.message);
-    return res.status(500).json({ error: "Server error" });
+    console.warn("⚠️  Tracking API skipped:", err.message);
+    return res.status(200).json({ success: false, skipped: true });
   }
 }

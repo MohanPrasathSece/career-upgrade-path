@@ -101,14 +101,14 @@ app.post("/api/visit", async (req, res) => {
       user_agent: userAgent,
     });
     if (error) {
-      console.error("⚠️  Supabase page_view error:", error.message);
-      res.status(500).json({ error: error.message });
+      console.warn("⚠️  Supabase page_view skipped (database unreachable/paused):", error.message);
+      res.status(200).json({ success: false, skipped: true });
       return;
     }
     res.status(200).json({ success: true });
   } catch (e: any) {
-    console.error("⚠️  Page view logging error:", e.message);
-    res.status(500).json({ error: e.message });
+    console.warn("⚠️  Page view logging skipped:", e.message);
+    res.status(200).json({ success: false, skipped: true });
   }
 });
 

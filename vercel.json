@@ -29,6 +29,8 @@
   "routes": [
     { "src": "/api/keep-alive", "dest": "/api/keep-alive.ts" },
     { "src": "/api/visit", "dest": "/api/visit.ts" },
+    { "src": "/api/enquiries", "dest": "/api/enquiries.ts" },
+    { "src": "/api/apply", "dest": "/api/apply.ts" },
     { "src": "/api/admin/login", "dest": "/api/admin/login.ts" },
     { "src": "/api/admin/(.*)", "dest": "/api/admin/[...slug].ts" },
     { "handle": "filesystem" },

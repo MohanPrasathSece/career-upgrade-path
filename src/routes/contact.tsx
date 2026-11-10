@@ -55,15 +55,15 @@ function Contact() {
     setIsSending(true);
     setError(null);
     
-    // Send to backend in the background
-    fetch("/api/enquiries", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    }).catch(console.error);
-
-    // Simulate 3 second sending state
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    try {
+      await fetch("/api/enquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+    } catch (err) {
+      console.error("Enquiry submission error:", err);
+    }
 
     setIsSending(false);
     setSubmittedName(form.name);

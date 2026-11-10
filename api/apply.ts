@@ -1,12 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import nodemailer from "nodemailer";
-import { createClient } from "@supabase/supabase-js";
-
-function getSupabase() {
-  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY;
-  return createClient(url!, key!);
-}
+import { getSupabase } from "./_lib/supabase.js";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -25,7 +19,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Save to Supabase
   try {
     const supabase = getSupabase();
-    await supabase.from("applications").insert({
+    const { error: dbError } = await supabase.from("applications").insert({
       full_name,
       email,
       phone,
@@ -38,8 +32,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       is_read: false,
       status: "New",
     });
+
+    if (dbError) {
+      console.error("Supabase apply insert error:", dbError.message);
+    } else {
+      console.log("✅ Application saved to Supabase applications table");
+    }
   } catch (err: any) {
-    console.error("Supabase insert error:", err.message);
+    console.error("Supabase insert exception:", err.message);
     // Don't block email sending if DB fails
   }
 
