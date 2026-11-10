@@ -19,19 +19,34 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Save to Supabase
   try {
     const supabase = getSupabase();
-    const { error: dbError } = await supabase.from("applications").insert({
+    const payload: Record<string, any> = {
       full_name,
       email,
       phone,
-      address: address || null,
-      date_of_birth: date_of_birth || null,
-      course: course || "Dental Nursing - 1 Year",
       funding_type,
-      when_to_start: when_to_start || null,
-      additional_info: additional_info || null,
+      course: course || "Dental Nursing - 1 Year",
       is_read: false,
       status: "New",
-    });
+    };
+
+    if (address) payload.address = address;
+    if (date_of_birth) payload.date_of_birth = date_of_birth;
+    if (when_to_start) payload.when_to_start = when_to_start;
+    if (additional_info) payload.additional_info = additional_info;
+
+    let { error: dbError } = await supabase.from("applications").insert(payload);
+
+    if (dbError) {
+      console.warn("Supabase apply insert with extended payload failed, retrying with core fields:", dbError.message);
+      const fallback = await supabase.from("applications").insert({
+        full_name,
+        email,
+        phone,
+        funding_type,
+        is_read: false,
+      });
+      dbError = fallback.error;
+    }
 
     if (dbError) {
       console.error("Supabase apply insert error:", dbError.message);

@@ -19,20 +19,35 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Save to Supabase
   try {
     const supabase = getSupabase();
-    const { error: dbError } = await supabase.from("submissions").insert({
+    const payload: Record<string, any> = {
       name,
       email,
       phone: phone || null,
       message,
-      address: address || null,
-      date_of_birth: date_of_birth || null,
-      course: course || null,
-      funding_type: funding_type || null,
-      when_to_start: when_to_start || null,
-      additional_info: additional_info || null,
       is_read: false,
-      status: "New",
-    });
+    };
+
+    // Only include optional extended fields if provided
+    if (address) payload.address = address;
+    if (date_of_birth) payload.date_of_birth = date_of_birth;
+    if (course) payload.course = course;
+    if (funding_type) payload.funding_type = funding_type;
+    if (when_to_start) payload.when_to_start = when_to_start;
+    if (additional_info) payload.additional_info = additional_info;
+
+    let { error: dbError } = await supabase.from("submissions").insert(payload);
+
+    if (dbError) {
+      console.warn("Supabase enquiries insert with extended payload failed, retrying with core fields:", dbError.message);
+      const fallback = await supabase.from("submissions").insert({
+        name,
+        email,
+        phone: phone || null,
+        message,
+        is_read: false,
+      });
+      dbError = fallback.error;
+    }
 
     if (dbError) {
       console.error("Supabase enquiries insert error:", dbError.message);
