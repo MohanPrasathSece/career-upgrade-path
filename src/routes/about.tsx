@@ -77,7 +77,10 @@ const steps = [
     desc: "Free consultation about funding, start dates and goals.",
   },
   { title: "Start Course Anytime", desc: "Begin within days on our modern e-learning platform." },
-  { title: "Complete Assessments", desc: "Build your portfolio with assessor guidance." },
+  {
+    title: "Complete POE & Write Exams",
+    desc: "Complete your Portfolio of Evidence (POE) and write exams held twice a year (April and November).",
+  },
   { title: "Become Qualified", desc: "Receive your UK qualification and register with the GDC." },
 ];
 

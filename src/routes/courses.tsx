@@ -28,7 +28,7 @@ export const Route = createFileRoute("/courses")({
     meta: [
       { title: "Online Dental Nursing Course UK | Government Funded | Career Upgrade" },
       { name: "description", content: "1-year flexible online dental nursing course with government funding options, payment plans and a clear GDC registration pathway. Start anytime, aged 16+." },
-      { name: "keywords", content: "dental nursing course UK, online dental nurse training, government funded dental nurse course, dental nurse diploma UK, GDC qualification, NCFE Level 3 dental nursing" },
+      { name: "keywords", content: "dental nursing course UK, online dental nurse training, government funded dental nurse course, dental nurse diploma UK, GDC qualification, NEBDN dental nursing" },
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Online Dental Nursing Course UK | Government Funded Options" },
       { property: "og:description", content: "1-year flexible online dental nursing qualification. Government funding, payment plans, GDC registration pathway. Start anytime." },
@@ -105,8 +105,16 @@ const funding = [
 ];
 
 const benefits = [
-  { icon: ScrollText, title: "Exam Fees" },
-  { icon: ShieldCheck, title: "GDC Registration Support" },
+  {
+    icon: ScrollText,
+    title: "Exam Fees Included (1st Year)",
+    desc: "Exam fees for the 1st year are included. If you write the exams after 1 year, you pay your own exam fees.",
+  },
+  {
+    icon: Users,
+    title: "Face-to-Face Option",
+    desc: "Optional sessions on Saturdays twice a month for those who want in-person support.",
+  },
 ];
 
 function Courses() {
@@ -129,7 +137,7 @@ function Courses() {
                 One year. Online. Built around you.
               </h2>
               <p className="mt-4 text-muted-foreground leading-relaxed">
-                Our fully accredited course, the <strong>NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing (610/3114/8)</strong>, leads to a professional dental nursing qualification and a clear path to General Dental Council (GDC) registration. Designed for ages 16+ with rolling intakes, tutor support, and exam fees included.
+                Our fully accredited course, the <strong>NEBDN National Diploma in Dental Nursing</strong>, leads to a professional dental nursing qualification and a clear path to General Dental Council (GDC) registration. Designed for ages 16+ with rolling intakes, tutor support, and exam fees included for the first year.
               </p>
               <Link
                 to="/contact"
@@ -163,7 +171,7 @@ function Courses() {
             Career Progression After Qualifying
           </h2>
           <p className="mt-4 text-muted-foreground text-lg">
-            The NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing is a strong option if you want to:
+            A dental nursing qualification is a strong option if you want to:
           </p>
         </div>
         <div className="mt-12 mx-auto max-w-4xl">
@@ -196,7 +204,7 @@ function Courses() {
                 Even become a dentist later with further study
               </h3>
               <p className="mt-3 text-sm text-primary/80 leading-relaxed max-w-2xl mx-auto">
-                Your NCFE CACHE Level 3 Diploma is more than just a qualification; it is the first step on a rewarding career path that can take you to the very top of the dental profession.
+                Your NEBDN National Diploma is more than just a qualification; it is the first step on a rewarding career path that can take you to the very top of the dental profession.
               </p>
             </div>
           </div>
@@ -211,7 +219,7 @@ function Courses() {
             Course Curriculum
           </h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            The curriculum of the <strong>NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing (610/3114/8)</strong> is designed to equip you with the essential clinical knowledge and patient care skills required to succeed in a professional dental career:
+            The curriculum of the <strong>NEBDN National Diploma in Dental Nursing</strong> is designed to equip you with the essential clinical knowledge and patient care skills required to succeed in a professional dental career:
           </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -284,7 +292,7 @@ function Courses() {
               Earn from day one as a trainee dental nurse
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              While studying the <strong>NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing (610/3114/8)</strong>, you can work as a trainee dental nurse in real UK dental practices. You build clinical hours, hands-on experience, and earn an income from day one - and many employers contribute towards course fees.
+              While studying the <strong>NEBDN National Diploma in Dental Nursing</strong>, you can work as a trainee dental nurse in real UK dental practices. You build clinical hours, hands-on experience, and earn an income from day one - and many employers contribute towards course fees.
             </p>
             <ul className="mt-6 space-y-3">
               {[

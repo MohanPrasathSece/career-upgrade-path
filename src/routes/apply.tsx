@@ -29,7 +29,7 @@ export const Route = createFileRoute("/apply")({
 });
 
 const COURSES = [
-  "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing",
+  "NEBDN National Diploma in Dental Nursing",
   "Retail Customer Service",
   "Hospitality Customer Service",
   "Warehouse Operative",
@@ -55,7 +55,7 @@ function ApplyPage() {
     phone: "",
     address: "",
     date_of_birth: "",
-    course: "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing" as string,
+    course: "NEBDN National Diploma in Dental Nursing" as string,
     funding_type: "" as "Government Funded" | "Fee Paying" | "",
     when_to_start: "",
     additional_info: "",

@@ -143,13 +143,13 @@ const routes = [
     filename: 'courses.html',
     title: 'Online Dental Nursing Course UK | Government Funded | Career Upgrade',
     description: '1-year flexible online dental nursing course with government funding options, payment plans and a clear GDC registration pathway. Start anytime, aged 16+.',
-    keywords: 'dental nursing course UK, online dental nurse training, government funded dental nurse course, dental nurse diploma UK, GDC qualification, NCFE Level 3 dental nursing',
+    keywords: 'dental nursing course UK, online dental nurse training, government funded dental nurse course, dental nurse diploma UK, GDC qualification, NEBDN dental nursing',
     url: 'https://careerupgradedentalnursingschool.co.uk/courses',
     schemas: [
       {
         "@context": "https://schema.org",
         "@type": "Course",
-        "name": "NCFE CACHE Level 3 Diploma in Principles and Practice of Dental Nursing",
+        "name": "NEBDN National Diploma in Dental Nursing",
         "description": "A flexible 1-year online dental nursing qualification leading to GDC registration. Study at your own pace with expert tutor and assessor support. Government funding available.",
         "provider": globalOrgSchema,
         "timeRequired": "P1Y",
@@ -272,31 +272,31 @@ const routes = [
 // Generate HTML files
 routes.forEach(route => {
   let html = template;
-  
+
   // Replace Title
   html = html.replace(/<title>.*?<\/title>/gi, `<title>${route.title}</title>`);
-  
+
   // Replace Meta Description
   html = html.replace(/<meta name="description" content="[^"]*?"\s*\/>/gi, `<meta name="description" content="${route.description}" />`);
-  
+
   // Replace Meta Keywords
   html = html.replace(/<meta name="keywords" content="[^"]*?"\s*\/>/gi, `<meta name="keywords" content="${route.keywords}" />`);
-  
+
   // Replace Canonical
   html = html.replace(/<link rel="canonical" href="[^"]*?"\s*\/>/gi, `<link rel="canonical" href="${route.url}" />`);
-  
+
   // Replace OG Title
   html = html.replace(/<meta property="og:title" content="[^"]*?"\s*\/>/gi, `<meta property="og:title" content="${route.title}" />`);
-  
+
   // Replace OG Description
   html = html.replace(/<meta property="og:description" content="[^"]*?"\s*\/>/gi, `<meta property="og:description" content="${route.description}" />`);
-  
+
   // Replace OG URL
   html = html.replace(/<meta property="og:url" content="[^"]*?"\s*\/>/gi, `<meta property="og:url" content="${route.url}" />`);
-  
+
   // Replace Twitter Title
   html = html.replace(/<meta name="twitter:title" content="[^"]*?"\s*\/>/gi, `<meta name="twitter:title" content="${route.title}" />`);
-  
+
   // Replace Twitter Description
   html = html.replace(/<meta name="twitter:description" content="[^"]*?"\s*\/>/gi, `<meta name="twitter:description" content="${route.description}" />`);
 
@@ -309,7 +309,7 @@ routes.forEach(route => {
   }
 
   // Inject Schemas
-  const schemaScripts = route.schemas.map(schema => 
+  const schemaScripts = route.schemas.map(schema =>
     `<script type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n</script>`
   ).join('\n');
 

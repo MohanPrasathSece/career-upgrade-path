@@ -65,7 +65,7 @@ const whyUs = [
   {
     icon: BookOpenCheck,
     title: "Learn Online Anytime",
-    desc: "Modern e-learning platform available 24/7 on any device.",
+    desc: "Modern e-learning platform available 24/7, plus optional face-to-face sessions on Saturdays twice a month.",
   },
   {
     icon: Users,
@@ -97,8 +97,8 @@ const careerBenefits = [
 ];
 
 const enrollment = [
-  { icon: ScrollText, title: "Exam Fees Included" },
-  { icon: ShieldCheck, title: "GDC Registration Support" },
+  { icon: ScrollText, title: "Exam Fees Included (1st Year)", desc: "Included for 1st year (fees apply if sitting after 1 year)" },
+  { icon: Users, title: "Face-to-Face Option", desc: "Saturdays twice a month" },
 ];
 
 const stats = [
@@ -345,11 +345,15 @@ function Home() {
             completely seamless.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {[
             {
-              title: "Bite-Sized Video Modules",
-              desc: "No boring textbooks. Learn through engaging video lectures, clinical animations, and interactive anatomy models.",
+              title: "Online Video Modules",
+              desc: "Learn through comprehensive e-learning video modules, clinical animations, and structured study resources at your own pace.",
+            },
+            {
+              title: "Face-to-Face Option",
+              desc: "Optional in-person sessions on Saturdays twice a month for learners who want classroom support alongside online study.",
             },
             {
               title: "Progress Dashboard",

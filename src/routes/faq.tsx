@@ -32,7 +32,11 @@ const faqs = [
   },
   {
     q: "Is the course fully online?",
-    a: "Yes - the theory is delivered through our modern online platform. Practical competencies are completed in a UK dental practice setting with assessor support.",
+    a: "Yes - the theory is delivered through our modern online platform. Practical competencies are completed in a UK dental practice setting with assessor support. We also offer optional face-to-face sessions on Saturday evenings twice a month for those who want in-person guidance.",
+  },
+  {
+    q: "Is there a face-to-face option?",
+    a: "Yes! For students who prefer in-person learning and tutor guidance, we offer optional face-to-face sessions on Saturday evenings twice a month.",
   },
   {
     q: "Can I work while studying?",
