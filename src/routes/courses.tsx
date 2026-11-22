@@ -18,6 +18,7 @@ import {
   GraduationCap,
   Shirt,
   ScrollText,
+  Users,
 } from "lucide-react";
 import coursesImg from "@/assets/images/team1.png";
 import { Section, SectionEyebrow, PageHero } from "@/components/site/Section";
